@@ -2,6 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 import type { ImageMetadata } from 'astro';
+import fondoPanaderia from '@assets/home/fondo-productos-panaderia-dorita.jpg'
 import frances from '@assets/home/pan-frances-panaderia-dorita.jpg';
 import rosquitas from '@assets/Panaderia/rosquitas/rosquitas-artesanales-panaderia-dorita.jpg';
 import panEspuma from '@assets/Panaderia/pan-espuma/pan-espuma-piura.jpg';
@@ -15,6 +16,7 @@ import tortaCumpleaños from '@assets/Pasteleria/tortas/torta-cumpleaños-panade
 import tortaPersonalizada from '@assets/Pasteleria/tortas/torta-personalizada-panaderia-dorita.jpg'
 
 // Exportaciones individuales (recomendado para autocomplete y optimización del bundle)
+export const FondoPanaderiaImg: ImageMetadata = fondoPanaderia;
 export const FrancesImg: ImageMetadata = frances;
 export const RosquitasImg: ImageMetadata = rosquitas;
 export const PanEspumaImg: ImageMetadata = panEspuma;
