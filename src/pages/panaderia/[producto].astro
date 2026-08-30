@@ -1,0 +1,135 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { NEGOCIO } from '../../lib/negocio';
+import LayoutPanaderia from '../../layouts/LayoutPanaderia.astro';
+import PorquePrecioRoscas from '../../components/panaderia/rosquitas/PorquePrecioRoscas.astro';
+import PrecioPresentacionPanaderia from '../../components/panaderia/PrecioPresentacionPanaderia.astro'
+import ArtesanalSupermercado from '../../components/panaderia/pan-hamburguesa/ArtesanalSupermercado.astro';
+import QueEsPanEspuma from '../../components/panaderia/pan-espuma/QueEsPanEspuma.astro';
+import PrecioPanEspuma from '../../components/panaderia/pan-espuma/PrecioPanEspuma.astro';
+import HistoriaPanaderia from '../../components/panaderia/HistoriaPanaderia.astro';
+
+export async function getStaticPaths() {
+  const productos = await getCollection('panaderia');
+
+  return productos.map((producto) => ({
+    params: { producto: producto.data.slug },
+    props: { producto },
+  }));
+}
+
+interface Props {
+  producto: CollectionEntry<'panaderia'>;
+}
+
+const { producto } = Astro.props as Props;
+const { data } = producto;
+
+const url = `${NEGOCIO.siteUrl}/panaderia/${data.slug}/`;
+const imagenUrl = new URL(data.hero.imagenProducto.src, NEGOCIO.siteUrl).toString();
+
+// ===== Offers (una por cada presentación con precio) =====
+const offers = data.hero.priceBand
+  .map((item) => {
+    const match = item.value.match(/\d+\.\d+/);
+    if (!match) return null; // descarta labels sin precio, ej "Pago", "Se hornea"
+    return {
+      "@type": "Offer",
+      "name": item.label,
+      "price": match[0],
+      "priceCurrency": "PEN",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "url": url,
+      "areaServed": { "@type": "City", "name": "Piura" },
+      "seller": {
+        "@type": "Bakery",
+        "name": NEGOCIO.nombre,
+        "telephone": NEGOCIO.telefono,
+        "address": { "@type": "PostalAddress", ...NEGOCIO.direccion },
+      },
+    };
+  })
+  .filter((offer) => offer !== null);
+
+// ===== Breadcrumb =====
+const breadcrumbItems = [
+  { "@type": "ListItem", "position": 1, "name": "Panaderia Dorita", "item": `${NEGOCIO.siteUrl}/` },
+];
+
+if (data.hero.migasPan.categoria) {
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": 2,
+    "name": data.hero.migasPan.categoria.nombreCategoria,
+    "item": `${NEGOCIO.siteUrl}${data.hero.migasPan.categoria.slugCategoria}/`,
+  });
+}
+
+breadcrumbItems.push({
+  "@type": "ListItem",
+  "position": breadcrumbItems.length + 1,
+  "name": data.hero.migasPan.textoFinal,
+  "item": url,
+});
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbItems,
+};
+
+// ===== Product =====
+const productoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": data.hero.titulo,
+  "description": data.hero.descripcionProducto,
+  "image": imagenUrl,
+  "category": "Panadería",
+  ...(offers.length > 0 && {
+    "offers": offers.length === 1 ? offers[0] : offers,
+  }),
+};
+
+// ===== FAQ =====
+const faqSchema = data.faq
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": data.faq.map((f) => ({
+        "@type": "Question",
+        "name": f.pregunta,
+        "acceptedAnswer": { "@type": "Answer", "text": f.respuesta },
+      })),
+    }
+  : null;
+
+// Array final que se pasa al layout -> BaseHead
+const structuredData = [breadcrumb, productoSchema, ...(faqSchema ? [faqSchema] : [])];
+---
+
+<LayoutPanaderia {...producto.data} migasPan={producto.data.hero.migasPan} structuredData={structuredData}>
+{producto.data.slug === "pan-espuma-piura" && (
+    <QueEsPanEspuma slot="QueEsPanEspuma" />
+  )}
+  {producto.data.precio && (
+  <PrecioPresentacionPanaderia slot="precioPresentacionPanaderia" {...producto.data.precio} />
+)}
+{producto.data.slug === "pan-hamburguesa-artesanal" && (
+    <ArtesanalSupermercado slot="artesanalvsSupermercado" />
+  )}
+
+  {producto.data.slug === "rosquitas-artesanales" && (
+    <PorquePrecioRoscas slot="porquePrecioRosquitas" />
+  )}
+{producto.data.slug === "pan-espuma-piura" && (
+    <PrecioPanEspuma slot="precioPanEspuma" />
+  )}
+
+{producto.data.historia && (
+  <HistoriaPanaderia slot="historiaPanaderia"
+    {...producto.data.historia}
+  />
+)}
+</LayoutPanaderia>

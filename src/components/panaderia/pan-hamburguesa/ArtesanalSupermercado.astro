@@ -1,0 +1,112 @@
+---
+---
+<style>
+.contenedor, .container{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+
+/* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque--oscuro{ background: var(--crema-oscura); }
+  .bloque--marca{ background: var(--marron); color: var(--crema); }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque--marca h2, .bloque--marca h3{ color: var(--crema); }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  .bloque--marca .bloque__cabecera p{ color: rgba(249,246,238,0.82); }
+
+/* ============ COMPARATIVA ARTESANAL VS INDUSTRIAL ============ */
+  .comparativa{ display:grid; grid-template-columns: 1fr; gap: 18px; }
+  .comparativa__tarjeta{
+    background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio);
+    padding: 24px; box-shadow: var(--sombra);
+  }
+  .comparativa__tarjeta--acento{ background: var(--marron); border-color: var(--marron); color: var(--crema); }
+  .comparativa__tarjeta h3{ font-size: 1.1rem; font-weight:600; margin-bottom:12px; }
+  .comparativa__tarjeta--acento h3{ color: var(--crema); }
+  .lista-check{ list-style:none; display:grid; gap:12px; margin-top:6px; }
+  .lista-check li{ display:flex; gap:12px; align-items:flex-start; font-size:0.95rem; }
+  .lista-check svg{ width:20px; height:20px; color: var(--rojo); flex-shrink:0; margin-top:2px; }
+  .comparativa__tarjeta--acento .lista-check svg{ color: #F0C9AE; }
+  .comparativa__tarjeta--acento p, .comparativa__tarjeta--acento li{ color: rgba(249,246,238,0.85); }
+ @media (prefers-reduced-motion: reduce){ *{ scroll-behavior:auto !important; transition:none !important; } }
+
+  /* ============ TABLET (min-width 640px) ============ */
+  @media (min-width: 640px){
+    .hero-ctas{ flex-direction:row; }
+    .hero-ctas .btn{ width:auto; }
+    .grid-precios{ grid-template-columns: repeat(2, 1fr); }
+    .comparativa{ grid-template-columns: repeat(2, 1fr); }
+    .grid-pasos{ grid-template-columns: repeat(2, 1fr); }
+    .cta-final__acciones{ flex-direction:row; justify-content:center; }
+    .cta-final__acciones .boton{ width:auto; }
+  }
+
+  /* ============ DESKTOP (min-width 900px) ============ */
+  @media (min-width: 900px){
+    .topbar__cta span{ display:inline; }
+    .hamburguesa-icono{ display:none; }
+    .nav{
+      position:static; flex-direction:row; align-items:center; background:transparent; padding:0;
+      gap: 26px; opacity:1; transform:none; pointer-events:auto; overflow:visible; order:2; flex-grow:1; justify-content:center;
+    }
+    .topbar__logo{ width:100px; height:100px; }
+    .nav a{ padding:0; border-bottom:none; font-size:0.9rem; font-weight:700; white-space:nowrap; }
+    .nav a:hover{ color: var(--rojo); }
+    .topbar__fila{ flex-wrap:nowrap; }
+    .hero{ padding: 56px 0 0; }
+    .hero-grid{ grid-template-columns: 1.05fr 0.95fr; gap: 48px; padding-bottom: 56px; }
+    .bloque{ padding: 68px 0; }
+    .flotante{ bottom:28px; right:28px; }
+  }
+
+</style>
+  
+  
+  <!-- ============ H2: ARTESANAL VS SUPERMERCADO ============ -->
+  <section id="artesanal-vs-industrial" class="bloque bloque--oscuro">
+    <div class="contenedor">
+      <div class="bloque__cabecera">
+        <span class="eyebrow">La diferencia real</span>
+        <h2>Pan de hamburguesa artesanal vs. pan de hamburguesa de supermercado</h2>
+        <p>El precio es parecido al de las marcas industriales. La diferencia está en lo que te llevas.</p>
+      </div>
+
+      <div class="comparativa">
+        <div class="comparativa__tarjeta">
+          <h3>Por qué nuestro pan de hamburguesa es distinto al industrial</h3>
+          <ul class="lista-check">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Horneado en horno de barrro, el mismo día que lo compras.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Sin conservantes para "estirarlo" de un día para otro.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Levas un producto suave, fresco y artesanal.</li>
+          </ul>
+        </div>
+
+        <div class="comparativa__tarjeta comparativa__tarjeta--acento">
+          <h3>Ideal para negocios: parrilladas, food trucks y reventa</h3>
+          <p style="margin:0 0 14px;">Si tienes un negocio y necesitas pan de hamburguesa seguido, trabajamos contigo igual que con el resto de nuestros revendedores: peso justo y entrega puntual.</p>
+          <a style="margin:3px 98px 14px;" class="boton boton-primario" href="https://wa.me/51993955358?text=Hola%2C%20tengo%20un%20negocio%20y%20quisiera%20cotizar%20pan%20de%20hamburguesa%20en%20cantidad" target="_blank" rel="noopener">Cotizar para mi negocio</a>
+        </div>
+      </div>
+    </div>
+  </section>

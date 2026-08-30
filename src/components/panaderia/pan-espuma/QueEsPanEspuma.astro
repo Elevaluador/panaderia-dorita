@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import { DisfrutarPanEspumaImg } from '../../../consts'
+
+---
+<style>
+
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.eyebrow{
+  font-family:var(--font-cuerpo);
+  font-weight:700;
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+
+/* ===== HERO ===== */
+
+.hero-media{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  aspect-ratio:4/3;
+  background:
+    radial-gradient(circle at 30% 30%, #E7C589 0%, transparent 55%),
+    linear-gradient(135deg, #C9873E 0%, #8B5A2B 55%, #5A3A20 100%);
+  box-shadow:var(--sombra);
+}
+
+
+/* ===== SECTIONS ===== */
+section{padding:44px 0;}
+.section-crema{background:var(--crema);}
+.section-head{margin-bottom:22px;}
+.section-head .eyebrow{margin-bottom:8px; display:block;}
+
+/* ===== WHAT IS IT ===== */
+.what-grid{
+  display:grid; gap:24px;
+}
+.what-text p{max-width:65ch;}
+
+/* ===== TABLET / DESKTOP ===== */
+@media (min-width:760px){
+  .hero-media{order:1;}
+  .what-grid{grid-template-columns:1.1fr 0.9fr;}
+  
+}
+@media (min-width:1000px){
+    
+ section{padding:64px 0;}
+  
+}
+</style>
+ 
+ <!-- ===== QUE ES ===== -->
+  <section class="section-crema">
+    <div class="container">
+      <div class="what-grid">
+        <div class="what-text">
+          <div class="section-head">
+            <span class="eyebrow">Sobre el producto</span>
+            <h2>¿Qué es el pan de espuma y por qué gusta tanto en Piura?</h2>
+          </div>
+          <p>El pan de espuma es ese pan redondo, suave y ligeramente dulce, con una miga esponjosa que se deshace apenas le das el primer mordisco. No es un pan cualquiera: tiene ese punto de horneado dorado por fuera y tierno por dentro que lo hace perfecto para el desayuno o la lonchera, solo o con su mantequilla.</p>
+          <p>En Piura es un clásico de mesa. Se come acompañado de un café bien cargado, con queso, o simplemente calientito recién salido del horno. Es de esos panes que no necesitan nada más: el sabor está en la miga.</p>
+          <p>En Panadería Dorita lo hacemos igual que desde 1985: a mano, con la receta de siempre y sin apuros. Nada de fórmulas industriales ni ingredientes que no reconocemos. Es pan de barrio, hecho por gente del barrio.</p>
+        </div>
+        <Image src= {DisfrutarPanEspumaImg} alt="Pan de espuma peruano de Panadería Dorita disfrutado en familia" loading="lazy" class="hero-media" style="aspect-ratio:1/1;"/>
+      </div>
+    </div>
+  </section>

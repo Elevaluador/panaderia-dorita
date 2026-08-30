@@ -1,0 +1,245 @@
+---
+import { Image } from 'astro:assets';
+import { HistoriaBocaditosImg } from '../../../consts'
+---
+<style>
+/* =========================================================
+   BASE  (Mobile First)
+   ========================================================= */
+.container{
+  width:100%;
+  max-width:1160px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+.eyebrow:before{
+  content:"";
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:4px;
+}
+
+
+/* =========================================================
+   SECCIONES  (Mobile base)
+   ========================================================= */
+section{
+  position:relative;
+}
+
+.section-pad{
+  padding:50px 0;
+}
+
+/* Elimina espacio entre hero y la siguiente sección */
+.hero + section,
+.hero + .bg-card{
+  padding-top:0;
+}
+
+
+.bg-card{
+  background:var(--blanco);
+}
+
+/* =========================================================
+   FAMILIA
+   ========================================================= */
+.familia{
+  overflow:hidden;
+  background:var(--marron);
+  color:var(--crema);
+}
+
+.familia-bg{
+  display:block;
+  width: 300px;;
+  height:auto;
+  object-fit:cover;
+  border-radius:20px;
+  margin-top:28px;
+  box-shadow:var(--sombra);
+}
+
+.familia .eyebrow{
+  color:var(--trigo);
+}
+
+.familia h2{
+  max-width:600px;
+  margin-top:10px;
+  color:var(--crema);
+  font-size:clamp(26px,5vw,40px);
+}
+
+.familia-body{
+  max-width:65ch;
+  margin-top:20px;
+  color:rgba(249,246,238,.85);
+  font-size:16px;
+}
+
+.familia-body p+p{
+  margin-top:14px;
+}
+
+
+  .familia-names{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:max-content;
+  gap:10px;
+  margin-top:27px;
+  overflow-x:auto;
+  padding-bottom:4px; /* espacio para que no se corte si scrollea */
+}
+
+
+.familia-names span{
+  padding:8px 14px;
+  border:1px solid rgba(249,246,238,.27);
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+
+/* =========================================================
+   TABLET  (min-width: 640px)
+   ========================================================= */
+@media(min-width:640px){
+
+  .container{
+    padding:0 32px;
+  }
+
+ 
+  .section-pad{
+    padding:65px 0;
+  }
+
+  
+}
+
+
+/* =========================================================
+   DESKTOP  (min-width: 920px)
+   ========================================================= */
+@media(min-width:920px){
+  .section-pad{
+    padding:80px 0;
+  }
+  .familia .container{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  grid-template-areas:
+    "eyebrow img"
+    "title   img"
+    "body    img"
+    "names   img";
+  column-gap:60px;
+  align-items:center;
+}
+
+.familia .eyebrow{ grid-area:eyebrow; }
+.familia h2{ grid-area:title; }
+.familia .familia-body{ grid-area:body; }
+.familia .familia-names{ grid-area:names; }
+
+.familia-bg{
+  grid-area:img;
+  align-self:center;
+  width:100%;
+  height:auto;
+  margin-top:0;
+}
+
+}
+
+</style>
+<!-- =========================================================
+     FAMILIA
+     ========================================================= -->
+
+<section class="familia section-pad">
+
+  <div class="container">
+
+    <span class="eyebrow">
+      Desde 1985
+    </span>
+
+    <h2>
+      Los bocaditos tradicionales llevan la misma historia de nuestra panadería
+    </h2>
+
+    <div class="familia-body">
+
+      <p>
+        Todo empezó en 1985, cuando Don Víctor y Doña Dorita
+        abrieron las puertas de la panadería con apenas
+        25 kilos de harina.
+      </p>
+
+      <p>
+        Con los años, la familia fue creciendo y también
+        las recetas que llegan a las mesas de Piura.
+        Hoy preparamos nuestros bocaditos manteniendo
+        ese mismo espíritu de trabajo familiar y trato
+        directo.
+      </p>
+      <p>
+        Hoy es vitucho( el hijo mayor) junto con su mujer Anguie,
+        quienes son los maestros pasteleros,que producen y preparan
+         cada bocadito que sale de panaderia dorita en Piura
+      </p>
+
+    </div>
+
+
+    <div class="familia-names">
+
+      <span>
+        Don Víctor
+      </span>
+
+      <span>
+        Doña Dorita
+      </span>
+
+      <span>
+        Vitucho
+      </span>
+
+      <span>
+      Anguie
+      </span>
+
+    </div>
+
+
+  <Image
+    class="familia-bg"
+    src={HistoriaBocaditosImg}
+    alt="Historia del origen familiar de los bocaditos en piura, por panaderia dorita"
+  />
+
+  </div>
+
+</section>

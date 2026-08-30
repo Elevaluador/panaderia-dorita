@@ -1,0 +1,442 @@
+---
+import { Image } from 'astro:assets';
+import { TortaCumpleañosImg,TortaPersonalizadaImg,TortaTematicaImg} from '../../../consts'
+---
+<style>
+  /* ============ TOKENS (mismos que la home) ============ */
+  :root{
+    --rojo: #9D1A04;
+    --rojo-oscuro: #7A1403;
+    --marron: #4A2E2B;
+    --marron-suave: #7A5C52;
+    --crema: #F9F6EE;
+    --crema-oscura: #F1E9D8;
+    --crema-linea: #E3D6BC;
+    --blanco: #FFFFFF;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-cuerpo: "Karla", -apple-system, sans-serif;
+
+    --radio: 14px;
+    --sombra: 0 10px 30px rgba(74,46,43,0.10);
+    --sombra-fuerte: 0 16px 40px rgba(74,46,43,0.18);
+
+    --ancho-maximo: 1120px;
+  }
+
+  /* ============ BASE — MOBILE FIRST ============ */
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: var(--font-cuerpo);
+    color: var(--marron);
+    background: var(--crema);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: inherit; }
+  ul{ margin:0; padding:0; }
+
+  h1,h2,h3{
+    font-family: var(--font-display);
+    color: var(--marron);
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .contenedor{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+  .eyebrow--claro{ color: var(--crema); }
+  .eyebrow--claro::before{ background: var(--crema); }
+
+  /* ============ BREADCRUMB ============ */
+  .breadcrumb{
+    font-size: 0.8rem;
+    color: rgba(249,246,238,0.75);
+    margin: 0 0 16px;
+  }
+  .breadcrumb a{ text-decoration:underline; color: rgba(249,246,238,0.9); }
+
+  /* ============ BOTONES ============ */
+  .boton{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 1rem;
+    text-decoration:none;
+    padding: 16px 26px;
+    border-radius: 999px;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border: 2px solid transparent;
+    cursor:pointer;
+  }
+  .boton--primario{
+    background: var(--rojo);
+    color: var(--blanco);
+    box-shadow: var(--sombra);
+  }
+  .boton--primario:hover{
+    background: var(--rojo-oscuro);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-fuerte);
+  }
+  .boton--secundario{
+    background: transparent;
+    color: var(--marron);
+    border-color: var(--marron);
+  }
+  .boton--secundario:hover{
+    background: var(--marron);
+    color: var(--crema);
+  }
+  .boton--sobre-foto{
+    background: transparent;
+    color: var(--crema);
+    border-color: rgba(249,246,238,0.6);
+  }
+  .boton--sobre-foto:hover{
+    background: var(--crema);
+    color: var(--marron);
+  }
+  .boton--bloque{ width:100%; }
+  .boton svg{ width:20px; height:20px; flex-shrink:0; }
+
+  /* ============ TOPBAR + MENÚ ============ */
+  .topbar{
+    position: sticky;
+    top:0;
+    z-index: 50;
+    background: rgba(249,246,238,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--crema-linea);
+  }
+  .topbar__fila{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 14px;
+    padding: 10px 0;
+  }
+  .topbar__marca{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    flex-shrink:0;
+  }
+  .topbar__logo{ width:60px; height:60px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+  .topbar__nombre{ font-family: var(--font-display); font-size: 1.05rem; font-weight:600; color: var(--marron); }
+  .topbar__acciones{ display:flex; align-items:center; gap:10px; }
+  .topbar__cta{ padding: 10px 16px; font-size: 0.85rem; white-space:nowrap; }
+  .topbar__cta span{ display:none; }
+
+  .menu-toggle{ position:absolute; opacity:0; pointer-events:none; }
+  .hamburguesa{
+    width:42px; height:42px; border-radius:50%; border: 1.5px solid var(--marron);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:5px; cursor:pointer; flex-shrink:0;
+  }
+  .hamburguesa span{ width:18px; height:2px; background: var(--marron); display:block; transition: transform .2s ease, opacity .2s ease; }
+  .menu-toggle:checked ~ .hamburguesa span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .menu-toggle:checked ~ .hamburguesa span:nth-child(2){ opacity:0; }
+  .menu-toggle:checked ~ .hamburguesa span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  .nav{
+    position: fixed; top: 63px; left:0; right:0; bottom:0;
+    background: var(--crema);
+    display:flex; flex-direction:column; padding: 10px 20px 30px; gap: 2px;
+    transform: translateY(-8px); opacity: 0; pointer-events:none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 45; overflow-y:auto;
+  }
+  .menu-toggle:checked ~ .nav{ opacity:1; transform: translateY(0); pointer-events:auto; }
+  .nav a{
+    font-family: var(--font-cuerpo); font-weight:700; font-size: 1.05rem; text-decoration:none;
+    color: var(--marron); padding: 16px 6px; border-bottom: 1px solid var(--crema-linea);
+  }
+  .nav a.nav__activo{ color: var(--rojo); }
+
+  /* ============ DIVISOR "PAN PARTIDO" ============ */
+  .divisor{ display:block; width:100%; height:24px; margin-top:-1px; }
+  .divisor--a polygon{ fill: var(--crema-oscura); }
+  .divisor--b polygon{ fill: var(--crema); }
+  .divisor--c polygon{ fill: var(--marron); }
+
+  /* ============ HERO DE CATEGORÍA (sin foto de fondo) ============ */
+  .hero-cat{ background: var(--crema-oscura); position:relative; overflow:hidden; }
+  .hero-cat::before{
+    content:""; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%;
+    background: rgba(157,26,4,0.06); z-index:0;
+  }
+  .hero-cat__cabecera{ position:relative; z-index:1; padding: 28px 0 0; text-align:center; }
+  .hero-cat .breadcrumb{ color: var(--marron-suave); }
+  .hero-cat .breadcrumb a{ color: var(--marron); }
+  h1{ color: var(--marron); font-size: clamp(2rem, 8vw, 3.1rem); font-weight:600; max-width: 720px; margin: 12px auto 0; }
+  .hero-cat__grid{
+    position:relative; z-index:1; display:grid; grid-template-columns: 1fr; gap: 26px;
+    align-items:center; padding: 30px 0 48px;
+  }
+  .hero-cat__foto{
+    aspect-ratio: 1 / 1; width:100%; max-width: 420px; margin: 0 auto; border-radius: var(--radio);
+    overflow:hidden; box-shadow: var(--sombra-fuerte); position:relative;
+  }
+  .hero-cat__foto img{ width:100%; height:100%; object-fit:cover; }
+  .hero-cat__foto-etiqueta{
+    position:absolute; left:14px; bottom:14px; background: var(--rojo); color: var(--blanco);
+    font-family: var(--font-cuerpo); font-weight:700; font-size:0.78rem; padding: 8px 14px; border-radius: 999px;
+    box-shadow: var(--sombra); display:flex; align-items:center; gap:6px;
+  }
+  .hero-cat__copy{ text-align:center; }
+  .hero-cat__texto{ max-width: 460px; margin: 0 auto; font-size: 1.05rem; color: var(--marron-suave); }
+  .hero-cat__acciones{ display:flex; flex-direction:column; gap:12px; align-items:center; margin-top: 22px; }
+  .hero-cat__acciones .boton{ width:100%; max-width:340px; }
+  .hero__badges{
+    display:flex; flex-wrap:wrap; justify-content:center; gap: 8px 20px; margin-top: 24px;
+    font-size: 0.8rem; color: var(--marron); font-weight:600;
+  }
+  .hero__badges li{ list-style:none; display:flex; align-items:center; gap:7px; }
+  .hero__badges svg{ width:15px; height:15px; color: var(--rojo); flex-shrink:0; }
+
+  /* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque--oscuro{ background: var(--crema-oscura); }
+  .bloque--marca{ background: var(--marron); color: var(--crema); }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque--marca h2, .bloque--marca h3{ color: var(--crema); }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  .bloque--marca .bloque__cabecera p{ color: rgba(249,246,238,0.82); }
+  .bloque__cabecera--centro{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ============ TORTAS POR OCASIÓN (H3 con foto) ============ */
+  .grid-ocasiones{ display:grid; grid-template-columns: 1fr; gap: 18px; }
+  .tarjeta-ocasion{
+    background: var(--blanco); border-radius: var(--radio); border: 1px solid var(--crema-linea);
+    padding: 16px; box-shadow: var(--sombra); display:flex; flex-direction:column; gap:12px;
+  }
+  .tarjeta-ocasion__foto{ width:100%; aspect-ratio: 1 / 1; border-radius: 10px; overflow:hidden; background: var(--crema-oscura); }
+  .tarjeta-ocasion__foto img{ width:100%; height:100%; object-fit:cover; }
+  .tarjeta-ocasion__cuerpo{ padding: 0 6px 6px; display:flex; flex-direction:column; gap:8px; }
+  .tarjeta-ocasion h3{ font-size: 1.08rem; font-weight:600; }
+  .tarjeta-ocasion p{ margin:0; color: var(--marron-suave); font-size:0.94rem; }
+  .tarjeta-ocasion__destacada{ border: 2px solid var(--rojo); }
+  .tarjeta-ocasion__etiqueta{
+    display:inline-block; font-size: 0.72rem; font-weight:700; color: var(--rojo);
+    background: rgba(157,26,4,0.08); padding: 4px 10px; border-radius: 999px; width: fit-content;
+  }
+
+  /* ============ CÓMO PEDIR (pasos) ============ */
+  .grid-pasos{ display:grid; grid-template-columns: 1fr; gap: 16px; }
+  .paso{
+    background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio);
+    padding: 22px; box-shadow: var(--sombra); position:relative;
+  }
+  .paso--acento{ background: var(--marron); border-color: var(--marron); color: var(--crema); }
+  .paso__numero{
+    width:34px; height:34px; border-radius:50%; background: var(--crema-oscura); color: var(--rojo);
+    display:flex; align-items:center; justify-content:center; font-family: var(--font-display); font-weight:700;
+    margin-bottom:14px; font-size:0.95rem;
+  }
+  .paso--acento .paso__numero{ background: rgba(249,246,238,0.14); color: var(--crema); }
+  .paso h3{ font-size: 1.05rem; font-weight:600; margin-bottom:8px; }
+  .paso p{ margin:0; font-size: 0.95rem; }
+  .paso--acento p{ color: rgba(249,246,238,0.85); }
+
+  /* ============ PRECIOS ============ */
+  .precios{ display:grid; grid-template-columns: 1fr; gap: 18px; }
+  .precios__bloque{
+    background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio);
+    padding: 24px; box-shadow: var(--sombra);
+  }
+  .precios__bloque h3{ font-size: 1.1rem; font-weight:600; margin-bottom:14px; }
+  .lista-precios{ list-style:none; display:grid; gap:10px; }
+  .lista-precios li{
+    display:flex; justify-content:space-between; gap:10px; font-size:0.95rem;
+    padding: 9px 0; border-bottom: 1px dashed var(--crema-linea);
+  }
+  .lista-precios li:last-child{ border-bottom:none; }
+  .lista-precios span:last-child{ font-weight:700; color: var(--rojo); text-align:right; }
+  .lista-sabores{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+  .lista-sabores li{
+    font-size:0.86rem; font-weight:600; color: var(--marron); background: var(--crema-oscura);
+    padding: 7px 14px; border-radius: 999px;
+  }
+  .precios__nota{
+    margin-top: 18px; font-size: 0.85rem; color: var(--marron-suave);
+    border-left: 3px solid var(--rojo); padding-left: 12px;
+  }
+
+  /* ============ POR QUÉ ELEGIRNOS ============ */
+  .lista-check{ list-style:none; display:grid; gap:12px; margin-top:6px; }
+  .lista-check li{ display:flex; gap:12px; align-items:flex-start; font-size:0.98rem; }
+  .lista-check svg{ width:20px; height:20px; color: var(--rojo); flex-shrink:0; margin-top:2px; }
+
+  /* ============ FAQ ============ */
+  .faq-lista{ display:grid; gap: 12px; }
+  .faq-item{ background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio); overflow:hidden; }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding: 18px 20px; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; font-family: var(--font-display); font-weight:600; font-size: 1rem; color: var(--marron);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item__mas{
+    width:26px; height:26px; border-radius:50%; border: 1.5px solid var(--rojo); color: var(--rojo);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative;
+  }
+  .faq-item__mas::before, .faq-item__mas::after{ content:""; position:absolute; background: var(--rojo); transition: transform .2s ease; }
+  .faq-item__mas::before{ width:11px; height:2px; }
+  .faq-item__mas::after{ width:2px; height:11px; }
+  details[open] .faq-item__mas::after{ transform: rotate(90deg); opacity:0; }
+  .faq-item__respuesta{ padding: 0 20px 20px; color: var(--marron-suave); font-size: 0.95rem; }
+  .faq-item__respuesta p{ margin:0; }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final{ background: var(--marron); color: var(--crema); text-align:center; padding: 48px 0 52px; }
+  .cta-final h2{ color: var(--crema); font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; max-width: 560px; margin: 0 auto; }
+  .cta-final p{ color: rgba(249,246,238,0.75); max-width: 460px; margin: 14px auto 26px; }
+  .cta-final .boton--primario{ background: var(--rojo); }
+  .cta-final .boton--secundario{ border-color: rgba(249,246,238,0.5); color: var(--crema); }
+  .cta-final .boton--secundario:hover{ background: var(--crema); color: var(--marron); }
+  .cta-final__acciones{ display:flex; flex-direction:column; gap:12px; align-items:center; }
+  .cta-final__acciones .boton{ width:100%; max-width:320px; }
+  .cta-final__telefono{ margin-top: 20px; font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.03em; }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background: var(--marron); color: rgba(249,246,238,0.7); border-top: 1px solid rgba(249,246,238,0.15);
+    padding: 28px 0; text-align:center; font-size: 0.85rem;
+  }
+  footer .footer__marca{ display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px; }
+  footer .footer__logo{ width:60px;height:60px;border-radius:50%; }
+  footer .footer__marca strong{ font-family: var(--font-display); color: var(--crema); font-size:1rem; }
+  footer p{ margin: 4px 0; }
+
+  /* ============ BOTÓN FLOTANTE WHATSAPP ============ */
+  .flotante{
+    position: fixed; bottom: 18px; right: 18px; z-index: 60; width:58px; height:58px; border-radius:50%;
+    background: var(--rojo); color:var(--blanco); display:flex; align-items:center; justify-content:center;
+    box-shadow: var(--sombra-fuerte); text-decoration:none; transition: transform .18s ease;
+  }
+  .flotante:hover{ transform: scale(1.06); }
+  .flotante svg{ width:28px; height:28px; }
+
+  /* ============ ACCESIBILIDAD ============ */
+  a:focus-visible, button:focus-visible, summary:focus-visible, label:focus-visible{
+    outline: 3px solid var(--rojo); outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce){ *{ scroll-behavior:auto !important; transition:none !important; } }
+
+  /* ============ TABLET (min-width 640px) ============ */
+  @media (min-width: 640px){
+    .hero-cat__acciones{ flex-direction:row; justify-content:center; }
+    .hero-cat__acciones .boton{ width:auto; }
+    .grid-ocasiones{ grid-template-columns: repeat(3, 1fr); }
+    .grid-pasos{ grid-template-columns: repeat(3, 1fr); }
+    .precios{ grid-template-columns: repeat(2, 1fr); }
+    .cta-final__acciones{ flex-direction:row; justify-content:center; }
+    .cta-final__acciones .boton{ width:auto; }
+  }
+
+  /* ============ DESKTOP (min-width 900px) ============ */
+  @media (min-width: 900px){
+    .topbar__cta span{ display:inline; }
+    .hamburguesa{ display:none; }
+    .nav{
+      position:static; flex-direction:row; align-items:center; background:transparent; padding:0;
+      gap: 26px; opacity:1; transform:none; pointer-events:auto; overflow:visible; order:2; flex-grow:1; justify-content:center;
+    }
+    .nav a{ padding:0; border-bottom:none; font-size:0.9rem; font-weight:700; white-space:nowrap; }
+    .nav a:hover{ color: var(--rojo); }
+    .topbar__fila{ flex-wrap:nowrap; }
+    .topbar__logo{ width:100px;height:100px; }
+    .hero-cat__cabecera{ padding: 56px 0 0; }
+    .hero-cat__grid{
+      grid-template-columns: 0.9fr 1.1fr; text-align:left; gap: 56px; padding: 40px 0 78px; align-items:center;
+    }
+    .hero-cat__foto{ max-width:none; margin:0; order:1; }
+    .hero-cat__copy{ text-align:left; order:2; }
+    .hero-cat__texto{ margin: 0; }
+    .hero__badges{ justify-content:flex-start; }
+    .hero-cat__acciones{ align-items:flex-start; justify-content:flex-start; }
+    .bloque{ padding: 68px 0; }
+    .flotante{ bottom:28px; right:28px; }
+  }
+</style>
+
+
+<!-- ============ H2: TORTAS POR OCASIÓN ============ -->
+  <section id="ocasiones" class="bloque">
+    <div class="contenedor">
+      <div class="bloque__cabecera">
+        <span class="eyebrow">Hechas a tu medida</span>
+        <h2>Tortas personalizadas y temáticas para cada ocasión</h2>
+        <p>No trabajamos con catálogo cerrado: tú nos cuentas la ocasión y el estilo, y la armamos contigo.</p>
+      </div>
+
+      <div class="grid-ocasiones">
+        <!-- Reemplaza __TORTA_CUMPLEANOS_B64__ por la foto cuadrada -->
+        <article class="tarjeta-ocasion tarjeta-ocasion__destacada">
+          <div class="tarjeta-ocasion__foto">
+            <Image src={TortaCumpleañosImg} alt="Torta de cumpleaños en Piura decorada por Panadería Dorita" loading="lazy" width="400" height="400"/>
+          </div>
+          <div class="tarjeta-ocasion__cuerpo">
+            <span class="tarjeta-ocasion__etiqueta">La más pedida</span>
+            <h3>Tortas de cumpleaños en Piura</h3>
+            <p>Para fiestas infantiles o familiares, con el sabor y tamaño que necesites. Pide con 1 día de anticipación y coordinamos la decoración por WhatsApp.</p>
+          </div>
+        </article>
+
+        <!-- Reemplaza __TORTA_PERSONALIZADA_B64__ por la foto cuadrada -->
+        <article class="tarjeta-ocasion">
+          <div class="tarjeta-ocasion__foto">
+            <Image src={TortaPersonalizadaImg} alt="Torta personalizada en piura por Panadería Dorita" loading="lazy" width="400" height="400"/>
+          </div>
+          <div class="tarjeta-ocasion__cuerpo">
+            <h3>Tortas personalizadas en Piura</h3>
+            <p>Aniversarios, bautizos, reuniones familiares. Nos cuentas el sabor y el estilo que quieres, y la armamos a tu medida.</p>
+          </div>
+        </article>
+
+        <!-- Reemplaza __TORTA_TEMATICA_B64__ por la foto cuadrada -->
+        <article class="tarjeta-ocasion">
+          <div class="tarjeta-ocasion__foto">
+            <Image src={TortaTematicaImg} alt="Torta con temática depotiva en piura  de la U, por Panadería Dorita" loading="lazy" width="400" height="400"/>
+          </div>
+          <div class="tarjeta-ocasion__cuerpo">
+            <h3>Tortas temáticas en Piura</h3>
+            <p>Cuéntanos el tema que tienes en mente y coordinamos el diseño contigo antes de empezar a trabajarla.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <svg class="divisor divisor--b" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,12 46,6 92,14 138,22 185,3 231,4 277,19 323,5 369,13 415,20 462,3 508,18 554,8 600,3 646,4 692,15 738,15 785,4 831,9 877,4 923,19 969,15 1015,3 1062,20 1108,5 1154,9 1200,22 1200,30 0,30"/>
+  </svg>

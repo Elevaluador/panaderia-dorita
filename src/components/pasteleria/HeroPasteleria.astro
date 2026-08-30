@@ -1,0 +1,314 @@
+---
+import { Image } from 'astro:assets';
+import MigasPan  from '../MigasPan.astro';
+
+export interface MigasPan {
+    textoFinal: string;
+    categoria?: {
+      nombreCategoria: string;
+      slugCategoria:string;
+    };
+}
+
+
+export interface Iconos {
+  frase: string;
+  icono_frase: string | string[];
+  viewBox?: string;
+}
+
+
+interface Props {
+  subtituloProducto:string;
+  titulo1:string;
+  titulo2:string;
+  descripcionProducto:string;
+  imagenProducto: ImageMetadata | string; // Permite imágenes importadas o URLs en texto
+  altProducto:string;
+  nombreProducto:string;
+  iconos?: Iconos[];
+  migasPan:MigasPan;
+}
+
+const {
+subtituloProducto,
+  titulo1,titulo2,
+  descripcionProducto,
+  imagenProducto,
+  nombreProducto,
+  iconos= [],
+  altProducto,
+  migasPan,
+} = Astro.props;
+---
+<style>
+
+/* =========================================================
+   BASE  (Mobile First)
+   ========================================================= */
+
+.container{
+  width:100%;
+  max-width:1160px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.hero__eyebrow {
+    font-family: var(--font-cuerpo);
+    font-weight: 700;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--crema);
+    background: var(--rojo);
+    border: 1px solid var(--borde);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+
+}
+
+.eyebrow:before{
+  content:"";
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:4px;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.boton-outline{
+  border-color:var(--marron-line);
+  background:transparent;
+  color:var(--marron);
+}
+
+.boton-outline:hover{
+  border-color:var(--marron);
+  background-color: var(--marron);
+  color:var(--blanco)
+}
+
+/* =========================================================
+   HERO  (Mobile base)
+   ========================================================= */
+.hero{
+  position:relative;
+  padding:40px 0 50px;
+  overflow:hidden;
+  background: var(--crema-oscura)
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:42px;
+  align-items:center;
+}
+
+.hero-copy{
+  max-width:650px;
+}
+
+.hero-copy .eyebrow{
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font-size:clamp(32px,7vw,65px);
+  font-weight:600;
+  letter-spacing:-.025em;
+  color:var(--marron)
+}
+.hero h1 em{
+  color:var(--rojo);
+  font-style:normal;
+}
+.hero-lede{
+  max-width:57ch;
+  margin-top:20px;
+  font-size:17px;
+  color:var(--marron-soft);
+}
+
+.hero-ctas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.trust-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 20px;
+  margin-top:28px;
+  padding-top:21px;
+  border-top:1px solid var(--marron-line);
+}
+
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.trust-item svg{
+  width:17px;
+  height:17px;
+  color:var(--rojo);
+}
+
+
+/* =========================================================
+   HERO VISUAL — BOCADITOS  (Mobile base)
+   ========================================================= */
+.hero-visual{
+  position:relative;
+  min-height:330px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.bocaditos-showcase{
+  position:relative;
+  width:min(100%,430px);
+  height:320px;
+}
+
+/* =========================================================
+   SECCIONES  (Mobile base)
+   ========================================================= */
+section{
+  position:relative;
+}
+
+/* Elimina espacio entre hero y la siguiente sección */
+.hero + section,
+.hero + .bg-card{
+  padding-top:0;
+}
+
+/* =========================================================
+   TABLET  (min-width: 640px)
+   ========================================================= */
+@media(min-width:640px){
+
+  .container{
+    padding:0 32px;
+  }
+
+  .hero{
+    padding:65px 0 70px;
+  }
+
+
+}
+
+
+/* =========================================================
+   DESKTOP  (min-width: 920px)
+   ========================================================= */
+@media(min-width:920px){
+
+  .hero{
+    padding:75px 0 80px;
+  }
+
+  .hero-grid{
+    grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);
+    gap:60px;
+  }
+
+  .hero-visual{
+    min-height:440px;
+  }
+
+  .bocaditos-showcase{
+    height:430px;
+  }
+
+}
+
+</style>
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero">
+    <MigasPan migasPan={migasPan}/>
+  <div class="container hero-grid">
+
+    <!-- TEXTO -->
+    <div class="hero-copy">
+      <span class="hero__eyebrow">{subtituloProducto}</span>
+      <h1>{titulo1}, <em>{titulo2}</em></h1>
+      <p class="hero-lede">
+         {descripcionProducto}
+      </p>
+
+      <div class="hero-ctas">
+        <a class="boton boton-primario"
+           href="https://wa.me/51993955358?text=Hola%2C%20quiero%20pedir%20bocaditos%20para%20mi%20evento"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/>
+          </svg>
+          Pedir por WhatsApp
+        </a>
+
+        <a class="boton boton-outline" href="#dulces">
+          Ver {nombreProducto}
+        </a>
+      </div>
+
+      <!-- TRUST STRIP DINÁMICO -->
+      {iconos.length > 0 && (
+        <div class="trust-strip">
+          {iconos.map((icono) => {
+            const iconofraseList = Array.isArray(icono.icono_frase) ? icono.icono_frase : [icono.icono_frase];
+            return (
+              <div class="trust-item">
+                <svg
+                  viewBox={icono.viewBox || "0 0 24 24"}
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  {iconofraseList.map((d) => (
+                    <path d={d} />
+                  ))}
+                </svg>
+                <span>{icono.frase}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div> <!-- Cierra .hero-copy -->
+
+    <!-- VISUAL DEL HERO -->
+    <div class="hero-visual">
+      {
+        typeof imagenProducto === 'string' ? (
+          <img src={imagenProducto} alt={altProducto} class="bocaditos-showcase" />
+        ) : (
+          <Image src={imagenProducto} alt="{altProducto}" class="bocaditos-showcase" />
+        )
+      }
+    </div>
+
+  </div> <!-- Cierra .container.hero-grid -->
+</section>

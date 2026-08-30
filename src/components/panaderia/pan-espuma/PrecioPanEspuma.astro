@@ -1,0 +1,141 @@
+---
+---
+
+<style>
+
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.eyebrow{
+  font-family:var(--font-cuerpo);
+  font-weight:700;
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+
+/* ===== SECTIONS ===== */
+section{padding:44px 0;}
+.section-white{background:var(--blanco);}
+
+.section-head{margin-bottom:22px;}
+.section-head .eyebrow{margin-bottom:8px; display:block;}
+
+/* ===== PRICE CARD ===== */
+.price-card{
+  background:var(--marron);
+  color:var(--crema);
+  border-radius:20px;
+  padding:28px 24px;
+  box-shadow:var(--sombra);
+}
+.price-card h2{color:var(--crema); text-align: center;}
+.price-hero{
+  display:flex; align-items:baseline; gap:12px;
+  margin:16px 0 20px;
+  flex-wrap:wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.price-hero .num{
+  font-family:var(--font-display); font-weight:700; font-size:2.8rem;
+  color:#F2C879; line-height:1;
+}
+.price-hero .desc{
+  font-size:0.95rem; color:rgba(249,246,238,0.85);
+}
+.price-rows{margin:18px 0;}
+.price-row{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(249,246,238,0.18);
+}
+.price-row:last-child{border-bottom:none;}
+.price-row .name{font-weight:700; font-size:0.98rem;}
+.price-row .note{font-size:0.82rem; color:rgba(249,246,238,0.68); display:block; margin-top:2px;}
+.price-row .amt{
+  font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--secundario);
+  white-space:nowrap;
+}
+.payment-note{
+  background:rgba(249,246,238,0.08);
+  border:1px solid rgba(249,246,238,0.18);
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:0.9rem;
+  color:rgba(249,246,238,0.9);
+  margin-top:10px;
+  text-align: center;
+}
+.payment-note strong{color:var(--crema);}
+
+
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+}
+
+
+@media (min-width:1000px){
+
+  section{padding:64px 0;}
+ 
+}
+
+</style>
+ 
+<!-- ===== PRECIO ===== -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Precio</span>
+    </div>
+
+    <div class="price-card">
+      <h2>¿Cuánto cuesta el pan de espuma en Panadería Dorita?</h2>
+
+      <div class="price-rows">
+        <div class="price-row">
+          <div>
+            <span class="name">Precio por unidad</span>
+            <span class="note">Disponible en tienda de lunes a viernes</span>
+          </div>
+          <div class="price-hero">
+            <span class="num">S/2.00</span>
+            <span class="desc">por unidad — precio regular, sin letra chica</span>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <div>
+            <span class="name">Por mayor</span>
+            <span class="note">Para revendedores, bodegas o eventos — precio por cantidad</span>
+          </div>
+          <span class="amt">Cotización</span>
+        </div>
+      </div>
+
+      <div class="payment-note">
+        <strong>¿Cómo pagas?</strong>
+        Con Yape o Plin, directo en tienda. Para pedidos grandes o encargos,
+        el adelanto es de <strong>S/20 o el 20% de tu compra</strong>, segun la cantidad del pedido.
+      </div>
+
+      <div style="margin-top:20px;">
+        <a href="https://wa.me/51993955358"
+           class="boton boton-primario"
+           target="_blank"
+           rel="noopener"
+           style="width:100%;">
+          Escríbenos al +51 993 955 358
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

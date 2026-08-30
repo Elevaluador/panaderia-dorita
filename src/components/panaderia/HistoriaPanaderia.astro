@@ -1,0 +1,117 @@
+---
+ interface Props {
+    tituloHistoria:string;
+    parrafo1:string;
+    parrafo2:string;
+    parrafo3:string;
+    historiaPersonaje1:string;
+    historiaPersonaje2:string;
+
+ }
+
+ const{
+    tituloHistoria,
+    parrafo1,parrafo2, parrafo3,
+    historiaPersonaje1,historiaPersonaje2
+ }= Astro.props;
+---
+
+
+<style>
+  .container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.eyebrow{
+  font-family:var(--font-cuerpo);
+  font-weight:700;
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+/* ===== SECTIONS ===== */
+section{padding:44px 0;}
+
+/*===== HISTORY / DARK SECTION ===== */
+.history-section{
+  background:var(--marron);
+  color:var(--crema);
+  padding:56px 0;
+  position:relative;
+  overflow:hidden;
+}
+.history-section .eyebrow{color:var(--secundario);}
+.history-section h2{color:var(--crema);}
+.history-grid{
+  display:grid; gap:26px;
+}
+.history-text p{
+  color:rgba(249,246,238,0.86);
+  max-width:62ch;
+}
+.history-year{
+  font-family:var(--font-display);
+  font-size:3.2rem;
+  font-weight:700;
+  color:rgba(249,246,238,0.14);
+  line-height:1;
+  margin-bottom:-6px;
+}
+.family-tags{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin-top:18px;
+}
+.family-tag{
+  border:1px solid rgba(249,246,238,0.3);
+  border-radius:100px;
+  padding:7px 14px;
+  font-size:0.8rem;
+  color:rgba(249,246,238,0.92);
+}
+
+/* ===== TABLET / DESKTOP ===== */
+@media (min-width:760px){
+ 
+
+  .history-grid{grid-template-columns:0.5fr 1fr; align-items:center;}
+
+}
+@media (min-width:1000px){
+   
+  
+  section{padding:64px 0;}
+  .history-section{padding:76px 0;}
+}
+</style>
+
+  <!-- ===== HISTORIA ===== -->
+  
+  
+  <section class="history-section">
+    <div class="container">
+      <div class="history-grid">
+        <div>
+          <div class="history-year">1985</div>
+        </div>
+        <div class="history-text">
+          <span class="eyebrow">Nuestra historia</span>
+          <h2>{tituloHistoria}</h2>
+
+          <p>{parrafo1}</p>
+          <p>{parrafo2}</p>
+          <p>{parrafo3}</p>
+
+          <div class="family-tags">
+            <span class="family-tag">Don Víctor</span>
+            <span class="family-tag">Doña Dorita</span>
+            <span class="family-tag">{historiaPersonaje1}</span>
+            <span class="family-tag">{historiaPersonaje2}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

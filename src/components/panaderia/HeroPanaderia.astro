@@ -1,0 +1,204 @@
+---
+import { Image } from 'astro:assets';
+import  MigasPan  from '../MigasPan.astro';
+
+export interface MigasPan {
+    textoFinal: string;
+    categoria?: {
+      nombreCategoria: string;
+      slugCategoria:string;
+    };
+}
+
+interface PriceItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  migasPan:MigasPan;
+  subtituloProducto: string;
+  titulo: string;
+  descripcionProducto: string;
+  priceBand: PriceItem[];
+  whatsapp: string;
+  whatsappText: string;
+  secondaryHref: string;
+  secondaryText: string;
+  frase: string;
+  imagenProducto: ImageMetadata;
+  imagenAlt: string;
+}
+
+const {
+  migasPan,
+  subtituloProducto,
+  titulo,
+  descripcionProducto,
+  priceBand,
+  whatsapp,
+  whatsappText,
+  secondaryHref,
+  secondaryText,
+  frase,
+  imagenProducto,
+  imagenAlt,
+} = Astro.props;
+---
+
+<style>
+
+.container{
+  width:100%;
+  max-width:var(--ancho-maximo);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(180deg, var(--crema) 0%, var(--crema-oscura) 100%);
+  padding:8px 0 40px;
+}
+.hero__eyebrow {
+    font-family: var(--font-cuerpo);
+    font-weight: 700;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--crema);
+    background: var(--rojo);
+    border: 1px solid var(--borde);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:26px;
+  align-items:center;
+}
+.hero-media{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  aspect-ratio:4/3;
+  background:
+    radial-gradient(circle at 30% 30%, #E7C589 0%, transparent 55%),
+    linear-gradient(135deg, #C9873E 0%, #8B5A2B 55%, #5A3A20 100%);
+  box-shadow:var(--sombra);
+}
+.hero-media::after{
+  content:"Foto del pan de espuma recién horneado";
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:24px;
+  color:rgba(255,255,255,0.92);
+  font-family:var(--font-cuerpo); font-weight:600; font-size:0.85rem;
+  background:rgba(43,33,31,0.16);
+}
+.hero-media--miga::after{
+  content:"Foto de la miga del pan de espuma";
+}
+.hero-copy{padding-top:4px;}
+.hero-copy h1{margin-bottom:14px;}
+.hero-copy .lead{
+  font-size:1.05rem;
+  color:var(--texto-suave);
+  margin-bottom:22px;
+  max-width:46ch;
+}
+.price-band{
+  display:flex; flex-wrap:wrap; gap:14px;
+  background:var(--secundario);
+  border:1px solid var(--borde);
+  border-radius:var(--radio);
+  padding:16px 18px;
+  margin-bottom:22px;
+  box-shadow:var(--sombra);
+}
+.price-item{flex:1; min-width:140px;}
+.price-item .label{
+  font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--marron); font-weight:750; margin-bottom:4px; display:block;
+}
+.price-item .value{
+  font-family:var(--font-display); font-size:1.15rem; color:var(--rojo-oscuro); font-weight:600;
+}
+.hero-ctas{display:flex; flex-direction:column; gap:12px;}
+
+.trust-line{
+  margin-top:16px; font-size:0.82rem; color:var(--texto-suave);
+  display:flex; align-items:center; gap:8px;
+}
+.trust-line svg{flex-shrink:0;}
+
+
+/* ===== SECTIONS ===== */
+section{padding:44px 0;}
+.section-crema{background:var(--crema);}
+.section-white{background:var(--blanco);}
+
+.section-head{margin-bottom:22px;}
+.section-head .eyebrow{margin-bottom:8px; display:block;}
+
+/* ===== TABLET / DESKTOP ===== */
+@media (min-width:760px){
+  .hero-grid{grid-template-columns:1fr 1fr; gap:44px;}
+  .hero-copy{order:1;}
+  .hero-media{order:2;}
+  .hero-ctas{flex-direction:row;}
+}
+@media (min-width:1000px){
+  .hero{padding:24px 0 60px;}
+  section{padding:64px 0;}
+
+}
+</style>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <MigasPan migasPan={migasPan}/>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero__eyebrow">{subtituloProducto}</span>
+        <h1>{titulo}</h1>
+        <p class="lead">{descripcionProducto}</p>
+ 
+        <div class="price-band">
+          {priceBand.map((item) => (
+            <div class="price-item">
+              <span class="label">{item.label}</span>
+              <span class="value">{item.value}</span>
+            </div>
+          ))}
+        </div>
+ 
+        <div class="hero-ctas">
+          <a href={`https://wa.me/${whatsapp}`} class="boton boton-primario" target="_blank" rel="noopener">
+            {whatsappText}
+          </a>
+          <a href={secondaryHref} class="boton boton--secundario">{secondaryText}</a>
+        </div>
+ 
+        <p class="trust-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9D1A04" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+          {frase}
+        </p>
+      </div>
+ 
+      <Image
+        src={imagenProducto}
+        alt={imagenAlt}
+        loading="lazy"
+        class="hero-media"
+      />
+    </div>
+  </div>
+</section>
+ 

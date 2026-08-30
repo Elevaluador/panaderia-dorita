@@ -1,0 +1,377 @@
+---
+import HeaderLink from './HeaderLink.astro';
+---
+<header class="topbar">
+  <div class="contenedor topbar__fila">
+    <a href="index.html" class="topbar__marca">
+      <img src="/logo-panaderia-dorita.jpg" alt="Logo de panadería Dorita en piura" class="topbar__logo">
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="nav-backdrop" aria-hidden="true"></label>
+
+    <nav class="nav" id="nav-menu" aria-label="Menú principal">
+      <div class="nav__handle"></div>
+      <div class="nav__contacto-header">
+        <span>Menú</span>
+        <label for="menu-toggle" class="nav__close" aria-label="Cerrar menú">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </label>
+      </div>
+
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/#identidad">Historia</HeaderLink>
+    
+      <div class="nav__group">
+        <input type="checkbox" id="sub-panaderia" class="subnav-toggle">
+        <label for="sub-panaderia" class="nav__group-toggle">
+         <HeaderLink href="/panaderia/"> Panadería</HeaderLink>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </label>
+        <div class="nav__submenu">
+          <div class="nav__submenu-panel">
+            <HeaderLink href="/panaderia/rosquitas-artesanales/"> Rosquitas</HeaderLink>
+            <HeaderLink href="/panaderia/pan-espuma-piura/">Pan de Espuma</HeaderLink>
+            <HeaderLink href="/panaderia/pan-hamburguesa-artesanal/">Pan de Hamburguesa</HeaderLink>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav__group">
+        <input type="checkbox" id="sub-pasteleria" class="subnav-toggle">
+        <label for="sub-pasteleria" class="nav__group-toggle">
+           <HeaderLink href="/pasteleria/"> Pastelería</HeaderLink>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </label>
+        <div class="nav__submenu">
+          <div class="nav__submenu-panel">
+            <HeaderLink href="/pasteleria/bocaditos-piura/#dulces"> Bocaditos Dulces</HeaderLink>
+            <HeaderLink href="/pasteleria/bocaditos-piura/#salados"> Bocaditos Salados</HeaderLink>
+            <HeaderLink href="/pasteleria/tortas-piura/">Tortas</HeaderLink>
+          </div>
+        </div>
+      </div>
+      <HeaderLink href="/#faq">Faqs</HeaderLink>
+      <HeaderLink href="/#footer"class="nav__contacto">Contacto</HeaderLink>
+    </nav>
+
+    <div class="topbar__acciones">
+      <a class="boton boton--primario" href="https://wa.me/51993955358?text=Hola%2C%20quisiera%20hacer%20una%20consulta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"></path>
+          </svg>
+        <span>Escríbenos</span>
+      </a>
+      <label for="menu-toggle" class="hamburguesa" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </div>
+</header>
+<style>
+
+body.no-scroll{overflow:hidden;}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+.contenedor{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+
+
+/* ============================================= */
+/* =================  TOPBAR  ==================== */
+/* ============================================= */
+.topbar{
+  position:sticky; top:0; z-index:200;
+  background:var(--crema);
+  border-bottom:1px solid var(--borde);
+}
+.topbar__fila{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 0;
+  position:relative;
+}
+.topbar__marca{
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none;
+}
+.topbar__logo{
+  width:60px; height:60px; object-fit:contain; border-radius:8px;
+  flex-shrink:0;
+}
+.topbar__nombre{
+  font-family:var(--font-display); font-weight:700; font-size:1rem;
+  color:var(--marron); line-height:1.1;
+}
+.topbar__acciones{
+  display:flex; align-items:center; gap:10px;
+}
+
+.topbar__acciones .boton{
+  background: var(--rojo);
+  color:var(--blanco);
+}
+
+.topbar__cta{
+  padding:9px 16px; font-size:0.82rem; white-space:nowrap;
+}
+.topbar__cta svg{width:16px; height:16px;}
+
+/* ============================================= */
+/* ==========  MENU (bandeja inferior)  ========= */
+/* ============================================= */
+.menu-toggle{display:none;}
+.subnav-toggle{display:none;}
+
+.nav-backdrop{
+  position:fixed; inset:0;
+  background:rgba(43,33,31,0.55);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s ease;
+  z-index:150;
+}
+.menu-toggle:checked ~ .nav-backdrop{
+  opacity:1; pointer-events:auto;
+}
+
+.nav{
+  position:fixed;
+  left:0; right:0; bottom:0;
+  max-height:82vh;
+  overflow-y:auto;
+  background:var(--crema);
+  border-radius:22px 22px 0 0;
+  box-shadow:0 -12px 34px rgba(43,33,31,0.28);
+  transform:translateY(105%);
+  transition:transform 0.32s cubic-bezier(.32,.72,0,1);
+  z-index:160;
+  padding:8px 0 28px;
+}
+.menu-toggle:checked ~ .nav{
+  transform:translateY(0);
+}
+.nav__handle{
+  width:42px; height:4px;
+  background:var(--borde);
+  border-radius:100px;
+  margin:8px auto 6px;
+}
+.nav__contacto-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:6px 22px 14px;
+}
+.nav__contacto-header span{
+  font-family:var(--font-display); font-weight:700; color:var(--marron); font-size:1.05rem;
+}
+.nav__close{
+  width:32px; height:32px;
+  border-radius:50%;
+  background:var(--crema-oscura);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--marron);
+  cursor:pointer;
+}
+
+.nav > a{
+  display:block;
+  padding:16px 24px;
+  font-family:var(--font-display); font-weight:600; font-size:1.05rem;
+  color:var(--marron);
+  text-decoration:none;
+  border-bottom:1px solid var(--borde);
+}
+.nav > a:hover{color:var(--rojo); background:var(--crema-2);}
+.nav > a.nav__activo{color:var(--rojo);}
+.nav > a.nav__contacto{color:var(--rojo); font-weight:700;}
+
+/* --- Grupo con submenú (Panadería / Pastelería) --- */
+/* MÓVIL (por defecto): acordeón simple, EN FLUJO NORMAL, sin position:absolute */
+.nav__group{
+  border-bottom:1px solid var(--borde);
+  position:relative;
+}
+.nav__group-toggle{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px;
+  font-family:var(--font-display); font-weight:600; font-size:1.05rem;
+  color:var(--marron);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav__group-toggle:hover{color:var(--rojo); background:var(--crema-2);}
+.nav__group-toggle .chevron{
+  transition:transform 0.25s ease, color 0.25s ease;
+  color:var(--texto-suave);
+  flex-shrink:0;
+}
+.subnav-toggle:checked ~ .nav__group-toggle .chevron{
+  transform:rotate(180deg);
+  color:var(--rojo);
+}
+.nav__submenu{
+  max-height:0;
+  overflow:hidden;
+  background:var(--crema-2);
+  transition:max-height 0.3s ease;
+}
+.subnav-toggle:checked ~ .nav__submenu{
+  max-height:260px;
+}
+.nav__submenu-panel a{
+  display:block;
+  padding:12px 24px 12px 42px;
+  font-size:0.9rem;
+  font-weight:500;
+  color:var(--texto-suave);
+  text-decoration:none;
+  border-bottom:1px solid rgba(74,46,43,0.08);
+  position:relative;
+}
+.nav__submenu-panel a::before{
+  content:"";
+  position:absolute; left:26px; top:50%;
+  width:5px; height:5px;
+  background:var(--rojo);
+  border-radius:50%;
+  transform:translateY(-50%) rotate(45deg);
+}
+.nav__submenu-panel a:last-child{border-bottom:none;}
+.nav__submenu-panel a:hover{color:var(--rojo); background:rgba(157,26,4,0.06);}
+
+/* Hamburguesa */
+.hamburguesa{
+  display:flex; flex-direction:column; justify-content:center; gap:5px;
+  width:38px; height:38px;
+  cursor:pointer;
+}
+.hamburguesa span{
+  display:block; width:100%; height:2px;
+  background:var(--marron);
+  border-radius:2px;
+  transition:transform 0.25s ease, opacity 0.25s ease;
+}
+.menu-toggle:checked ~ .topbar__acciones .hamburguesa span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.menu-toggle:checked ~ .topbar__acciones .hamburguesa span:nth-child(2){opacity:0;}
+.menu-toggle:checked ~ .topbar__acciones .hamburguesa span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ===== TABLET / DESKTOP ===== */
+@media (min-width:900px){
+  .topbar__logo{
+    width:100px; height:100px;
+  }
+  .nav-backdrop{display:none;}
+  .nav__handle, .nav__contacto-header{display:none;}
+  .nav{
+    position:static;
+    transform:none;
+    max-height:none;
+    overflow:visible;
+    background:none;
+    box-shadow:none;
+    border-radius:0;
+    padding:0;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:26px;
+  }
+  .nav > a{
+    padding:0;
+    border:none;
+    font-size:0.9rem;
+    position:relative;
+  }
+  .nav > a::after{
+    content:"";
+    display:block;
+    height:2px; width:0;
+    background:var(--rojo);
+    transition:width 0.2s ease;
+    margin-top:4px;
+  }
+  .nav > a:hover::after, .nav > a.nav__activo::after{width:100%;}
+  .nav > a:hover{background:none;}
+  .nav > a.nav__contacto{
+    background:var(--marron);
+    color:var(--crema) !important;
+    padding:9px 16px !important;
+    border-radius:100px;
+  }
+  .nav > a.nav__contacto::after{display:none;}
+  .nav > a.nav__contacto:hover{background:var(--rojo);}
+
+  /* --- Grupo con submenú en DESKTOP: dropdown flotante sin hueco muerto --- */
+  .nav__group{
+    border:none;
+    position:relative;
+  }
+  .nav__group-toggle{
+    padding:0;
+    font-size:0.9rem;
+    gap:5px;
+  }
+  .nav__group-toggle:hover{background:none; color:var(--rojo);}
+
+  /* Clave del fix: top:100% (SIN gap) + padding-top como puente invisible
+     que sigue perteneciendo al propio submenu, así el :hover nunca se corta. */
+  .nav__submenu{
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    padding-top:14px;
+    max-height:none;
+    overflow:visible;
+    background:none;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.18s ease;
+  }
+  .nav__group:hover .nav__submenu,
+  .nav__group:focus-within .nav__submenu{
+    visibility:visible;
+    opacity:1;
+    pointer-events:auto;
+  }
+  .nav__submenu-panel{
+    background:var(--blanco);
+    border:1px solid var(--borde);
+    border-radius:14px;
+    box-shadow:var(--sombra);
+    min-width:210px;
+    padding:8px 0;
+  }
+  .nav__submenu-panel a{
+    padding:11px 20px;
+    font-size:0.88rem;
+    color:var(--marron);
+    border:none;
+    white-space:nowrap;
+  }
+  .nav__submenu-panel a::before{display:none;}
+  .nav__submenu-panel a:hover{color:var(--rojo); background:var(--crema-2);}
+  .hamburguesa{display:none;}
+}
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement | null;
+
+  if (menuToggle) {
+    menuToggle.addEventListener('change', () => {
+      document.body.classList.toggle('no-scroll', menuToggle.checked);
+    });
+
+    document.querySelectorAll<HTMLAnchorElement>('#nav-menu > a, .nav__submenu-panel a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuToggle.checked = false;
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+</script>

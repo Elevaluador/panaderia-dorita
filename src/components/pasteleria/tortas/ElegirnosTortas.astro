@@ -1,0 +1,81 @@
+---
+---
+<style>
+  /* ============ TOKENS (mismos que la home) ============ */
+  
+  /* ============ BASE — MOBILE FIRST ============ */
+  
+  .contenedor{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+  .eyebrow--claro{ color: var(--crema); }
+  .eyebrow--claro::before{ background: var(--crema); }
+
+
+
+  /* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque--marca{ background: var(--marron); color: var(--crema); }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque--marca h2, .bloque--marca h3{ color: var(--crema); }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  .bloque--marca .bloque__cabecera p{ color: rgba(249,246,238,0.82); }
+  .bloque__cabecera--centro{ text-align:center; margin-left:auto; margin-right:auto; }
+
+ 
+ 
+  /* ============ POR QUÉ ELEGIRNOS ============ */
+  .lista-check{ list-style:none; display:grid; gap:12px; margin-top:6px; }
+  .lista-check li{ display:flex; gap:12px; align-items:flex-start; font-size:0.98rem; }
+  .lista-check svg{ width:20px; height:20px; color: var(--rojo); flex-shrink:0; margin-top:2px; }
+
+  
+  
+  /* ============ DESKTOP (min-width 900px) ============ */
+  @media (min-width: 900px){
+    
+ 
+    
+    .bloque{ padding: 68px 0; }
+    
+  }
+</style>
+ 
+ 
+ <!-- ============ H2: POR QUÉ ELEGIRNOS ============ -->
+  <section id="por-que-elegirnos" class="bloque bloque--marca">
+    <div class="contenedor">
+      <div class="bloque__cabecera">
+        <span class="eyebrow eyebrow--claro">Confianza real, no de catálogo</span>
+        <h2>¿Por qué elegir las tortas de Panadería Dorita?</h2>
+      </div>
+
+      <p class="subH3" style="color:var(--crema); font-family:var(--font-display); font-size:1.15rem; font-weight:600; margin-bottom:12px;">Hechas a mano, con receta tradicional</p>
+      <ul class="lista-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#F0C9AE;"><path d="M20 6 9 17l-5-5"/></svg><span style="color:rgba(249,246,238,0.85);">Nada de molde de fábrica: cada torta se arma a mano, como se ha hecho desde 1985.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#F0C9AE;"><path d="M20 6 9 17l-5-5"/></svg><span style="color:rgba(249,246,238,0.85);">Coordinamos el diseño contigo antes de empezar, para acercarnos al máximo a lo que imaginas.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#F0C9AE;"><path d="M20 6 9 17l-5-5"/></svg><span style="color:rgba(249,246,238,0.85);">Negocio de barrio con más de 30 años de trayectoria real, no una cadena industrial.</span></li>
+      </ul>
+    </div>
+  </section>

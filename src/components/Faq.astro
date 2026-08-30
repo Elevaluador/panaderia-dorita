@@ -1,0 +1,114 @@
+---
+interface Faqs {
+  pregunta: string;
+  respuesta: string;
+}
+
+interface Props {
+  faq?: Faqs[];
+  tituloFaq?: string;
+}
+const { faq, tituloFaq  } = Astro.props;
+---
+<style>
+ 
+
+  /* ============ BASE — MOBILE FIRST ============ */
+
+  .contenedor{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+  
+
+  /* ============ BREADCRUMB ============ */
+  
+
+  /* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque--oscuro{ background: var(--crema-oscura); }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  .bloque__cabecera p{ color: rgba(249,246,238,0.82); }
+  .centro{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ============ FAQ ============ */
+  .faq-lista{ display:grid; gap: 12px; }
+  .faq-item{ background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio); overflow:hidden; }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding: 18px 20px; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; font-family: var(--font-display); font-weight:600; font-size: 1rem; color: var(--marron);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item__mas{
+    width:26px; height:26px; border-radius:50%; border: 1.5px solid var(--rojo); color: var(--rojo);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative;
+  }
+  .faq-item__mas::before, .faq-item__mas::after{ content:""; position:absolute; background: var(--rojo); transition: transform .2s ease; }
+  .faq-item__mas::before{ width:11px; height:2px; }
+  .faq-item__mas::after{ width:2px; height:11px; }
+  details[open] .faq-item__mas::after{ transform: rotate(90deg); opacity:0; }
+  .faq-item__respuesta{ padding: 0 20px 20px; color: var(--marron-suave); font-size: 0.95rem; }
+  .faq-item__respuesta p{ margin:0; }
+
+
+
+  /* ============ ACCESIBILIDAD ============ */
+  a:focus-visible, button:focus-visible, summary:focus-visible, label:focus-visible{
+    outline: 3px solid var(--rojo); outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce){ *{ scroll-behavior:auto !important; transition:none !important; } }
+
+
+  /* ============ DESKTOP (min-width 900px) ============ */
+  @media (min-width: 900px){
+    .bloque{ padding: 68px 0; }
+   
+  }
+</style>
+<!-- =========================================================
+     FAQ
+     ========================================================= -->
+
+<section id="faq" class="bloque bloque--oscuro">
+  <div class="contenedor">
+    <div class="bloque__cabecera centro">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>{tituloFaq}</h2>
+    </div>
+
+    <div class="faq-lista">
+      {faq?.map((item) => (
+        <details class="faq-item">
+          <summary>
+            <h3 style="font-size:inherit;font-weight:inherit;margin:0;">{item.pregunta}</h3>
+            <span class="faq-item__mas"></span>
+          </summary>
+          <div class="faq-item__respuesta">
+            <p>{item.respuesta}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

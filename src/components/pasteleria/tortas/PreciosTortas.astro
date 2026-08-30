@@ -1,0 +1,121 @@
+---
+---
+
+<style>
+  
+  .contenedor{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+
+  /* ============ DIVISOR "PAN PARTIDO" ============ */
+  .divisor{ display:block; width:100%; height:24px; margin-top:-1px; }
+  .divisor--a polygon{ fill: var(--crema-oscura); }
+  .divisor--b polygon{ fill: var(--crema); }
+  .divisor--c polygon{ fill: var(--marron); }
+
+  /* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  .bloque__cabecera p{ color: rgba(249,246,238,0.82); }
+  .bloque__cabecera--centro{ text-align:center; margin-left:auto; margin-right:auto; }
+
+
+  /* ============ PRECIOS ============ */
+  .precios{ display:grid; grid-template-columns: 1fr; gap: 18px; }
+  .precios__bloque{
+    background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio);
+    padding: 24px; box-shadow: var(--sombra);
+  }
+  .precios__bloque h3{ font-size: 1.1rem; font-weight:600; margin-bottom:14px; }
+  .lista-precios{ list-style:none; display:grid; gap:10px; }
+  .lista-precios li{
+    display:flex; justify-content:space-between; gap:10px; font-size:0.95rem;
+    padding: 9px 0; border-bottom: 1px dashed var(--crema-linea);
+  }
+  .lista-precios li:last-child{ border-bottom:none; }
+  .lista-precios span:last-child{ font-weight:700; color: var(--rojo); text-align:right; }
+  .lista-sabores{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+  .lista-sabores li{
+    font-size:0.86rem; font-weight:600; color: var(--marron); background: var(--crema-oscura);
+    padding: 7px 14px; border-radius: 999px;
+  }
+  .precios__nota{
+    margin-top: 18px; font-size: 0.85rem; color: var(--marron-suave);
+    border-left: 3px solid var(--rojo); padding-left: 12px;
+  }
+
+
+  /* ============ TABLET (min-width 640px) ============ */
+  @media (min-width: 640px){
+    
+    .precios{ grid-template-columns: repeat(2, 1fr); }
+    
+  }
+
+  /* ============ DESKTOP (min-width 900px) ============ */
+  @media (min-width: 900px){
+    
+    .bloque{ padding: 68px 0; }
+
+  }
+</style>
+  <!-- ============ H2: PRECIOS ============ -->
+  <section id="precios" class="bloque">
+    <div class="contenedor">
+      <div class="bloque__cabecera">
+        <span class="eyebrow">Referencia de precios</span>
+        <h2>Precios de tortas en Piura</h2>
+        <p>El precio final depende del tamaño, el relleno y la decoración. Esta es una referencia para que tengas una idea antes de escribirnos.</p>
+      </div>
+
+      <div class="precios">
+        <div class="precios__bloque">
+          <h3>Tortas por número de porciones</h3>
+          <ul class="lista-precios">
+            <li><span>Torta chica (10–15 porciones)</span><span>Consultar</span></li>
+            <li><span>Torta mediana (20–25 porciones)</span><span>Consultar</span></li>
+            <li><span>Torta grande (30+ porciones)</span><span>Consultar</span></li>
+          </ul>
+          <p class="precios__nota">Cuéntanos para cuántas personas es tu torta por WhatsApp y te confirmamos el precio exacto al toque.</p>
+        </div>
+
+        <div class="precios__bloque">
+          <h3>Sabores y rellenos disponibles</h3>
+          <ul class="lista-sabores">
+            <li>Chocolate</li>
+            <li>Vainilla</li>
+            <li>Manjar blanco</li>
+            <li>Frutas</li>
+            <li>Tres leches</li>
+          </ul>
+          <p class="precios__nota">¿Buscas otro sabor? Pregúntanos, coordinamos según disponibilidad del día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="divisor divisor--c" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,12 46,6 92,14 138,22 185,3 231,4 277,19 323,5 369,13 415,20 462,3 508,18 554,8 600,3 646,4 692,15 738,15 785,4 831,9 877,4 923,19 969,15 1015,3 1062,20 1108,5 1154,9 1200,22 1200,30 0,30"/>
+  </svg>

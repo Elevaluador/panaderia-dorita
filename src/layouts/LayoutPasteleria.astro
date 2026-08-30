@@ -1,0 +1,134 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import HeroPasteleria from '../components/pasteleria/HeroPasteleria.astro';
+import ComoPedirPasteleria from '../components/pasteleria/ComoPedirPasteleria.astro'
+import Faq  from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro'
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import {robots} from '../consts'
+
+
+export interface MigasPan {
+    textoFinal: string;
+    categoria?: {
+      nombreCategoria: string;
+      slugCategoria:string;
+    };
+}
+
+export interface Iconos {
+  frase: string;
+  icono_frase: string | string[];
+  viewBox?: string;
+}
+
+export interface Paso {
+  titulo: string;
+  texto: string;
+  acento?: boolean;
+}
+
+export interface Faqs {
+  pregunta: string;
+  respuesta: string;
+}
+export interface CtaFinal {
+  tituloFinal: string;
+  textoFinal: string;
+ 
+}
+
+// Declaramos la interfaz Props aceptando ImageMetadata
+interface Props {
+  structuredData?: object[];
+  tituloSeo: string;
+  description: string;
+  migasPan: MigasPan; // objeto único, no array
+  subtituloProducto:string;
+  titulo1:string;
+  titulo2:string;
+  descripcionProducto:string;
+  imagenProducto: ImageMetadata | string; // Permite imágenes importadas o URLs en texto
+  nombreProducto:string;
+  altProducto:string;
+  iconos?: Iconos[];
+  subtituloPasos?:string;
+  tituloPasos?: string;
+  descripcionPasos?: string;
+  pasos?: Paso[];
+  tituloFaq?: string;
+  faq?: Faqs[];
+  ctafinal:CtaFinal;
+}
+
+const  { structuredData,tituloSeo,
+  description,
+  migasPan,
+  subtituloProducto,
+  titulo1,titulo2,
+  descripcionProducto,
+  imagenProducto,
+  nombreProducto,
+  altProducto,
+  iconos= [],
+  subtituloPasos,
+  tituloPasos,
+  descripcionPasos,
+  pasos,
+  tituloFaq,
+  faq,
+  ctafinal
+  
+  }  = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <BaseHead title={tituloSeo} description={description} structuredData={structuredData} 
+    robots={robots}
+    />
+    
+
+  </head>
+  <body>
+    <Header />
+    <main>
+        <HeroPasteleria 
+         migasPan={migasPan}
+         subtituloProducto={subtituloProducto}
+         titulo1={titulo1}
+         titulo2={titulo2} 
+         descripcionProducto={descripcionProducto}
+         imagenProducto={imagenProducto}
+         altProducto={altProducto}
+         nombreProducto={nombreProducto}
+         iconos={iconos}
+        />
+         <slot name="categoriasTortas" />
+         <slot name="categorias" />
+
+         <slot name="precioBocadito" />
+        
+      <ComoPedirPasteleria
+  subtituloPasos={subtituloPasos}
+  tituloPasos={tituloPasos}
+  descripcionPasos={descripcionPasos}
+  pasos={pasos}
+
+/>
+      <slot name="precioTortas" />
+      <slot name="elegirnosTortas" />
+      <slot name="historia" />
+      <Faq
+      faq= {faq}
+      tituloFaq= {tituloFaq}
+      />
+      <CtaFinal {...ctafinal}
+      />
+    </main>
+    <Footer />
+  </body>
+</html>

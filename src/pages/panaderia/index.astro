@@ -1,0 +1,979 @@
+---
+import { Image } from 'astro:assets';
+import * as Variables from '../../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import  HeaderLink from '../../components/HeaderLink.astro';
+import MigasPan from '../../components/MigasPan.astro';
+
+
+
+const migasPan = {
+  textoFinal:'',
+  categoria: {
+    nombreCategoria: "Panes Artesanales",
+    slugCategoria: "/panaderia"
+  }
+};
+---
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+ <BaseHead title="El Pan Tradicional y Artesanal de Piura | Panadería Dorita" description="Pan francés, pan de espuma, rosquitas y pan hamburguesa hechos a mano en Piura desde 1985. Pide por WhatsApp o recógelo en AA.HH. 18 de Mayo."/>
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://panaderiadorita.pe/" },
+    { "@type": "ListItem", "position": 2, "name": "Panadería", "item": "https://panaderiadorita.pe/panaderia" },
+    { "@type": "ListItem", "position": 3, "name": "Panes Artesanales", "item": "https://panaderiadorita.pe/panaderia/panes-artesanales" }
+  ]
+}
+</script>
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Panes artesanales de Panadería Dorita",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Pan Francés",
+        "description": "Pan francés artesanal, amasado a mano y horneado a diario en Piura.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock",
+          "url": "https://wa.me/51993955358"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Pan de Espuma",
+        "description": "Pan de espuma suave y esponjoso, elaborado a diario.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "price": "2.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.pe/panaderia/pan-de-espuma"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Rosquitas",
+        "description": "Rosquitas artesanales crocantes, hechas con la receta de siempre.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "price": "2.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.pe/panaderia/rosquitas"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Pan Hamburguesa",
+        "description": "Pan hamburguesa artesanal, listo para tu casa o tu negocio.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.pe/panaderia/pan-hamburguesa"
+        }
+      }
+    }
+  ]
+}
+</script>
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué significa que un pan sea \"artesanal\" en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para nosotros no es una palabra de vitrina. Significa que el pan se sigue amasando como lo hacía Don Óscar desde 1985, sin atajos ni máquinas que reemplacen el trabajo de las manos. La receta es la misma con la que abrió la panadería Don Víctor y Doña Dorita, y hoy la sigue cuidando la misma familia en AA.HH. 18 de Mayo, Mz. Q, Lote 18, Piura."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué panes artesanales venden en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tenemos pan francés para el consumo diario, pan de espuma a S/2.00 la unidad, rosquitas a S/2.00 el paquete de 5, y pan hamburguesa. Si necesitas cantidades para un negocio o un pedido especial, escríbenos al WhatsApp +51 993 955 358 y te confirmamos precio y disponibilidad al toque."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta el pan francés en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El precio del pan francés varía según el peso o la cantidad que necesites, así que lo más rápido es escribirnos al +51 993 955 358 y en minutos te decimos el precio exacto del día, sin vueltas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde puedo comprar panes artesanales cerca de mí en Piura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nos encuentras en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Si prefieres no venir hasta la tienda, nos escribes al WhatsApp +51 993 955 358 y coordinamos tu pedido igual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre el pan piurano y el pan artesanal que hacen ustedes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El \"pan piurano\" es como la gente del barrio le dice al pan de siempre, el de todos los días, hecho a la manera local. Nuestro pan artesanal es justamente eso: la versión que se hace en casa desde 1985, con el mismo trato de vecino a vecino con el que empezó Don Víctor, sin nada industrial de por medio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo comprar pan artesanal al por mayor para revender?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, trabajamos con revendedores de bodegas y puestos del barrio. Escríbenos al +51 993 955 358 contándonos cuánto necesitas y con qué frecuencia, y armamos contigo un pedido fijo con peso justo y entrega puntual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con cuánta anticipación debo pedir pan artesanal para un evento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de qué necesites: si es para bocaditos, con 2 días de anticipación nos avisas; si es para una torta dentro del mismo pedido, con 1 día basta. Coordina todo por WhatsApp al +51 993 955 358 para que no te quedes sin nada el día del evento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo pagar mi pedido de pan artesanal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con Yape o Plin. Para reservar tu pedido solo necesitas adelantar S/20 o el 20% del total, lo que sea mayor. El resto lo cancelas cuando recoges o recibes tu pan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿A qué hora sale el pan fresco del día en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Empezamos temprano, desde las 5:00 de la mañana, así que si vienes a primera hora te llevas el pan recién salido del horno. Si tienes dudas de horario para tu pedido, confírmalo por WhatsApp al +51 993 955 358."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué panes tradicionales del Perú puedo encontrar en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nos enfocamos en los panes tradicionales de la casa piurana: pan francés, pan de espuma y rosquitas, hechos con la misma receta desde que abrimos en 1985. No es una carta grande, pero es la que ha sostenido a las familias del barrio por casi 40 años."
+      }
+    }
+  ]
+}
+</script>
+ 
+<style>
+ 
+ 
+  .container{
+    width:100%;
+    max-width:1120px;
+    margin:0 auto;
+    padding:20px 20px;
+  }
+ 
+
+  /* HERO */
+  .hero{
+    padding:28px 0 40px;
+    background:
+      radial-gradient(1100px 420px at 85% -10%, rgba(157,26,4,.08), transparent 60%),
+      var(--crema-oscura);
+  }
+  .hero__eyebrow{
+    font-family:var(--font-cuerpo);
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--crema);
+    background:var(--rojo);
+    border:1px solid var(--borde);
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero__titulo{
+    font-size:2.1rem;
+    line-height:1.14;
+    font-weight:600;
+    max-width:14ch;
+  }
+  .hero__bajada{
+    margin-top:16px;
+    font-size:1.02rem;
+    color:#5A4A40;
+    max-width:46ch;
+  }
+ 
+  /* Price band */
+  .precio-banda{
+    margin-top:26px;
+    background:var(--marron);
+    border-radius:16px;
+    padding:20px;
+    color:var(--crema);
+  }
+  .precio-banda__lista{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .precio-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(249,246,238,.16);
+  }
+  .precio-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .precio-item__nombre{  font-size:1rem; font-weight:500; }
+  .precio-item__nota{ display:block;  font-size:.76rem; color:var(--crema-linea); font-weight:400; margin-top:2px; }
+  .precio-item__valor{ font-size:1.05rem; font-weight:600; color:var(--secundario); white-space:nowrap; }
+ 
+  .hero__ctas{
+    margin-top:22px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+ 
+  .hero__meta{
+    margin-top:18px;
+    font-size:.84rem;
+    color:#7A6A5C;
+  }
+  .hero__meta strong{ color:var(--marron); }
+ 
+  
+ 
+  /* Section base */
+  section{ padding:52px 0; }
+  .section__eyebrow{
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--rojo);
+    margin-bottom:10px;
+    display:block;
+  }
+  .section__h2{
+    font-size:1.55rem;
+    font-weight:600;
+    line-height:1.22;
+    max-width:20ch;
+  }
+  .section__intro{
+    margin-top:14px;
+    font-size:1rem;
+    color:#4A3B32;
+    max-width:60ch;
+  }
+ 
+  /* Definición section */
+  .definicion{ background:var(--secundario); }
+  .definicion__lista{
+    margin-top:24px;
+    display:grid;
+    gap:14px;
+  }
+  .definicion__item{
+    background:#fff;
+    border:1px solid var(--borde);
+    border-radius:12px;
+    padding:16px 18px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .definicion__marca{
+    flex:0 0 auto;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--rojo);
+    color:var(--crema);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:.9rem;
+  }
+  .definicion__texto strong{ color:var(--marron); display:block; margin-bottom:2px; font-size:.95rem; }
+  .definicion__texto span{ font-size:.9rem; color:#5A4A40; }
+ 
+  h3.h3{
+    font-size:1.18rem;
+    font-weight:600;
+    margin-top:38px;
+    margin-bottom:12px;
+  }
+  h3.h3:first-of-type{ margin-top:30px; }
+ 
+  .ejemplos{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+  .ejemplos li{
+    list-style:none;
+    background:var(--crema);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--marron);
+    border-left:3px solid var(--rojo);
+  }
+ 
+  /* Historia oscura */
+  .historia{
+    background:var(--marron);
+    color:var(--crema);
+  }
+  .historia .section__eyebrow{ color:var(--secundario); }
+  .historia .section__h2{ color:var(--crema); }
+  .historia .section__intro{ color:#E6D9C9; }
+  .historia__grid{
+    margin-top:28px;
+    display:grid;
+    gap:18px;
+  }
+  .historia__card{
+    background:rgba(249,246,238,.06);
+    border:1px solid rgba(249,246,238,.14);
+    border-radius:14px;
+    padding:20px;
+  }
+  .historia__card h3{
+
+    font-size:1.08rem;
+    color:var(--secundario);
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .historia__card p{ font-size:.92rem; color:#E6D9C9; margin-bottom:0; }
+  .historia__firma{
+    margin-top:22px;
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:0.8rem;
+    color:var(--secundario);
+    border-left:3px solid var(--rojo);
+    padding-left:14px;
+  }
+ 
+  /* Productos */
+  .productos{ background:var(--crema); }
+ .producto-cta{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.producto-cta__img{
+  width:100%;
+  height:350px;
+  overflow:hidden;
+  border-radius:12px;
+  margin-bottom:14px;
+}
+.producto-cta__img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.producto-cta__body{ flex:1; }
+
+  .producto-cta__top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .producto-cta__nombre{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--marron);
+  }
+  .producto-cta__precio{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--rojo);
+    font-size:1rem;
+    white-space:nowrap;
+  }
+  .producto-cta__texto{
+    margin-top:10px;
+    font-size:.92rem;
+    color:#5A4A40;
+  }
+  .producto-cta .btn{ margin-top:14px; width:100%; padding:12px 18px; font-size:.9rem; }
+ 
+  .subproductos{
+    margin-top:18px;
+    display:grid;
+    gap:16px;
+  }
+  .subproducto{
+    background:#fff;
+    border:1px solid var(--borde);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+ .subproducto__img{
+  height:auto;
+  overflow:hidden;           /* clave: evita que la img se desborde y tape el body */
+  position:relative;
+  background:linear-gradient(135deg,#C9A36A,#9D1A04 130%); /* fallback mientras carga */
+}
+.subproducto__img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+  .subproducto__body{ padding:18px; }
+  .subproducto__nombre{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--marron);
+  }
+  .subproducto__precio{
+    display:inline-block;
+    margin-top:6px;
+    font-size:.86rem;
+    font-weight:700;
+    color:var(--rojo);
+  }
+  .subproducto__texto{
+    margin-top:8px;
+    font-size:.88rem;
+    color:#5A4A40;
+  }
+  .subproducto__link{
+    margin-top:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:.88rem;
+    font-weight:700;
+    color:var(--rojo);
+    text-decoration:none;
+  }
+  .subproducto__link:hover{ text-decoration:underline; }
+ 
+  /* Tradicion */
+  .tradicion__grid{
+    margin-top:26px;
+    display:grid;
+    gap:18px;
+  }
+  .tradicion__card{
+    background:var(--crema-2);
+    border-radius:14px;
+    padding:20px;
+    border-top:3px solid var(--rojo);
+  }
+  .tradicion__card h3{
+    font-family:var(--font-display)
+    font-size:1.1rem;
+    font-weight:600;
+    color:var(--marron);
+    margin-bottom:8px;
+  }
+  .tradicion__card p{ font-size:.92rem; color:#5A4A40; margin-bottom:0; }
+ 
+  /* Local */
+  .local{ background:var(--marron); color:var(--crema); }
+  .local .section__eyebrow{ color:var(--secundario); }
+  .local .section__h2{ color:var(--crema); }
+  .local__grid{
+    margin-top:26px;
+    display:grid;
+    gap:18px;
+  }
+  .local__card{
+    background:rgba(249,246,238,.06);
+    border:1px solid rgba(249,246,238,.14);
+    border-radius:14px;
+    padding:20px;
+  }
+  .local__card h3{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    color:var(--secundario);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .local__card p{ font-size:.9rem; color:#E6D9C9; margin-bottom:10px; }
+  .local__pasos{ margin:0; padding-left:18px; }
+  .local__pasos li{ font-size:.9rem; color:#E6D9C9; margin-bottom:8px; }
+  .local__pasos li::marker{ color:var(--secundario); font-weight:700; }
+  .local .btn{ margin-top:8px; }
+  
+  .local__card a {
+    margin:14px 32px 39px;
+    border:3px solid;
+  }
+  /* FAQ */
+  .faq{ background:var(--crema); }
+  .faq__lista{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  details.faq__item{
+    background:#fff;
+    border:1px solid var(--borde);
+    border-radius:12px;
+    padding:4px 18px;
+  }
+  details.faq__item[open]{ border-color:#D8B79A; }
+  details.faq__item summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.1rem;
+    color:var(--rojo);
+  }
+  details.faq__item summary::-webkit-details-marker{ display:none; }
+  .faq__icono{
+    flex:0 0 auto;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    border:1.5px solid var(--rojo);
+    color:var(--rojo);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    font-weight:700;
+    transition:transform .2s ease;
+  }
+  details.faq__item[open] .faq__icono{ transform:rotate(45deg); }
+  .faq__respuesta{
+    padding:0 0 18px;
+    font-size:.92rem;
+    color:#5A4A40;
+  }
+ 
+  /* CTA final */
+  .cta-final{
+    padding:44px 0 60px;
+  }
+  .cta-final__caja{
+    background:var(--rojo);
+    border-radius:18px;
+    padding:32px 24px;
+    text-align:center;
+    color:#fff;
+  }
+  .cta-final__caja h2{
+    font-size:1.5rem;
+    color:#fff;
+    font-weight:600;
+  }
+  .cta-final__caja p{
+    margin-top:10px;
+    color:#F2D9CC;
+    font-size:.94rem;
+  }
+  .cta-final .btn--rojo{
+    margin-top:18px;
+    background:#fff;
+    color:var(--rojo);
+    box-shadow:none;
+  }
+ 
+  /* ============ TABLET / DESKTOP ============ */
+  @media (min-width:640px){
+    .hero__titulo{ font-size:2.6rem; max-width:16ch; }
+    .precio-banda__lista{ flex-direction:row; flex-wrap:wrap; }
+    .precio-item{ flex:1 1 45%; flex-direction:column; align-items:flex-start; gap:4px; }
+    .hero__ctas{ flex-direction:row; }
+    .btn{ flex:1; }
+    .definicion__lista{ grid-template-columns:1fr 1fr; }
+    .historia__grid{ grid-template-columns:1fr 1fr; }
+    .subproductos{ grid-template-columns:repeat(3,1fr); }
+    .tradicion__grid{ grid-template-columns:1fr 1fr; }
+    .local__grid{ grid-template-columns:1fr 1fr; }
+    .section__h2{ font-size:1.9rem; max-width:24ch; }
+  }
+ 
+  @media (min-width:900px){
+    .hero{ padding:5px 0 12px; }
+    .hero__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:start; }
+    .hero__titulo{ font-size:3rem; }
+    .precio-banda{ margin-top:0; }
+    .hero__ctas{ max-width:420px; }
+    section{ padding-bottom: 76px; }
+    .section__h2{ font-size:2.15rem; }
+    .producto-cta{
+     flex-direction:row;
+    align-items:stretch;    /* misma altura que el texto, no reduce la imagen */
+    gap:28px;
+    padding:0;   
+  }
+   .producto-cta__body {
+    align-items: center;
+   }
+  .producto-cta__img{
+    .producto-cta__body {}
+    width:auto; 
+    margin:0 250px 0 0;              /* protagonista: casi la mitad del ancho de la card */
+            /* se estira a la altura del contenido gracias a align-items:stretch */
+  }
+    .producto-cta__top{ flex-direction:column; align-items:flex-start; gap:4px; }
+    .producto-cta__texto{ margin-top:6px; max-width:48ch; }
+    .producto-cta .btn{ width:auto; flex:0 0 auto; margin-top:0; padding:14px 28px; }
+    .ejemplos{ grid-template-columns:repeat(4,1fr); }
+     .local__card a {
+    margin:14px 105px 37px;
+  }
+   
+  }
+</style>
+  
+</head>
+<body>
+  
+ 	<Header />
+<main>
+<!-- HERO -->
+<section class="hero">
+    <MigasPan migasPan={migasPan}/>
+  <div class="container">
+    <div class="hero__grid">
+      <div>
+        <span class="hero__eyebrow">Pan artesanal · Piura</span>
+        <h1 class="hero__titulo">Panes Tradicionales , Frescos y de tu barrio en Piura</h1>
+        <p class="hero__bajada">Desde 1985 seguimos la misma receta con la que abrió la panadería: sin atajos, sin máquinas de más, con el pan saliendo caliente del horno cada mañana.</p>
+        <p class="hero__meta"><strong>AA.HH. 18 de Mayo, Mz. Q, Lote 18, Piura</strong> · Horno encendido desde las 5:00 a.m.</p>
+      </div>
+ 
+      <div>
+        <div class="precio-banda">
+          <div class="precio-banda__lista">
+            <div class="precio-item">
+              <span class="precio-item__nombre">Pan francés
+                <span class="precio-item__nota">Precio según peso o cantidad</span>
+              </span>
+              <span class="precio-item__valor">Cotiza por WhatsApp</span>
+            </div>
+            <div class="precio-item">
+              <span class="precio-item__nombre">Pan de espuma
+                <span class="precio-item__nota">Por unidad</span>
+              </span>
+              <span class="precio-item__valor">S/ 2.00</span>
+            </div>
+            <div class="precio-item">
+              <span class="precio-item__nombre">Rosquitas
+                <span class="precio-item__nota">Paquete de 5 unidades</span>
+              </span>
+              <span class="precio-item__valor">S/ 2.00</span>
+            </div>
+            <div class="precio-item">
+              <span class="precio-item__nombre">Pan hamburguesa
+                <span class="precio-item__nota">Precio según cantidad</span>
+              </span>
+              <span class="precio-item__valor">Cotiza por WhatsApp</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="hero__ctas">
+          <a style="text-align: center;" class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a style="margin:1px 1px 12px; text-align:center;"class="boton boton--secundario" href="#preguntas-frecuentes">Ver preguntas frecuentes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+
+ 
+<!-- DEFINICIÓN -->
+<section class="definicion">
+  <div class="container">
+    <span class="section__eyebrow">Qué significa "artesanal" aquí</span>
+    <h2 class="section__h2">¿Qué Hace que un Pan Sea Artesanal? Así lo Hacemos en Dorita</h2>
+    <p class="section__intro">"Artesanal" es una palabra que muchos usan sin explicar qué significa. Nosotros preferimos mostrártelo: es el se hornea, en un horno de barro, se deja fermentar el tiempo que necesita y no usa conservantes artificiales, siguiendo una receta que no ha cambiado desde que abrió la panadería.</p>
+ 
+    <h3 class="h3">El Proceso, Sin Máquinas de Más — Igual que en 1985</h3>
+    <p>Todo empezó un día domingo de 1985, cuando la panadería abrió sus puertas con apenas 25 kilos de harina. En ese entonces no había máquinas: el pan se amasaba a pulso, y así se sigue haciendo hoy.</p>
+    <p>Don Óscar fue quien aprendió el oficio de panadero y se quedó como maestro panadero durante toda la historia de la panadería. Doña Dorita atendía y cobraba. Don Raúl ayudaba mientras aprendía el oficio. Esa misma receta, con esas mismas manos formadas en la tradición familiar, es la que sigue saliendo del horno cada mañana.</p>
+ 
+    <div class="definicion__lista">
+      <div class="definicion__item">
+        <span class="definicion__marca">✓</span>
+        <div class="definicion__texto"><strong>Amasado a mano</strong><span>Sin prisas, respetando el tiempo que pide la masa.</span></div>
+      </div>
+      <div class="definicion__item">
+        <span class="definicion__marca">✓</span>
+        <div class="definicion__texto"><strong>Fermentación natural</strong><span>Sin acelerantes para sacar producción rápida.</span></div>
+      </div>
+      <div class="definicion__item">
+        <span class="definicion__marca">✓</span>
+        <div class="definicion__texto"><strong>Horneado diario</strong><span>El pan que compras hoy no es el de ayer.</span></div>
+      </div>
+      <div class="definicion__item">
+        <span class="definicion__marca">✓</span>
+        <div class="definicion__texto"><strong>Receta de siempre</strong><span>La misma con la que abrimos hace casi 40 años.</span></div>
+      </div>
+    </div>
+ 
+    <h3 class="h3">Ejemplos de Nuestros Panes Artesanales</h3>
+    <p>Si quieres saber qué tipo de panes artesanales puedes encontrar en una panadería de barrio como la nuestra, estos son los que trabajamos:</p>
+    <ul class="ejemplos">
+      <li>Pan francés</li>
+      <li>Pan de espuma</li>
+      <li>Rosquitas</li>
+      <li>Pan hamburguesa</li>
+    </ul>
+  </div>
+</section>
+ 
+<!-- HISTORIA -->
+<section class="historia">
+  <div class="container">
+    <span class="section__eyebrow">Pan piurano y tradición peruana</span>
+    <h2 class="section__h2">Pan Piurano y Panes Tradicionales del Perú, Hechos en Casa</h2>
+    <p class="section__intro">El pan piurano no es igual al de Lima ni al de otras regiones. Es el pan de todos los días, el que se compra temprano para el desayuno y se vuelve a comprar en la tarde porque ya se acabó.</p>
+ 
+    <div class="historia__grid">
+      <div class="historia__card">
+        <h3>El Pan de Piura Tiene su Propio Sabor</h3>
+        <p>Es un pan pensado para la mesa familiar, no para una vitrina. En Panadería Dorita seguimos esa misma lógica: pan honesto, hecho para el consumo diario del barrio, sin vueltas ni ingredientes que no necesitas.</p>
+      </div>
+      <div class="historia__card">
+        <h3>La Misma Receta Desde que Abrimos, en 1985</h3>
+        <p>Don Víctor y Doña Dorita llegaron a Piura buscando dónde vivir, y terminaron abriendo una panadería porque un amigo de la familia les habló del buen pan que sabían hacer. Casi 40 años después, esa receta sigue en pie.</p>
+      </div>
+    </div>
+ 
+    <p class="historia__firma">"El pan se parte con las manos, pero se comparte con el corazón."</p>
+  </div>
+</section>
+ 
+<div class="divisor" aria-hidden="true">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><polygon points="0,0 0,20 30,40 60,20 90,40 120,20 150,40 180,20 210,40 240,20 270,40 300,20 330,40 360,20 390,40 420,20 450,40 480,20 510,40 540,20 570,40 600,20 630,40 660,20 690,40 720,20 750,40 780,20 810,40 840,20 870,40 900,20 930,40 960,20 990,40 1020,20 1050,40 1080,20 1110,40 1140,20 1170,40 1200,20 1200,0" fill="#4A2E2B"/></svg>
+</div>
+ 
+<!-- PRODUCTOS -->
+<section class="productos">
+  <div class="container">
+    <span class="section__eyebrow">Precio y pedido</span>
+    <h2 class="section__h2">Nuestra Variedad de Pan Artesanal — Precio y Pedido</h2>
+    <p class="section__intro">Cada producto tiene su propio proceso y su propio tiempo de horneado. Aquí te contamos qué hay disponible y cómo pedirlo.</p>
+    
+    <div class="producto-cta">
+      <div class="producto-cta__body">
+        <div class="producto-cta__top">
+          <span class="producto-cta__nombre">Pan Francés</span>
+          <span class="producto-cta__precio">Cotiza por WhatsApp</span>
+        </div>
+        <p class="producto-cta__texto">El pan de todos los días, el que acompaña el desayuno de cada casa. Su precio depende del peso o la cantidad que necesites. Si eres bodeguero o revendedor, coordinamos peso justo y entrega puntual cada semana.</p>
+        <a style="margin:3px 0px 22px 87px;" class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir pan francés</a>
+      </div>
+      <div class="producto-cta__img">
+        <Image src={Variables.FrancesImg} alt="Pan francés artesanal recién horneado en Panadería Dorita en piura" loading="lazy" width="350" height="350"/>
+      </div>
+      
+    </div>
+ 
+    <div class="subproductos">
+      <article class="subproducto">
+        <div class="subproducto__img">
+          <Image src={Variables.RosquitasImg} alt="Roscas artesanales recién horneado en Panadería Dorita" loading="lazy" width="350" height="350"/>
+        </div>
+        <div class="subproducto__body">
+          <h3 class="subproducto__nombre">Rosquitas Artesanales</h3>
+          <span class="subproducto__precio">S/ 2.00 el paquete de 5</span>
+          <p class="subproducto__texto">Crocantes, hechas con la misma receta de siempre. Perfectas para el café de la tarde.</p>
+           <HeaderLink href="/panaderia/rosquitas-artesanales/" class="subproducto__link" > 
+              Ver rosquitas →
+          </HeaderLink>
+        </div>
+      </article>
+ 
+      <article class="subproducto">
+        <div class="subproducto__img">
+            <Image src={Variables.PanEspumaImg} alt="Pan espuma recién horneado en Panadería Dorita en piura" loading="lazy" width="350" height="350"/>
+        </div>
+        <div class="subproducto__body">
+          <h3 class="subproducto__nombre">Pan de Espuma</h3>
+          <span class="subproducto__precio">S/ 2.00 la unidad</span>
+          <p class="subproducto__texto">Suave y esponjoso, un clásico de la casa que hoy elabora Vitucho, el dulcero de la panadería.</p>
+          <HeaderLink href="/panaderia/pan-espuma-piura/" class="subproducto__link" > 
+              Ver Pan de Espuma →
+          </HeaderLink>
+        </div>
+      </article>
+ 
+      <article class="subproducto">
+        <div class="subproducto__img">
+            <Image src={Variables.PanHamburguesaImg} alt="Pan hamburguesa artesanal en piura recién horneado por Panadería Dorita" loading="lazy" width="350" height="350"/>
+        </div>
+        <div class="subproducto__body">
+          <h3 class="subproducto__nombre">Pan Hamburguesa</h3>
+          <span class="subproducto__precio">Cotiza por WhatsApp</span>
+          <p class="subproducto__texto">Hecho con el mismo cuidado que el resto de nuestro pan, listo para tu casa o tu negocio.</p>
+          <HeaderLink href="/panaderia/pan-hamburguesa-artesanal/" class="subproducto__link" > 
+              Ver Pan de Hamburguesa →
+          </HeaderLink>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+ 
+<!-- LOCAL -->
+<section class="local">
+  <div class="container">
+    <span class="section__eyebrow">Ubicación y pedido</span>
+    <h2 class="section__h2">Panes Artesanales Cerca de Ti — AA.HH. 18 de Mayo</h2>
+ 
+    <div class="local__grid">
+      <div class="local__card">
+        <h3>Dirección y Cómo Llegar</h3>
+        <p>Nos encuentras en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Si estás cerca, pasa directo por tu pan recién horneado.</p>
+        <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+      </div>
+      <div class="local__card">
+        <h3>Cómo Comprar: Yape, Plin o Recojo en Tienda</h3>
+        <ol class="local__pasos">
+          <li>Escríbenos al WhatsApp +51 993 955 358 contándonos qué necesitas y cuánto.</li>
+          <li>Confirma tu pedido con Yape o Plin — adelanta S/20 o el 20% del total, lo que sea mayor.</li>
+          <li>Recoge en tienda o coordina la entrega con nosotros.</li>
+        </ol>
+        <p>Para bocaditos, avísanos con 2 días de anticipación. Para tortas dentro del mismo pedido, con 1 día basta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FAQ -->
+<section class="faq" id="preguntas-frecuentes">
+  <div class="container">
+    <span class="section__eyebrow">Resolvemos tus dudas</span>
+    <h2 class="section__h2">Preguntas Frecuentes sobre los Panes Artesanales de Dorita</h2>
+ 
+    <div class="faq__lista">
+      <details class="faq__item">
+        <summary>¿Qué significa que un pan sea "artesanal" en Panadería Dorita?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Para nosotros no es una palabra de vitrina. Significa que el pan se sigue horneando en un horno artesanal desde 1985,
+          usando solo las maquinas para que el amasado tengo una mejor calidad de miga, el panadero termina dandole forma al pan y usando la temperatura ambiente como camara de fermentacion. La receta es la misma con la que abrió la panadería Don Víctor y Doña Dorita.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Qué panes artesanales venden en Panadería Dorita?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Tenemos pan francés para el consumo diario, pan de espuma a S/2.00 la unidad, rosquitas a S/2.00 el paquete de 5, y pan hamburguesa. Si necesitas cantidades para un negocio o un pedido especial, escríbenos al WhatsApp +51 993 955 358 y te confirmamos precio y disponibilidad al toque.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Cuánto cuesta el pan francés en Panadería Dorita?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">El precio del pan francés varía  segun la cantidad que necesites, así que lo más rápido es escribirnos al +51 993 955 358 y en minutos te decimos el precio exacto del día, sin vueltas.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Dónde puedo comprar panes artesanales cerca de mí en Piura?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Nos encuentras en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Si prefieres no venir hasta la tienda, nos escribes al WhatsApp +51 993 955 358 y coordinamos tu pedido igual.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Qué diferencia hay entre el pan piurano y el pan artesanal que hacen ustedes?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">El "pan piurano" es como la gente del barrio le dice al pan de siempre, el de todos los días, hecho a la manera local. Nuestro pan artesanal es justamente eso: la versión que se hace en casa desde 1985, con el mismo trato de vecino a vecino con el que empezó Don Víctor, sin nada industrial de por medio.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Puedo comprar pan artesanal al por mayor para revender?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Sí, trabajamos con revendedores de bodegas y puestos del barrio. Escríbenos al +51 993 955 358 contándonos cuánto necesitas y con qué frecuencia, y armamos contigo un pedido fijo con peso justo y entrega puntual.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Con cuánta anticipación debo pedir pan artesanal para un evento?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Depende de qué necesites: si es para bocaditos, con 2 días de anticipación nos avisas; si es para una torta dentro del mismo pedido, con 1 día basta. Coordina todo por WhatsApp al +51 993 955 358 para que no te quedes sin nada el día del evento.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Cómo puedo pagar mi pedido de pan artesanal?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Con Yape o Plin. Para reservar tu pedido solo necesitas adelantar S/20 o el 20% del total, lo que sea mayor. El resto lo cancelas cuando recoges o recibes tu pan.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿A qué hora sale el pan fresco del día en Panadería Dorita?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Empezamos temprano, desde las 5:00 de la mañana, así que si vienes a primera hora te llevas el pan recién salido del horno. Si tienes dudas de horario para tu pedido, confírmalo por WhatsApp al +51 993 955 358.</div>
+      </details>
+ 
+      <details class="faq__item">
+        <summary>¿Qué panes tradicionales del Perú puedo encontrar en Panadería Dorita?<span class="faq__icono">+</span></summary>
+        <div class="faq__respuesta">Nos enfocamos en los panes tradicionales de la casa piurana: pan francés, pan de espuma y rosquitas, hechos con la misma receta desde que abrimos en 1985. No es una carta grande, pero es la que ha sostenido a las familias del barrio por casi 40 años.</div>
+      </details>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-final__caja">
+      <h2>¿Listo para pedir tu pan artesanal?</h2>
+      <p>Escríbenos por WhatsApp y te confirmamos precio, cantidad y hora de entrega en minutos.</p>
+      <a class="boton boton-light" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp: +51 993 955 358</a>
+    </div>
+  </div>
+</section>
+</main>
+<Footer/>
+</body>
+</html>
+ 

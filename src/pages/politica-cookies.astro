@@ -1,0 +1,117 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css'
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+		<BaseHead title="Politica de Cookies" description="Politica de cookies" robots="noindex,nofollow"/>
+		<meta name="robots" content="noindex, follow">
+
+<style>
+  
+
+  .contenedor{ max-width: var(--ancho-maximo); margin: 0 auto; padding: 0 20px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rojo); }
+  .eyebrow::before{ content:""; width:18px; height:2px; background: var(--rojo); display:inline-block; }
+  .breadcrumb{ font-size: 0.8rem; color: var(--marron-suave); margin: 0 0 16px; }
+  .breadcrumb a{ text-decoration:underline; color: var(--marron); }
+
+
+
+  .divisor{ display:block; width:100%; height:24px; margin-top:-1px; }
+  .divisor--a polygon{ fill: var(--crema-oscura); }
+
+  .encabezado{ text-align:center; padding: 40px 0 36px; }
+  .encabezado h1{ font-size: clamp(1.7rem, 6.5vw, 2.4rem); font-weight:600; max-width:700px; margin: 12px auto 0; }
+  .encabezado p{ max-width: 560px; margin: 14px auto 0; color: var(--marron-suave); font-size:0.98rem; }
+
+  .bloque{ padding: 44px 0 64px; }
+
+  .legal{ max-width: 760px; margin: 0 auto; }
+  .legal__fecha{ font-size: 0.85rem; color: var(--marron-suave); margin-bottom: 30px; border-left: 3px solid var(--rojo); padding-left: 12px; }
+  .legal h2{ font-size: 1.35rem; font-weight:600; margin-top: 38px; margin-bottom: 12px; }
+  .legal h2:first-of-type{ margin-top:0; }
+  .legal h3{ font-size: 1.05rem; font-weight:600; margin-top: 22px; margin-bottom: 8px; }
+  .legal p{ margin: 0 0 14px; color: var(--marron-suave); font-size: 0.98rem; }
+  .legal ul{ list-style: disc; padding-left: 22px; margin: 0 0 14px; display:block; }
+  .legal li{ color: var(--marron-suave); font-size: 0.98rem; margin-bottom: 8px; line-height:1.6; }
+  .legal strong{ color: var(--marron); }
+  .legal a{ font-weight:700; }
+  .legal-tabla{ width:100%; border-collapse: collapse; margin: 0 0 20px; font-size:0.92rem; }
+  .legal-tabla th, .legal-tabla td{ text-align:left; padding: 10px 12px; border: 1px solid var(--crema-linea); color: var(--marron-suave); }
+  .legal-tabla th{ background: var(--crema-oscura); color: var(--marron); font-weight:700; }
+
+
+
+  @media (min-width: 900px){
+    
+    .bloque{ padding: 60px 0 84px; }
+  
+  }
+</style>
+</head>
+<body>
+  <Header />
+	<main>
+	<section class="encabezado">
+		<div class="contenedor">
+		<p class="breadcrumb"><a href="index.html#inicio">Inicio</a> / Política de Cookies</p>
+		<span class="eyebrow">Información legal</span>
+		<h1>Política de Cookies</h1>
+		<p>Esta página explica de forma sencilla qué cookies y recursos de terceros utiliza el sitio web de Panadería Dorita.</p>
+		</div>
+	</section>
+
+	<svg class="divisor divisor--a" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
+		<polygon points="0,12 46,6 92,14 138,22 185,3 231,4 277,19 323,5 369,13 415,20 462,3 508,18 554,8 600,3 646,4 692,15 738,15 785,4 831,9 877,4 923,19 969,15 1015,3 1062,20 1108,5 1154,9 1200,22 1200,30 0,30"/>
+	</svg>
+
+	<section class="bloque">
+		<div class="contenedor">
+		<div class="legal">
+			<p class="legal__fecha">Última actualización: agosto de 2026.</p>
+
+			<h2>1. ¿Qué son las cookies?</h2>
+			<p>Las cookies son pequeños archivos de texto que un sitio web guarda en tu navegador cuando lo visitas. Sirven, entre otras cosas, para recordar tus preferencias, hacer que ciertas funciones del sitio trabajen correctamente o entender cómo se usa una página.</p>
+
+			<h2>2. ¿Quiénes usamos cookies en este sitio?</h2>
+			<p>El sitio web de <strong>Panadería Dorita</strong> (panaderiadorita.pe) es una página informativa: no tenemos un carrito de compras, formularios de registro ni un sistema de cuentas de usuario. La mayor parte de la interacción con nosotros sucede fuera del sitio, a través de WhatsApp. Aun así, algunas partes del sitio cargan recursos de terceros que pueden establecer sus propias cookies.</p>
+
+			<h2>3. Cookies y recursos de terceros que utilizamos</h2>
+			<table class="legal-tabla">
+			<thead>
+				<tr><th>Proveedor</th><th>Para qué lo usamos</th><th>Tipo</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Google Fonts</td><td>Cargar las tipografías del sitio (Fraunces y Karla)</td><td>Recurso de terceros / técnico</td></tr>
+				<tr><td>Google Maps</td><td>Mostrar el mapa incrustado con nuestra ubicación</td><td>Recurso de terceros / funcional</td></tr>
+				<tr><td>WhatsApp (wa.me)</td><td>Abrir una conversación directa contigo al hacer clic en nuestros botones de contacto</td><td>Enlace externo, no cookie propia</td></tr>
+			</tbody>
+			</table>
+			<p>Estos proveedores pueden establecer sus propias cookies o identificadores según sus propias políticas, que puedes revisar directamente en los sitios de <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google</a> y de <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">WhatsApp</a>.</p>
+			<p>Actualmente no utilizamos cookies propias de analítica o publicidad (como Google Analytics o Meta Pixel). Si en el futuro incorporamos alguna herramienta de este tipo, actualizaremos esta página para reflejarlo.</p>
+
+			<h2>4. Cómo gestionar o deshabilitar las cookies</h2>
+			<p>Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu propio navegador. Ten en cuenta que bloquear ciertas cookies (por ejemplo, las de Google Maps) puede hacer que algunas partes del sitio, como el mapa de ubicación, no se muestren correctamente.</p>
+			<ul>
+			<li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios.</li>
+			<li><strong>Safari:</strong> Preferencias → Privacidad.</li>
+			<li><strong>Firefox:</strong> Opciones → Privacidad y Seguridad.</li>
+			</ul>
+
+			<h2>5. Cambios a esta política</h2>
+			<p>Podemos actualizar esta Política de Cookies cuando cambien las herramientas que usamos en el sitio. Te recomendamos revisar esta página de vez en cuando.</p>
+
+			<h2>6. Contacto</h2>
+			<p>Si tienes alguna duda sobre esta política, puedes escribirnos por WhatsApp al <strong>+51 993 955 358</strong>.</p>
+		</div>
+		</div>
+	</section>
+	</main>
+
+    <Footer/>
+</body>
+</html>

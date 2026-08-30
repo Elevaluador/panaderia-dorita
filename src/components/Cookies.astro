@@ -1,0 +1,289 @@
+---
+---
+<style>
+
+ /* Estilos básicos para el banner y el panel de configuración */
+ #consent-banner, #consent-config {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background:var(--marron);
+    border: 1px solid var(--crema-oscura);
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-width: 300px;
+    font-family: var(--font-cuerpo);
+    color:var(--crema-oscura)
+  }
+  #consent-banner button, #consent-config button {
+    margin: 5px 5px 0 0;
+    padding: 8px 12px;
+    border: none;
+    background:var(--rojo);
+    color: var(--crema-oscura);
+    cursor: pointer;
+  }
+  #consent-banner button:hover, #consent-config button:hover {
+    background: var(--secundario);
+    color:var(--marron);
+  }
+  #consent-config {
+    display: none;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+    color:var(--crema-oscura);
+  }
+</style>
+ <!-- Cookie Consent Banner -->
+         <div id="consent-banner" style="display: none;">
+                <p>Como cuidamos cada detalle en nuestra panadería.
+                     Usamos cookies para mejorar tu experiencia, saber qué 
+                     partes de nuestra web te resultan útiles y mostrar el contenido
+                     más relevante. Tú eliges qué cookies permitir.</p>
+                <button onclick="aceptarTodo()">Aceptar</button>
+                <button onclick="rechazarTodo()">Rechazar</button>
+                   <button onclick="document.getElementById('consent-banner').style.display='none'; document.getElementById('consent-config').style.display='block'">Configurar</button>
+         </div>
+
+            <!-- Panel de configuración personalizada -->
+            <div id="consent-config" style="display: none;">
+
+                <p>
+                    <strong>Elige tus preferencias</strong>
+                </p>
+
+                <label>
+                    <input type="checkbox" id="consent-estadistica">
+                    Cookies estadísticas
+                </label>
+
+                <label>
+                    <input type="checkbox" id="consent-comportamental">
+                    Cookies de publicidad
+                </label>
+
+                <button type="button" onclick="guardarConfiguracion()">
+                    Guardar preferencias
+                </button>
+
+            </div>
+<script is:inline>
+
+
+  // ==========================================
+  // GUARDAR CONSENTIMIENTO
+  // ==========================================
+
+  function guardarConsentimiento(estadistica, comportamental) {
+
+    var consentimiento = {
+      analytics_storage: estadistica,
+      ad_storage: comportamental,
+      ad_user_data: comportamental,
+      ad_personalization: comportamental
+    };
+
+    localStorage.setItem(
+      "consentConfig",
+      JSON.stringify(consentimiento)
+    );
+  }
+
+
+  // ==========================================
+  // OBTENER CONSENTIMIENTO GUARDADO
+  // ==========================================
+
+  function obtenerConsentimientoGuardado() {
+
+    var consent = localStorage.getItem("consentConfig");
+
+    return consent ? JSON.parse(consent) : null;
+  }
+
+
+  // ==========================================
+  // APLICAR CONSENTIMIENTO
+  // ==========================================
+
+  function aplicarConsentimiento(
+    estadistica,
+    comportamental
+  ) {
+
+    if (typeof window.gtag === 'function') {
+
+      window.gtag('consent', 'update', {
+
+        analytics_storage:
+          estadistica ? 'granted' : 'denied',
+
+        ad_storage:
+          comportamental ? 'granted' : 'denied',
+
+        ad_user_data:
+          comportamental ? 'granted' : 'denied',
+
+        ad_personalization:
+          comportamental ? 'granted' : 'denied'
+
+      });
+    }
+
+    guardarConsentimiento(
+      estadistica,
+      comportamental
+    );
+  }
+
+
+  // ==========================================
+  // OCULTAR BANNER
+  // ==========================================
+
+  function ocultarBanner() {
+
+    var banner =
+      document.getElementById("consent-banner");
+
+    var config =
+      document.getElementById("consent-config");
+
+    if (banner) {
+      banner.style.display = "none";
+    }
+
+    if (config) {
+      config.style.display = "none";
+    }
+  }
+
+
+  // ==========================================
+  // GESTIONAR CONSENTIMIENTO
+  // ==========================================
+
+  function gestionarConsentimiento(
+    estadistica,
+    comportamental
+  ) {
+
+    aplicarConsentimiento(
+      estadistica,
+      comportamental
+    );
+
+    ocultarBanner();
+  }
+
+
+  // ==========================================
+  // BOTÓN: ACEPTAR TODO
+  // ==========================================
+
+  window.aceptarTodo = function () {
+
+    gestionarConsentimiento(
+      true,
+      true
+    );
+
+  };
+
+
+  // ==========================================
+  // BOTÓN: RECHAZAR TODO
+  // ==========================================
+
+  window.rechazarTodo = function () {
+
+    gestionarConsentimiento(
+      false,
+      false
+    );
+
+  };
+
+
+  // ==========================================
+  // ACTUALIZAR CONSENTIMIENTO
+  // ==========================================
+
+  window.actualizarConsentimiento =
+    gestionarConsentimiento;
+
+
+  // ==========================================
+  // GUARDAR CONFIGURACIÓN PERSONALIZADA
+  // ==========================================
+
+  window.guardarConfiguracion = function () {
+
+    var estadistica =
+      document.getElementById(
+        "consent-estadistica"
+      );
+
+    var comportamental =
+      document.getElementById(
+        "consent-comportamental"
+      );
+
+    aplicarConsentimiento(
+      estadistica ? estadistica.checked : false,
+      comportamental ? comportamental.checked : false
+    );
+
+    // Oculta solo el panel de configuración
+    document.getElementById("consent-config").style.display = "none";
+
+    // Muestra el banner principal de nuevo
+    document.getElementById("consent-banner").style.display = "block";
+
+};
+
+
+  // ==========================================
+  // CARGAR CONSENTIMIENTO AL ENTRAR
+  // ==========================================
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+      var saved =
+        obtenerConsentimientoGuardado();
+
+      if (saved) {
+
+        aplicarConsentimiento(
+
+          saved.analytics_storage === true,
+
+          saved.ad_storage === true
+
+        );
+
+        ocultarBanner();
+
+      } else {
+
+        var banner =
+          document.getElementById(
+            "consent-banner"
+          );
+
+        if (banner) {
+          banner.style.display = "block";
+        }
+
+      }
+
+    }
+  );
+
+
+</script>

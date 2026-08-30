@@ -1,0 +1,782 @@
+---
+import { Image } from 'astro:assets';
+
+interface Producto {
+  nombre: string;
+  descripcion: string;
+  imagen: ImageMetadata;
+  alt: string;
+  icono: {
+    icono_frase: string | string[];
+    viewBox: string;
+  };
+}
+
+interface Props {
+  id: string;
+  fondo?: "claro" | "oscuro";
+  eyebrow: string;
+  titulo: string;
+  descripcion: string;
+  productos: Producto[];
+}
+
+const { id, fondo = "claro", eyebrow, titulo, descripcion, productos } = Astro.props;
+
+// Normaliza icono_frase a array para poder iterar siempre igual
+function paths(icono_frase: string | string[]) {
+  return Array.isArray(icono_frase) ? icono_frase : [icono_frase];
+}
+---
+<style>
+/* =========================================================
+   BASE  (Mobile First)
+   ========================================================= */
+
+
+.container{
+  width:100%;
+  max-width:1160px;
+  margin:auto;
+  padding:0 20px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+.eyebrow:before{
+  content:"";
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:4px;
+}
+
+
+
+/* =========================================================
+   HERO  (Mobile base)
+   ========================================================= */
+
+.eyebrow{
+  margin-bottom:16px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   HERO VISUAL — BOCADITOS  (Mobile base)
+   ========================================================= */
+
+
+/* plato principal */
+.bocado-plate{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:250px;
+  height:250px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at center,
+      #fff 0 63%,
+      #efe8da 64% 68%,
+      #fff 69% 73%,
+      #e7ddca 74% 100%
+    );
+  box-shadow: 0 30px 55px -25px rgba(74,46,43,.4);
+  border:7px solid #fff;
+}
+
+/* bocaditos sobre el plato */
+.bocado{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:45%;
+  box-shadow: 0 8px 13px rgba(74,46,43,.16);
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:600;
+  color:#70433a;
+}
+
+.bocado-1{
+  width:72px;
+  height:48px;
+  left:61px;
+  top:61px;
+  background: linear-gradient(145deg,#f5c88c,#d99652);
+  transform:rotate(-18deg);
+}
+
+.bocado-2{
+  width:64px;
+  height:47px;
+  right:54px;
+  top:66px;
+  background: linear-gradient(145deg,#e9b775,#c77d3f);
+  transform:rotate(17deg);
+}
+
+.bocado-3{
+  width:65px;
+  height:47px;
+  left:51px;
+  bottom:61px;
+  background: linear-gradient(145deg,#fff3d4,#e7bd80);
+  transform:rotate(16deg);
+}
+
+.bocado-4{
+  width:68px;
+  height:47px;
+  right:50px;
+  bottom:58px;
+  background: linear-gradient(145deg,#efc994,#c98b52);
+  transform:rotate(-14deg);
+}
+
+.bocado-5{
+  width:60px;
+  height:44px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-5deg);
+  background: linear-gradient(145deg,#f7dcae,#dca15d);
+}
+
+/* sello */
+.hero-badge{
+  position:absolute;
+  right:0;
+  top:0;
+  width:88px;
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--rojo);
+  color:white;
+  text-align:center;
+  padding:15px;
+  box-shadow:var(--sombra);
+  transform:rotate(8deg);
+}
+
+.hero-badge strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:20px;
+  line-height:1;
+}
+
+.hero-badge span{
+  display:block;
+  margin-top:5px;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+/* tarjeta inferior */
+.hero-note{
+  position:absolute;
+  left:0;
+  bottom:0;
+  padding:10px 13px;
+  background:rgba(255,254,250,.95);
+  border:1px solid var(--marron-line);
+  border-radius:14px;
+  box-shadow:var(--sombra);
+}
+
+.hero-note strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:15px;
+}
+
+.hero-note span{
+  display:block;
+  margin-top:2px;
+  color:var(--marron-soft);
+  font-size:10px;
+}
+
+
+/* =========================================================
+   SECCIONES  (Mobile base)
+   ========================================================= */
+section{
+  position:relative;
+}
+
+.section-pad{
+  padding:50px 0;
+}
+
+/* Elimina espacio entre hero y la siguiente sección */
+.hero + section,
+.hero + .bg-card{
+  padding-top:0;
+}
+
+.section-head{
+  max-width:680px;
+  margin-bottom:34px;
+}
+
+.section-head h2{
+  margin-top:10px;
+  font-size:clamp(26px,5vw,40px);
+  font-weight:600;
+}
+
+.section-head p{
+  margin-top:14px;
+  font-size:16px;
+  color:var(--marron-soft);
+}
+
+.bg-card{
+  background:var(--blanco);
+}
+
+
+/* =========================================================
+   PRODUCTOS  (Mobile base)
+   ========================================================= */
+.product-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.product-card{
+  position:relative;
+  padding:22px 20px;
+  background:var(--blanco);
+  border:1px solid var(--marron-line);
+  border-radius:18px;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+.bg-card .product-card{
+  background:var(--crema);
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:transparent;
+  box-shadow:var(--sombra);
+}
+
+/* Imagen cuadrada del producto */
+.product-img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:17px;
+  background:var(--rojo-soft);
+  border:1px solid var(--marron-line);
+}
+
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.product-icon{
+  width:50px;
+  height:50px;
+  margin-bottom:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--rojo-soft);
+  color:var(--rojo);
+}
+
+.product-icon svg{
+  width:25px;
+  height:25px;
+}
+
+.product-card h3{
+  font-size:20px;
+  font-weight:600;
+}
+
+.product-card p{
+  margin-top:9px;
+  font-size:14.5px;
+  color:var(--marron-soft);
+}
+
+
+/* =========================================================
+   PRECIO  (Mobile base)
+   ========================================================= */
+.precio{
+  padding:8px 0;
+  background:var(--rojo);
+  color:white;
+}
+
+.precio-inner{
+  padding:55px 25px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  text-align:center;
+}
+
+.precio .eyebrow{
+  color:white;
+}
+
+.precio h2{
+  max-width:650px;
+  color:white;
+  font-size:clamp(24px,5vw,38px);
+}
+
+.precio-tag{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-family:var(--font-display);
+}
+
+.precio-tag .num{
+  font-size:clamp(56px,14vw,92px);
+  font-weight:700;
+  line-height:1;
+}
+
+.precio-tag .unit{
+  font-size:18px;
+  opacity:.88;
+}
+
+.precio-note{
+  max-width:520px;
+  font-size:15px;
+  opacity:.9;
+}
+
+
+/* =========================================================
+   COMO PEDIR  (Mobile base)
+   ========================================================= */
+.steps{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+}
+
+.step{
+  display:flex;
+  gap:18px;
+  padding:22px 0;
+  border-bottom:1px solid var(--marron-line);
+}
+
+.step:last-child{
+  border-bottom:none;
+}
+
+.step-num{
+  flex:none;
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--rojo);
+  color:white;
+  font-family:var(--font-display);
+  font-weight:700;
+}
+
+.step h3{
+  font-size:18px;
+  font-weight:600;
+}
+
+.step p{
+  margin-top:6px;
+  font-size:14.5px;
+  color:var(--marron-soft);
+}
+
+.step a{
+  color:var(--rojo);
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid var(--rojo);
+}
+
+
+/* =========================================================
+   FAMILIA
+   ========================================================= */
+.familia{
+  overflow:hidden;
+  background:var(--marron);
+  color:var(--crema);
+}
+
+.familia-bg{
+  display:block;
+  width: 300px;;
+  height:auto;
+  object-fit:cover;
+  border-radius:20px;
+  margin-top:28px;
+  box-shadow:var(--sombra);
+}
+
+.familia .eyebrow{
+  color:var(--trigo);
+}
+
+.familia h2{
+  max-width:600px;
+  margin-top:10px;
+  color:var(--crema);
+  font-size:clamp(26px,5vw,40px);
+}
+
+.familia-body{
+  max-width:65ch;
+  margin-top:20px;
+  color:rgba(249,246,238,.85);
+  font-size:16px;
+}
+
+.familia-body p+p{
+  margin-top:14px;
+}
+
+
+  .familia-names{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:max-content;
+  gap:10px;
+  margin-top:27px;
+  overflow-x:auto;
+  padding-bottom:4px; /* espacio para que no se corte si scrollea */
+}
+
+
+.familia-names span{
+  padding:8px 14px;
+  border:1px solid rgba(249,246,238,.27);
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+
+/* =========================================================
+   FAQ  (Mobile base)
+   ========================================================= */
+.faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  max-width:850px;
+}
+
+.faq-item{
+  overflow:hidden;
+  background:var(--blanco);
+  border:1px solid var(--marron-line);
+  border-radius:16px;
+}
+
+.faq-q{
+  width:100%;
+  padding:19px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border:0;
+  background:none;
+  color:var(--marron);
+  text-align:left;
+  font-size:15.5px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.faq-q .plus{
+  flex:none;
+  width:27px;
+  height:27px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1.5px solid var(--rojo);
+  border-radius:50%;
+  color:var(--rojo);
+  transition:.25s ease;
+}
+
+.faq-item.open .plus{
+  transform:rotate(135deg);
+  background:var(--rojo);
+  color:white;
+}
+
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .32s ease;
+}
+
+.faq-a-inner{
+  padding:0 20px 20px;
+  font-size:14.5px;
+  color:var(--marron-soft);
+}
+
+
+/* =========================================================
+   CTA FINAL  (Mobile base)
+   ========================================================= */
+.cta-final{
+  padding:55px 0 65px;
+  background:
+    linear-gradient(
+      145deg,
+      var(--rojo),
+      var(--rojo-dark)
+    );
+  color:white;
+  text-align:center;
+}
+
+.cta-final h2{
+  max-width:680px;
+  margin:auto;
+  color:white;
+  font-size:clamp(26px,5.5vw,43px);
+}
+
+.cta-final p{
+  max-width:500px;
+  margin:15px auto 0;
+  font-size:16px;
+  opacity:.9;
+}
+
+.cta-final .btn{
+  margin-top:27px;
+}
+
+.cta-final .phone-line{
+  margin-top:16px;
+  font-size:14px;
+  opacity:.8;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{
+  padding:38px 0 100px;
+  border-top:1px solid var(--marron-line);
+  background:var(--crema);
+}
+
+.footer-inner{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  color:var(--marron-soft);
+  font-size:13.5px;
+}
+
+.footer-inner strong{
+  color:var(--marron);
+}
+
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+.wa-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:200;
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--rojo);
+  color:white;
+  box-shadow: 0 14px 30px -8px rgba(157,26,4,.65);
+  text-decoration:none;
+  transition:transform .2s ease;
+}
+
+.wa-float:hover{
+  transform:scale(1.08);
+}
+
+.wa-float svg{
+  width:27px;
+  height:27px;
+}
+
+
+/* =========================================================
+   TABLET  (min-width: 640px)
+   ========================================================= */
+@media(min-width:640px){
+
+  .container{
+    padding:0 32px;
+  }
+
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-card{
+    padding:26px 24px;
+  }
+
+
+}
+
+
+/* =========================================================
+   DESKTOP  (min-width: 920px)
+   ========================================================= */
+@media(min-width:920px){
+  .bocado-1{
+    width:84px;
+    height:55px;
+    left:78px;
+    top:76px;
+  }
+
+  .bocado-2{
+    width:73px;
+    height:54px;
+    right:70px;
+    top:82px;
+  }
+
+  .bocado-3{
+    width:74px;
+    height:54px;
+    left:67px;
+    bottom:78px;
+  }
+
+  .bocado-4{
+    width:77px;
+    height:55px;
+    right:65px;
+    bottom:74px;
+  }
+
+  .bocado-5{
+    width:69px;
+    height:50px;
+  }
+
+
+  .product-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+
+  .familia .container{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  grid-template-areas:
+    "eyebrow img"
+    "title   img"
+    "body    img"
+    "names   img";
+  column-gap:60px;
+  align-items:center;
+}
+
+.eyebrow{ grid-area:eyebrow; }
+
+
+ 
+}
+
+</style>
+<section class={fondo === "claro" ? "bg-card section-pad" : "section-pad"} id={id}>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{titulo}</h2>
+      <p>{descripcion}</p>
+    </div>
+
+    <div class="product-grid">
+      {productos.map((producto) => (
+        <article class="product-card">
+          <div class="product-img">
+            <Image src={producto.imagen} alt={producto.alt} />
+          </div>
+          <div class="product-icon">
+            <svg viewBox={producto.icono.viewBox} fill="none" stroke="currentColor" stroke-width="1.8">
+              {paths(producto.icono.icono_frase).map((d) => <path d={d} />)}
+            </svg>
+          </div>
+          <h3>{producto.nombre}</h3>
+          <p>{producto.descripcion}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

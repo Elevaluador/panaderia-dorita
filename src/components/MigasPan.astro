@@ -1,0 +1,53 @@
+---
+interface Props {
+  migasPan: {
+    textoFinal: string;
+    categoria?: {
+      nombreCategoria: string;
+      slugCategoria:string;
+    };
+  };
+}
+
+const { migasPan } = Astro.props;
+---
+<style>
+
+.container{
+  width:100%;
+  max-width:var(--ancho-maximo);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb{
+  font-family:var(--font-cuerpo);
+  font-weight: 600;
+  padding:12px 0;
+  font-size:0.78rem;
+  color:var(--texto-suave);
+  margin-bottom: 16px;
+
+}
+
+
+.breadcrumb a{text-decoration:none; color:var(--texto-suave); border-bottom:1px dotted var(--borde);}
+.breadcrumb a:hover{color:var(--rojo);}
+.breadcrumb .current{color:var(--rojo); font-weight:700;}
+
+
+</style>
+{
+  migasPan && (
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Estas en Panaderia Dorita</a> / 
+        {migasPan.categoria && (
+          <><a href={migasPan.categoria.slugCategoria}>{migasPan.categoria.nombreCategoria}</a> / </>
+        )}
+        <span class="current">{migasPan.textoFinal}</span>
+      </nav>
+    </div>
+  )
+}

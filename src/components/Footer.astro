@@ -1,0 +1,292 @@
+---
+const today = new Date();
+import HeaderLink  from './HeaderLink.astro';
+import Cookies from './Cookies.astro'
+---
+<style>
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+.wa-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:200;
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--rojo);
+  color:white;
+  box-shadow: 0 14px 30px -8px rgba(157,26,4,.65);
+  text-decoration:none;
+  transition:transform .2s ease;
+}
+
+.wa-float:hover{
+  transform:scale(1.08);
+}
+
+.wa-float svg{
+  width:27px;
+  height:27px;
+}
+.contenedor{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.site-footer{
+  background:var(--crema-oscura);
+  padding:52px 0 0;
+  font-size:0.92rem;
+  border-top:3px solid var(--rojo);
+}
+.footer__top{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:34px 28px;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--rojo);
+  align-items:start;
+}
+
+/* Columna de marca (logo + nombre + tagline + redes) */
+.footer__brand{
+  display:flex; flex-direction:column; gap:14px;
+}
+.footer__logo-row{
+  display:flex; align-items:center; gap:10px;
+}
+.footer__logo-row img{
+  width:60px; height:60px; object-fit:contain; border-radius:10px;
+  background:var(--rojo);
+  padding:2px;
+}
+.footer__logo-row span{
+  font-family:var(--font-cuerpo); font-weight:900; font-size:1.1rem;
+  color:var(--rojo);
+}
+.footer__tagline{
+  font-size:0.86rem;
+  color:var(--marron);
+  max-width:30ch;
+}
+.footer__social{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:4px;
+}
+.footer__social a{
+  display:flex; align-items:center; justify-content:center;
+  width:36px; height:36px;
+  border-radius:50%;
+  background:var(--rojo);
+  color:var(--crema);
+  text-decoration:none;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.footer__social a svg{width:18px; height:18px;}
+
+
+/* Encabezado uniforme para TODAS las columnas (mismo nivel) */
+.footer__col{
+  display:flex; flex-direction:column; gap:14px;
+  align-items: center; /* centra iconos + texto */
+  justify-content: center;
+}
+
+
+.footer__heading{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:0.76rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--rojo);
+  line-height:1.2;
+  /* misma altura de línea que el logo de la marca, para que todo arranque al mismo nivel */
+  min-height:44px;
+  display:flex;
+  align-items:center;
+}
+
+/* Lista de contacto (columna "Contacto") */
+.footer__contact-list{
+  list-style:none;
+  display:flex; flex-direction:column; gap:13px;
+}
+.footer__contact-list li{
+  display:flex; align-items:center; gap:10px;
+}
+.footer__contact-list .ico{
+  flex-shrink:0;
+  width:26px; height:26px;
+  border-radius:50%;
+  background:var(--rojo); /*iconos/svg color de fondo*/
+  display:flex; align-items:center; justify-content:center;
+  color:aliceblue
+}
+.footer__contact-list .ico svg{width:14px; height:14px;}
+.footer__contact-list a,
+.footer__contact-list span{
+  text-decoration:none;
+  color:var(--marron);
+  font-size:0.9rem;
+  font-weight: 600;
+  transition:color 0.15s ease;
+}
+.footer__contact-list a:hover{color:var(--rojo); text-decoration:underline;}
+
+/* Listas de enlaces (Productos, Ayuda) */
+.footer__links{
+  list-style:none;
+  display:flex; flex-direction:column; gap:11px;
+}
+.footer__links a{
+  text-decoration:none;
+  color:var(--marron);
+  font-size:0.9rem;
+  font-weight: 600;
+  transition:color 0.15s ease;
+}
+.footer__links a:hover{color:var(--rojo); text-decoration:underline;}
+
+/* Barra inferior */
+.footer__bottom{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+  padding:20px 0 26px;
+  text-align:center;
+}
+.footer__copy{
+  font-size:0.82rem;
+  color:var(--rojo);
+}
+
+@media (min-width:640px){
+  .footer__top{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media (min-width:900px){
+  .footer__top{
+    grid-template-columns:1.1fr 0.9fr 1fr;
+  }
+  .footer__logo-row img{
+  width:100px; height:100px; 
+
+}
+}
+@media (min-width:1180px){
+  /* Todo en un solo nivel: 5 columnas en una sola fila */
+  .footer__top{
+    grid-template-columns:1.1fr 0.9fr 1fr 1fr 0.9fr;
+    gap:24px;
+  }
+}
+</style>
+<!-- ============================================= -->
+<!-- ===============  SITE FOOTER  ================ -->
+<!-- ============================================= -->
+<footer class="site-footer" id="footer">
+  <div class="contenedor">
+    <div class="footer__top">
+
+      <!-- Marca -->
+      <div class="footer__brand">
+        <div class="footer__logo-row">
+          <img src="/logo-panaderia-dorita.jpg" alt="Logo de panadería Dorita en piura">
+          <span>Panadería Dorita</span>
+        </div>
+        <p class="footer__tagline">El pan se parte con las manos, se comparte con el corazón. En Piura desde 1985.</p>
+        <div class="footer__social">
+          <a href="https://facebook.com/panaderiadorita" target="_blank" rel="noopener" aria-label="Panadería Dorita en Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.56 1.53-3.97 3.87-3.97 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.62V12h2.86l-.46 2.89h-2.4v6.98A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer__col">
+        <span class="footer__heading">Contacto</span>
+        <ul class="footer__contact-list">
+          <li>
+            <span class="ico">
+               <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"></path>
+          </svg>
+            </span>
+            <a href="https://wa.me/51993955358" target="_blank" rel="noopener">+51 993 955 358</a>
+          </li>
+          <li>
+            <span class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>AA. HH. 18 de Mayo, mz. Q, lote 18, Piura</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Productos de Panadería -->
+      <div class="footer__col">
+        <span class="footer__heading">Panes Artesanales</span>
+        <ul class="footer__links">
+          <HeaderLink href="/panaderia/rosquitas-artesanales/">Rosquitas</HeaderLink>
+          <HeaderLink href="/panaderia/pan-espuma-piura/">Pan de Espuma</HeaderLink>
+          <HeaderLink href="https://wa.me/51993955358?text=Hola%2C%20quiero%20cotizar%20pan%20frances">Pan Frances</HeaderLink>
+          <HeaderLink href="/panaderia/pan-Hamburguesa-artesanal/">Pan de Hamburguesa</HeaderLink>
+        </ul>
+      </div>
+
+      <!-- Productos de Pastelería -->
+      <div class="footer__col">
+        <span class="footer__heading">Pastelería</span>
+        <ul class="footer__links">
+          <HeaderLink href="/pasteleria/tortas-piura/">Tortas</HeaderLink>
+          <HeaderLink href="/pasteleria/bocaditos-piura/#dulces">Bocaditos Dulces</HeaderLink>
+          <HeaderLink href="/pasteleria/bocaditos-piura/#salados">Bocaditos Salados</HeaderLink>
+        </ul>
+      </div>
+
+      <!-- Ayuda -->
+      <div class="footer__col">
+        <span class="footer__heading">Ayuda</span>
+        <ul class="footer__links">
+          <HeaderLink href="/#faq">Preguntas Frecuentes</HeaderLink>
+          <HeaderLink href="/politica-privacidad/">Política de Privacidad</HeaderLink>
+          <HeaderLink href="/politica-cookies/">Política de Cookies</HeaderLink>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="footer__bottom">
+      <span class="footer__copy">© {today.getFullYear()} Panadería Dorita — Piura, Perú. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+<a
+  class="wa-float"
+  href="https://wa.me/51993955358?text=Hola%2C%20quiero%20pedir%20bocaditos"
+  target="_blank"
+  rel="noopener"
+  aria-label="Escribir por WhatsApp"
+>
+
+  <svg viewBox="0 0 24 24" fill="currentColor">
+
+    <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/>
+
+  </svg>
+
+</a>
+<Cookies />

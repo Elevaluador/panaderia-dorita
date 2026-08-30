@@ -1,0 +1,113 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import HeroPanaderia from '../components/panaderia/HeroPanaderia.astro';
+import UbicacionPanaderia from '../components/panaderia/UbicacionPanaderia.astro';
+import ComoPedirPanaderia from "../components/panaderia/ComoPedirPanaderia.astro";
+import Faq from '../components/Faq.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import {robots} from '../consts';
+
+
+export interface MigasPan {
+    textoFinal: string;
+    categoria?: {
+      nombreCategoria: string;
+      slugCategoria:string;
+    };
+}
+
+export interface PriceItem {
+  label: string;
+  value: string;
+}
+
+
+export interface Hero {
+  subtituloProducto: string;
+  titulo: string;
+  descripcionProducto: string;
+  priceBand: PriceItem[];
+  whatsapp: string;
+  whatsappText: string;
+  secondaryHref: string;
+  secondaryText: string;
+  frase: string;
+  imagenProducto: ImageMetadata;
+  imagenAlt: string;
+}
+export interface Ubicacion {
+  tituloUbicacion:string;
+  textoProducto:string;
+  despedidaProducto:string;
+  ctaProducto:string;
+}
+export interface Tarjeta {
+  num: string;
+  titulo: string;
+  texto: string;
+}
+
+export interface ComoPedir {
+  subtituloPedir: string;
+  tituloPedir: string;
+  tarjetas: Tarjeta[];
+ 
+}
+export interface Faqs {
+  pregunta: string;
+  respuesta: string;
+}
+export interface CtaFinal {
+  tituloFinal: string;
+  textoFinal: string;
+ 
+}
+
+interface Props {
+  structuredData?: object[];
+  tituloSeo: string;
+  description: string;
+  migasPan:MigasPan;
+  hero: Hero; // objeto único, no array
+  ubicacion:Ubicacion;
+  comoPedir:ComoPedir;
+  tituloFaq?:string;
+  faq?: Faqs[];
+  ctafinal:CtaFinal;
+}
+
+const {  structuredData,tituloSeo, description, hero,ubicacion,comoPedir,tituloFaq,faq,ctafinal,migasPan} = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <BaseHead title={tituloSeo} description={description} structuredData={structuredData} robots={robots}/>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <HeroPanaderia {...hero} migasPan={migasPan}/>
+      <slot name="precioPresentacionPanaderia"/>
+      <slot name="artesanalvsSupermercado"/>
+      <slot name="porquePrecioRosquitas"/>
+      <slot name="QueEsPanEspuma" />
+      <slot name="precioPanEspuma" />
+      <UbicacionPanaderia {...ubicacion} />
+      <slot name="historiaPanaderia" />
+       <ComoPedirPanaderia
+      {...comoPedir}
+      
+      />
+      <Faq
+      faq= {faq}
+      tituloFaq= {tituloFaq}
+      />
+      <CtaFinal {...ctafinal}
+      />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,125 @@
+---
+interface Paso {
+  titulo: string;
+  texto: string;
+  acento?: boolean;
+}
+
+interface Props {
+  subtituloPasos?:string,
+  tituloPasos?: string;
+  descripcionPasos?: string;
+  pasos?: Paso[];
+}
+
+const {
+  subtituloPasos,
+  tituloPasos,
+  descripcionPasos,
+  pasos = [],
+} = Astro.props;
+---
+
+<style>
+
+  .contenedor{
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+  
+  /* ============ DIVISOR "PAN PARTIDO" ============ */
+  .divisor--a polygon{ fill: var(--crema-oscura); }
+  .divisor--b polygon{ fill: var(--crema); }
+  .divisor--c polygon{ fill: var(--marron); }
+
+
+  /* ============ BLOQUES GENERALES ============ */
+  .bloque{ padding: 44px 0; }
+  .bloque--oscuro{ background: var(--crema-oscura); }
+  .bloque__cabecera{ max-width: 640px; margin: 0 0 30px; }
+  .bloque__cabecera h2{ font-size: clamp(1.5rem, 6vw, 2.1rem); font-weight:600; margin-top:10px; }
+  .bloque__cabecera p{ margin-top:12px; color: var(--marron-suave); font-size: 1rem; }
+  
+
+ 
+
+  /* ============ CÓMO PEDIR (pasos) ============ */
+  .grid-pasos{ display:grid; grid-template-columns: 1fr; gap: 16px; }
+  .paso{
+    background: var(--blanco); border: 1px solid var(--crema-linea); border-radius: var(--radio);
+    padding: 22px; box-shadow: var(--sombra); position:relative;
+  }
+  .paso--acento{ background: var(--rojo-oscuro); border-color: var(--marron); color: var(--crema); }
+  .paso__numero{
+    width:34px; height:34px; border-radius:50%; background: var(--rojo-oscuro); color: var(--crema);
+    display:flex; align-items:center; justify-content:center; font-family: var(--font-display); font-weight:700;
+    margin-bottom:14px; font-size:0.95rem;
+  }
+  .paso--acento .paso__numero{ background: var(--crema-oscura); color: var(--marron); }
+  .paso h3{ font-size: 1.05rem; font-weight:600; margin-bottom:8px; }
+  .paso p{ margin:0; font-size: 0.95rem; }
+  .paso--acento p{ color: rgba(249,246,238,0.85); }
+  .final {color:var(--crema)}
+  
+  .numero {
+    color: var(--rojo);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rojo)
+  }
+  /* ============ TABLET (min-width 640px) ============ */
+  @media (min-width: 640px){
+   
+    .grid-pasos{ grid-template-columns: repeat(3, 1fr); }
+    
+  }
+
+ 
+</style>
+<section id="pedir" class="bloque bloque--oscuro">
+  <div class="contenedor">
+    <div class="bloque__cabecera">
+      <span class="eyebrow">{subtituloPasos}</span>
+      <h2>{tituloPasos}</h2>
+      <p>{descripcionPasos}</p>
+    </div>
+
+    <div class="grid-pasos">
+      {pasos.map((paso, index) => (
+        <div class={`paso ${paso.acento ? "paso--acento" : ""}`}>
+          <div class="paso__numero">{index + 1}</div>
+          <h3 class={paso.acento ? "final" : ""}>{paso.titulo}</h3>
+          <p set:html={paso.texto} />
+          {paso.acento && (
+            <a class="boton boton--sobre-foto" href="https://wa.me/51993955358">
+              Pedir por WhatsApp
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+  <svg class="divisor divisor--a" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
+    <polygon points="0,12 46,6 92,14 138,22 185,3 231,4 277,19 323,5 369,13 415,20 462,3 508,18 554,8 600,3 646,4 692,15 738,15 785,4 831,9 877,4 923,19 969,15 1015,3 1062,20 1108,5 1154,9 1200,22 1200,30 0,30"/>
+  </svg>

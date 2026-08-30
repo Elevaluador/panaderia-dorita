@@ -1,0 +1,856 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import '../../styles/global.css'
+import MigasPan from '../../components/MigasPan.astro';
+import { Image } from 'astro:assets';
+import * as Variables from '../../consts';
+import HeaderLink  from '../../components/HeaderLink.astro';
+
+
+const migasPan = {
+  textoFinal:'',
+  categoria: {
+    nombreCategoria: "Pasteleria Tradicional",
+    slugCategoria: "/pasteleria"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+ <BaseHead title="Pastelería Tradicional en Piura | Panadería Dorita" description="En Piura, las reuniones familiares saben mejor con tortas y bocaditos artesanales, con el mismo sabor de siempre ¡Pídelos por WhatsApp!"
+ robots={Variables.robots} />
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://panaderiadorita.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Pastelería en Piura", "item": "https://panaderiadorita.com/pasteleria/" }
+  ]
+}
+</script>
+
+<!-- Schema: ItemList de productos de la categoría -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Pastelería artesanal Panadería Dorita",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Tortas personalizadas",
+        "description": "Tortas artesanales personalizadas por tamaño, relleno y diseño. Cotización por WhatsApp.",
+        "url": "https://panaderiadorita.com/pasteleria/tortas/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Bocaditos dulces",
+        "description": "Bocaditos dulces artesanales, S/60 el ciento.",
+        "url": "https://panaderiadorita.com/pasteleria/bocaditos-dulces/",
+        "offers": {
+          "@type": "Offer",
+          "price": "60.00",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Bocaditos salados",
+        "description": "Bocaditos salados artesanales, S/60 el ciento.",
+        "url": "https://panaderiadorita.com/pasteleria/bocaditos-salados/",
+        "offers": {
+          "@type": "Offer",
+          "price": "60.00",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué significa que Panadería Dorita sea una pastelería artesanal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Que todo lo hacemos con las manos, no con máquinas industriales ni recetas de fábrica. Desde 1985, cuando Don Víctor y Doña Dorita abrieron el negocio, Don Óscar es el maestro que hornea cada torta y cada bocadito siguiendo la misma receta de siempre. Artesanal para nosotros no es una palabra bonita: es que cada pedido se amasa, se rellena y se decora a mano, el mismo día o el día anterior a su entrega, no semanas antes en una fábrica."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué productos de pastelería hacen en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hacemos tortas para cumpleaños y celebraciones, bocaditos dulces y bocaditos salados para reuniones o eventos. Puede pedir todo junto o por separado, según lo que necesite para su celebración."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una torta artesanal en Panadería Dorita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El precio depende del tamaño, el relleno y el diseño que quiera, así que no manejamos una tarifa única. Lo más rápido es escribirnos por WhatsApp al +51 993 955 358 contándonos para cuántas personas es y qué tiene en mente; en minutos le damos el precio exacto sin compromiso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuestan los bocaditos dulces y salados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los bocaditos, tanto dulces como salados, cuestan S/60 el ciento. Si necesita una cantidad distinta o quiere combinar dulces y salados para su evento, escríbanos por WhatsApp al +51 993 955 358 y le armamos la cantidad exacta que necesita."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con cuánta anticipación debo pedir una torta o bocaditos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para tortas necesitamos un día de anticipación, y para bocaditos, dos días. Esto nos permite prepararlos frescos, a mano, sin apurar la receta. Si su evento es en menos tiempo, igual escríbanos por WhatsApp al +51 993 955 358: si hay disponibilidad, hacemos lo posible por ayudarlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo hacer mi pedido y cómo pago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todo el pedido se coordina por WhatsApp al +51 993 955 358: usted nos cuenta qué necesita, le confirmamos el precio y la fecha, y para asegurar su pedido puede pagar con Yape o Plin un adelanto de S/20 o el 20% del total, lo que sea mayor. El resto se cancela al recoger."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hacen tortas personalizadas para cumpleaños u otras celebraciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, hacemos tortas personalizadas para cumpleaños, y también trabajamos con bocaditos para cualquier tipo de reunión o celebración familiar. Cuéntenos el tema, el sabor y para cuántas personas es por WhatsApp al +51 993 955 358, y Don Óscar la prepara a la medida de su celebración."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde está ubicada Panadería Dorita en Piura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estamos en AA.HH. 18 de Mayo, manzana Q, lote 18, en Piura. Ahí mismo puede recoger su pedido de tortas o bocaditos una vez coordinado por WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Desde cuándo existe Panadería Dorita y quién hace las tortas y bocaditos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Panadería Dorita abrió sus puertas en 1985, fundada por Don Víctor y Doña Dorita. Don Óscar, quien aprendió el oficio desde esos primeros años, sigue siendo hoy el maestro panadero a cargo de las recetas. Más de 30 años después, seguimos horneando con las mismas manos y la misma receta de siempre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las tortas y bocaditos se hacen el mismo día o son congelados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se hacen frescos para su pedido, no manejamos productos congelados de fábrica. Por eso pedimos anticipación: un día para tortas y dos días para bocaditos, el tiempo justo para prepararlos a mano y que lleguen recién hechos a su mesa."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+
+
+  .container{
+    width: 100%;
+    max-width: var(--ancho-maximo);
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family: var(--font-cuerpo);
+    font-weight:700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rojo);
+  }
+   .hero__eyebrow{
+    font-family:var(--font-cuerpo);
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--crema);
+    background:var(--rojo);
+    border:1px solid var(--borde);
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background: var(--rojo);
+    display:inline-block;
+  }
+
+  section{ padding-block: 56px; }
+  section + section{ border-top: 1px solid rgba(74,46,43,0.08); }
+
+  .lead{
+    font-size: 1.05rem;
+    color: var(--marron);
+    max-width: 62ch;
+  }
+
+  /* ============================================
+     BOTONES
+     ============================================ */
+  .boton-ghost{
+    background: transparent;
+    color: var(--marron);
+    border-color: rgba(74,46,43,0.3);
+  }
+  .boton-ghost:hover{ border-color: var(--marron); background: rgba(74,46,43,0.05); }
+  .boton-sm{ padding: 10px 18px; font-size: 0.88rem; }
+
+
+
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero-cat{
+    position:relative;
+    padding-block: 52px 60px;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(157,26,4,0.07), transparent 55%),
+      var(--crema-oscura);
+    overflow:hidden;
+  }
+  .hero-cat::after{
+    content:"";
+    position:absolute;
+    right:-60px; bottom:-60px;
+    width:220px; height:220px;
+    border-radius:50%;
+    background: rgba(157,26,4,0.06);
+  }
+  .hero-cat__inner{ position:relative; max-width: 640px; }
+  .hero-cat h1{
+    font-size: clamp(2rem, 6vw, 2.9rem);
+    font-weight: 600;
+    margin-block: 14px 16px;
+  }
+  .hero-cat .lead{ margin-bottom: 26px; }
+
+  .hero-cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .hero-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px 18px;
+  }
+  .hero-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size: 0.85rem;
+    font-weight:600;
+    color: var(--marron);
+  }
+  .hero-badge .dot{
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--rojo);
+    flex-shrink:0;
+  }
+
+  /* ============================================
+     SECCION: PRODUCTOS
+     ============================================ */
+  .seccion-head{ max-width: 640px; margin-bottom: 34px; }
+  .seccion-head h2{
+    font-size: clamp(1.55rem, 4.5vw, 2.1rem);
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .seccion-head p{ margin-top: 12px; color: var(--marron); }
+
+  .productos-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .producto-card{
+    background:#fff;
+    border: 1px solid rgba(74,46,43,0.1);
+    border-radius: var(--radius-m);
+    padding: 26px;
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    box-shadow: 0 1px 2px rgba(43,33,30,0.04);
+  }
+  .producto-card__precio{
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--rojo);
+    font-weight:600;
+  }
+  .producto-card__precio small{
+    font-family: var(--font-cuerpo);
+    font-size: 0.8rem;
+    font-weight:600;
+    color: var(--marron);
+    display:block;
+    margin-top:2px;
+  }
+  .producto-card h3{
+    font-size: 1.25rem;
+    font-weight:600;
+    color:var(--rojo);
+  }
+  .producto-card p{
+    color: var(--marron);
+    font-size: 0.96rem;
+    flex-grow:1;
+  }
+
+  .producto-card img {
+  border-radius: 15px;
+  object-fit: cover;
+}
+  .producto-card__footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(74,46,43,0.18);
+  }
+  .producto-card__link{
+    font-weight:700;
+    font-size: 0.9rem;
+    color: var(--marron);
+    text-decoration:none;
+  }
+  .producto-card__link:hover{ color: var(--rojo); }
+
+  /* ============================================
+     SECCION: ARTESANAL (historia)
+     ============================================ */
+     
+  .artesanal {
+      background: var(--crema-oscura);
+     }
+
+
+  .artesanal-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .artesanal-item h3{
+    font-size: 1.2rem;
+    font-weight:600;
+    margin-bottom: 10px;
+  }
+  .artesanal-item p{ color: var(--marron); }
+  .artesanal-item p + p{ margin-top: 10px; }
+
+  .lista-check{ list-style:none; margin-top: 14px; display:flex; flex-direction:column; gap:8px; }
+  .lista-check li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    color: var(--marron);
+    font-size: 0.95rem;
+  }
+  .lista-check li::before{
+    content:"";
+    width:8px; height:8px;
+    margin-top:7px;
+    flex-shrink:0;
+    border-radius:50%;
+    background: var(--rojo);
+  }
+
+  .sello{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background: var(--crema-oscura);
+    border: 1px solid rgba(74,46,43,0.15);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight:700;
+    color: var(--marron);
+    margin-bottom: 18px;
+  }
+
+  /* ============================================
+     SECCION: COMO PEDIR
+     ============================================ */
+  .pasos{
+    list-style:none;
+    counter-reset: paso;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+    margin: 28px 0 40px;
+  }
+  .pasos li{
+    counter-increment: paso;
+    display:grid;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    align-items:start;
+  }
+  .pasos li::before{
+    content: counter(paso);
+    font-family: var(--font-display);
+    font-weight:600;
+    width:40px; height:40px;
+    border-radius:50%;
+    background: var(--rojo);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1.05rem;
+  }
+  .pasos li p{ margin:0; color: var(--marron); padding-top:6px; }
+  .pasos li strong{ color: var(--tinta); }
+
+  .info-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .info-card{
+    background:var(--secundario);
+    border-radius: var(--radius-m);
+    border: 1px solid rgba(74,46,43,0.1);
+    padding: 22px;
+  }
+  .info-card h3{ font-size: 1.05rem; font-weight:600; margin-bottom:10px; }
+  .info-card p{ color: var(--marron); font-size: 0.94rem; }
+  .info-card .valor{
+    font-family: var(--font-display);
+    color: var(--rojo);
+    font-size: 1.4rem;
+    font-weight:600;
+    margin-bottom: 6px;
+    display:block;
+  }
+
+  /* ============================================
+     SECCION: UBICACION
+     ============================================ */
+  .ubicacion-wrap{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items:start;
+  }
+  .direccion-card{
+    background: var(--marron);
+    color: var(--crema);
+    border-radius: var(--radius-m);
+    padding: 28px;
+  }
+  .direccion-card h3{ color:#fff; font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+  .direccion-card p{ color: rgba(249,246,238,0.85); margin-bottom:20px; }
+  .mapa-embed{
+    border-radius: var(--radius-m);
+    overflow:hidden;
+    border: 1px solid rgba(74,46,43,0.15);
+    aspect-ratio: 4/3;
+  }
+  .mapa-embed iframe{ width:100%; height:100%; border:0; }
+
+  /* ============================================
+     FAQ
+     ============================================ */
+  .faq-list{ margin-top: 30px; display:flex; flex-direction:column; gap: 12px; }
+  .faq-item{
+    background:#fff;
+    border: 1px solid rgba(74,46,43,0.12);
+    border-radius: var(--radius-s);
+    overflow:hidden;
+  }
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    padding: 18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+    font-weight:700;
+    font-size: 0.98rem;
+    color: var(--rojo);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary .icon{
+    flex-shrink:0;
+    width:24px; height:24px;
+    border-radius:50%;
+    background: var(--crema-2);
+    color: var(--rojo);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1rem;
+    font-weight:700;
+    transition: transform .2s ease;
+  }
+  .faq-item[open] summary .icon{ transform: rotate(45deg); }
+  .faq-item .faq-answer{
+    padding: 0 20px 20px;
+    color: var(--marron);
+    font-size: 0.95rem;
+  }
+
+  /* ============================================
+     CTA FINAL (no es footer del sitio, cierre del contenido)
+     ============================================ */
+  .cta-final{
+    background: var(--rojo);
+    border-radius: var(--radius-l);
+    padding: 40px 28px;
+    text-align:center;
+    color:#fff;
+  }
+  .cta-final h2{ color:#fff; font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight:600; }
+  .cta-final p{ color: rgba(255,255,255,0.9); margin: 12px 0 24px; }
+  .cta-final .botonn-primario{
+    background:#fff;
+    color: var(--rojo);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+  }
+
+  /* ============================================
+     RESPONSIVE — TABLET / DESKTOP
+     ============================================ */
+  @media (min-width: 640px){
+    .productos-grid{ grid-template-columns: repeat(2, 1fr); }
+    .info-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 900px){
+    section{ padding-block: 76px; }
+    .hero-cat{ padding-block: 90px 100px; }
+    .hero-cat__inner{ max-width: 800px; }
+
+    .productos-grid{ grid-template-columns: repeat(3, 1fr); }
+    .artesanal-grid{ grid-template-columns: repeat(2, 1fr); gap: 48px; }
+    .ubicacion-wrap{ grid-template-columns: 1.1fr 1fr; }
+    .pasos{ max-width: 620px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+ 	<Header />
+  
+<main>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero-cat">
+    <MigasPan migasPan={migasPan}/>
+    <div class="container hero-cat__inner">
+      
+      <span class="hero__eyebrow">Pastelería tradicional en Piura</span>
+      <h1>Pastelería Artesanal en Piura: Tortas y Bocaditos tradicionales desde 1985</h1>
+      <p class="lead">Bienvenido a la pastelería de tu barrio de AA.HH 18 de mayo. Amasamos, rellenamos y decoramos a mano cada torta y cada bocadito, tal como lo hacía Doña Dorita desde 1985. Nada sale de fábrica: sale de nuestro horno artesanal, con la receta de siempre.</p>
+
+      <div class="hero-cta-row">
+        <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="boton boton-ghost" href="#pastelería-artesanal">Ver tortas y bocaditos</a>
+      </div>
+
+      <div class="hero-badges">
+        <span class="hero-badge"><span class="dot"></span>Desde 1985</span>
+        <span class="hero-badge"><span class="dot"></span>Hecho a mano, sin fábrica</span>
+        <span class="hero-badge"><span class="dot"></span>Recojo en AA.HH. 18 de Mayo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       NUESTRA PASTELERÍA ARTESANAL
+       ============================================ -->
+  <section id="pastelería-artesanal">
+    <div class="container">
+      <div class="seccion-head">
+        <span class="eyebrow">Qué encontrarás</span>
+        <h2>Nuestra pastelería artesanal: tortas, bocaditos dulces y salados</h2>
+        <p>Todo lo que hacemos se prepara fresco, para su pedido, no para una vitrina que espera días. Aquí le contamos qué encontrará y cuánto invertir, para que decida sin vueltas.</p>
+      </div>
+
+      <div class="productos-grid">
+
+        <article class="producto-card">
+          <div class="producto-card__precio">Cotización<small>Según tamaño y diseño</small></div>
+          <h3>Tortas personalizadas</h3>
+          <p>Cada torta se hace a la medida de su celebración: tamaño, relleno y diseño según lo que usted nos cuente. Como cada una es distinta, no manejamos un precio fijo. Escríbanos por WhatsApp, cuéntenos para cuántas personas es y qué tiene en mente, y en minutos le damos el precio exacto.</p>
+           <Image src={Variables.TortasImg} alt ="tortas personalizada de panaderia dorita en piura" loading= "lazy" width="350" height="350"/>
+          <div class="producto-card__footer">
+            <HeaderLink class="producto-card__link" href="/pasteleria/tortas-piura/">
+              Ver tortas →
+            </HeaderLink>
+            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Cotizar</a>
+          
+          </div>
+
+        </article>
+
+        <article class="producto-card">
+          <div class="producto-card__precio">S/60<small>El ciento</small></div>
+          <h3>Bocaditos dulces</h3>
+          <p>Para reuniones, cumpleaños o cualquier junta familiar. Preparados el mismo día, sin conservantes de fábrica. Coordine la cantidad exacta que necesita para su mesa por WhatsApp.</p>
+           <Image src={Variables.BocaditosDulcesImg} alt ="Bocaditso dulces de panaderia dorita en piura" loading= "lazy" width="350" height="350"/>
+          <div class="producto-card__footer">
+            <HeaderLink class="producto-card__link" href="/pasteleria/bocaditos-piura/#dulces">
+              Ver bocaditos dulces →
+            </HeaderLink>
+            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir</a>
+          </div>
+        </article>
+
+        <article class="producto-card">
+          <div class="producto-card__precio">S/60<small>El ciento</small></div>
+          <h3>Bocaditos salados</h3>
+          <p>Ideales para eventos y compromisos. Puede combinar dulces y salados según lo que necesite su mesa; nosotros armamos la cantidad exacta por WhatsApp.</p>
+           <Image src={Variables.BocaditosSaladosImg} alt ="bocaditso salados de panaderia dorita en piura" loading= "lazy" width="350" height="350"/>
+          <div class="producto-card__footer">
+            <HeaderLink class="producto-card__link" href="/pasteleria/bocaditos-piura/#salados">
+              Ver bocaditos salados →
+            </HeaderLink>
+            
+            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       QUÉ HACE ARTESANAL A NUESTRA PASTELERÍA
+       ============================================ -->
+  <section class="artesanal">
+    <div class="container">
+      <div class="seccion-head">
+        <span class="sello">🍞 El sello de la casa</span>
+        <h2>¿Qué hace artesanal a nuestra pastelería?</h2>
+        <p>"Artesanal" es una palabra que se usa mucho y se explica poco. Aquí le contamos exactamente qué significa en Panadería Dorita.</p>
+      </div>
+
+      <div class="artesanal-grid">
+        <div class="artesanal-item">
+          <h3>Recetas de la familia desde 1985</h3>
+          <p>Todo empezó cuando Don Víctor y Doña Dorita abrieron las puertas de la panadería en Piura, con apenas 25 kilos de harina el primer día. Don lingo, hermano de Don Víctor, aprendió el oficio desde esos inicios y se convirtió en el maestro panadero que hasta hoy hornea con sus propias manos.</p>
+          <p>Don Juan, que empezó como ayudante, también fue parte de esa primera receta que seguimos usando, sin cambios, más de 40 años después. No es una historia de marketing: es la historia real de una familia que aprendió a hacer pan y pasteles porque quería comer bien, y terminó alimentando a todo un barrio.</p>
+          <a class="producto-card__link" href="/historia/">Conocer la historia completa →</a>
+        </div>
+
+        <div class="artesanal-item">
+          <h3>Hecho a mano, sin fórmulas de fábrica</h3>
+          <p>En Panadería Dorita, cada torta se rellena a mano, cada bocadito se arma uno por uno, y cada masa se trabaja con el tiempo que necesita, no con el que le conviene a una máquina.</p>
+          <ul class="lista-check">
+            <li>Nada de mezclas industriales ni conservantes de fábrica.</li>
+            <li>Producción diaria, no por lotes que duran semanas en refrigeración.</li>
+            <li>El mismo maestro panadero, Don Óscar, supervisando la receta desde 1985.</li>
+          </ul>
+          <p style="margin-top:14px;">El resultado es simple: miga suave, corteza dorada en su punto, y el sabor de un pan o una torta hecha con manos artesanas, no con una línea de producción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CÓMO PEDIR
+       ============================================ -->
+  <section>
+    <div class="container">
+      <div class="seccion-head">
+        <span class="eyebrow">Proceso de pedido</span>
+        <h2>¿Cómo realizar tu pedido de tu torta o bacaditos en panaderia dorita?</h2>
+        <p>Pedir en Panadería Dorita es directo: nos escribe, coordinamos y usted recoge fresco. Así funciona paso a paso.</p>
+      </div>
+
+      <ol class="pasos">
+        <li><p><strong>Escribe por WhatsApp</strong> al +51 993 955 358 contando qué necesita y para cuándo.</p></li>
+        <li><p><strong>Confirmamos</strong> precio, fecha y cantidad exacta de su pedido.</p></li>
+        <li><p><strong>Adelanta el 20%</strong> del tu compra por Yape o Plin.</p></li>
+        <li><p><strong>Recoge tu pedido fresco</strong> en la fecha coordinada, en tienda.</p></li>
+      </ol>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Tiempos de anticipación</h3>
+          <span class="valor">1 día — Tortas</span>
+          <span class="valor">2 días — Bocaditos</span>
+          <p>Como todo se prepara a mano y para su pedido específico, necesitamos este tiempo para trabajar con calma, sin apurar la masa ni el relleno. Si su evento es antes, escríbanos igual: si hay espacio en el horno, hacemos lo posible por ayudarlo.</p>
+        </div>
+        <div class="info-card">
+          <h3>Reserva con Yape o Plin</h3>
+          <span class="valor">20% de adelanto</span>
+          <p>Para asegurar su pedido, pedimos un adelanto del 20% de tu compra. El resto se cancela al momento de recoger su pedido en tienda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       UBICACIÓN
+       ============================================ -->
+  <section>
+    <div class="container">
+      <div class="seccion-head">
+        <span class="eyebrow">Recojo en tienda</span>
+        <h2>Pastelería artesanal cerca de ti en Piura</h2>
+        <p>Somos vecinos del barrio, no una cadena que llegó de otro lado. Nuestra panadería está en un punto conocido, fácil de ubicar.</p>
+      </div>
+
+      <div class="ubicacion-wrap">
+        <div class="direccion-card">
+          <h3>Dirección</h3>
+          <p>AA.HH. 18 de Mayo, manzana Q, lote 18, Piura, Perú</p>
+          <p>Puede recoger su pedido de tortas, bocaditos o pan del día directamente en tienda. Si tiene dudas para llegar, escríbanos por WhatsApp y le indicamos cómo llegar.</p>
+          <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+        <div class="mapa-embed">
+          <iframe
+            src="https://www.google.com/maps?q=AA.HH.+18+de+Mayo+manzana+Q+lote+18+Piura+Peru&output=embed"
+            loading="lazy"
+            title="Ubicación de Panadería Dorita en Piura"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ
+       ============================================ -->
+  <section>
+    <div class="container">
+      <div class="seccion-head">
+        <span class="eyebrow">Resolvemos sus dudas</span>
+        <h2>Preguntas frecuentes sobre nuestra pastelería artesanal</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>¿Qué significa que Panadería Dorita sea una pastelería artesanal?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Todo nace en nuestro horno de barro. Vitucho (hijo mayor) hornea y su esposa, nuestra maestra pastelera, decora a mano cada torta y bocadito con la receta de siempre. Para nosotros, "artesanal" es sinónimo de frescura real: preparamos tu pedido a mano el mismo día o un día antes, sin fábricas ni congelados</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué productos de pastelería hacen en Panadería Dorita?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Hacemos tortas para cumpleaños y celebraciones, bocaditos dulces y bocaditos salados para reuniones o eventos. Puede pedir todo junto o por separado, según lo que necesite para su celebración.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cuánto cuesta una torta artesanal en Panadería Dorita?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>El precio depende del tamaño, el relleno y el diseño que quiera, así que no manejamos una tarifa única. Lo más rápido es escribirnos por WhatsApp al +51 993 955 358 contándonos para cuántas personas es y qué tiene en mente; en minutos le damos el precio exacto sin compromiso.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cuánto cuestan los bocaditos dulces y salados?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Los bocaditos, tanto dulces como salados, cuestan S/60 el ciento. Si necesita una cantidad distinta o quiere combinar dulces y salados para su evento, escríbanos por WhatsApp al +51 993 955 358 y le armamos la cantidad exacta que necesita.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Con cuánta anticipación debo pedir una torta o bocaditos?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Para tortas necesitamos un día de anticipación, y para bocaditos, dos días. Esto nos permite prepararlos frescos, a mano, sin apurar la receta. Si su evento es en menos tiempo, igual escríbanos por WhatsApp al +51 993 955 358: si hay disponibilidad, hacemos lo posible por ayudarlo.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cómo puedo hacer mi pedido y cómo pago?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Todo el pedido se coordina por WhatsApp al +51 993 955 358: usted nos cuenta qué necesita, le confirmamos el precio y la fecha, y para asegurar su pedido puede pagar con Yape o Plin un adelanto del 20% de tu compra. El resto se cancela al recoger.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Hacen tortas personalizadas para cumpleaños u otras celebraciones?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Sí, hacemos tortas personalizadas para cumpleaños, y también trabajamos con bocaditos para cualquier tipo de reunión o celebración familiar. Cuéntenos el tema, el sabor y para cuántas personas es por WhatsApp al +51 993 955 358, y Don Óscar la prepara a la medida de su celebración.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Desde cuándo existe Panadería Dorita y quién hace las tortas y bocaditos?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Panadería Dorita abrió sus puertas en 1985, fundada por Don Víctor y Doña Dorita. 
+             Hoy es Vitucho( hijo mayor), quien es el hornero de nuestras tortas y bocaditos,junto a su esposa,quien es la maestra pastelera
+             quien elabora y decora, nuestras tortas y bocaditos.con el mismo cariño de siempre, lleva juntos en el negocio +15 años.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Las tortas y bocaditos se hacen el mismo día o son congelados?<span class="icon">+</span></summary>
+          <div class="faq-answer"><p>Se hacen frescos para su pedido, no manejamos productos congelados de fábrica. Por eso pedimos anticipación: un día para tortas y dos días para bocaditos, el tiempo justo para prepararlos a mano y que lleguen recién hechos a su mesa.</p></div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA FINAL DE CONTENIDO
+       ============================================ -->
+  <section>
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes una reunión familiar? Nosotros ponemos la torta y los bocaditos</h2>
+        <p>Porque las mejores reuniones son las que terminan alrededor de una mesa, compartiendo 
+          algo rico. Preparamos tus tortas y bocaditos con el sabor de siempre y el cariño 
+          de nuestra familia para la tuya. Escríbenos por WhatsApp y comparte la tradición con los tuyos</p>
+        <a class="boton boton-light" href="https://wa.me/51993955358" target="_blank" rel="noopener">Escribir al +51 993 955 358</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</body>
+</html>

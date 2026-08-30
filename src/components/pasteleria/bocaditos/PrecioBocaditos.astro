@@ -1,0 +1,190 @@
+---
+---
+<style>
+.container{
+  width:100%;
+  max-width:1160px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+.eyebrow:before{
+  content:"";
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:4px;
+}
+
+/* =========================================================
+   SECCIONES  (Mobile base)
+   ========================================================= */
+section{
+  position:relative;
+}
+
+
+
+/* =========================================================
+   PRECIO  (Mobile base)
+   ========================================================= */
+.precio{
+  padding:8px 0;
+  background:var(--rojo);
+  color:white;
+}
+
+.precio-inner{
+  padding:55px 25px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  text-align:center;
+}
+
+.precio .eyebrow{
+  color:white;
+}
+
+.precio h2{
+  max-width:650px;
+  color:white;
+  font-size:clamp(24px,5vw,38px);
+}
+
+.precio-tag{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-family:var(--font-display);
+}
+
+.precio-tag .num{
+  font-size:clamp(56px,14vw,92px);
+  font-weight:700;
+  line-height:1;
+}
+
+.precio-tag .unit{
+  font-size:18px;
+  opacity:.88;
+}
+
+.precio-note{
+  max-width:520px;
+  font-size:15px;
+  opacity:.9;
+}
+
+/* =========================================================
+   TABLET  (min-width: 640px)
+   ========================================================= */
+@media(min-width:640px){
+
+  .container{
+    padding:0 32px;
+  }
+
+
+  .precio-inner{
+    padding:65px 40px;
+  }
+
+  .section-pad{
+    padding:65px 0;
+  }
+
+  
+}
+
+
+/* =========================================================
+   DESKTOP  (min-width: 920px)
+   ========================================================= */
+@media(min-width:920px){
+
+  .section-pad{
+    padding:80px 0;
+  }
+  .familia .container{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  grid-template-areas:
+    "eyebrow img"
+    "title   img"
+    "body    img"
+    "names   img";
+  column-gap:60px;
+  align-items:center;
+}
+
+
+  
+ 
+}
+</style>
+<!-- =========================================================
+     PRECIO
+     ========================================================= -->
+
+<section
+  class="precio"
+  id="precio"
+>
+
+  <div class="container precio-inner">
+
+    <span class="eyebrow">
+      Precio referencial
+    </span>
+
+    <h2>
+      Bocaditos para tu evento desde
+    </h2>
+
+    <div class="precio-tag">
+
+      <span class="num">
+        S/60
+      </span>
+
+      <span class="unit">
+        el ciento
+      </span>
+
+    </div>
+
+    <p class="precio-note">
+      El precio es referencial y puede variar según el tipo
+      y cantidad de bocaditos. Escríbenos por WhatsApp y te
+      confirmamos el precio exacto para tu pedido.
+    </p>
+
+    <a
+      class="boton boton-light"
+      href="https://wa.me/51993955358?text=Hola%2C%20quisiera%20consultar%20el%20precio%20de%20mis%20bocaditos"
+      target="_blank"
+      rel="noopener"
+    >
+      Consultar precio exacto
+    </a>
+
+  </div>
+
+</section>
+

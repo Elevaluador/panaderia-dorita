@@ -1,0 +1,138 @@
+---
+
+interface Props {
+    tituloUbicacion:string;
+    textoProducto:string;
+    despedidaProducto:string;
+    ctaProducto:string;
+
+}
+
+const {
+    tituloUbicacion,textoProducto,despedidaProducto,ctaProducto
+}=Astro.props
+---
+<style>
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 20px;
+}
+.eyebrow{
+  font-family:var(--font-cuerpo);
+  font-weight:700;
+  font-size:0.72rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--rojo);
+}
+
+/* ===== SECTIONS ===== */
+section{padding:44px 0;}
+.section-crema{background:var(--crema);}
+
+
+.section-head{margin-bottom:22px;}
+.section-head .eyebrow{margin-bottom:8px; display:block;}
+/* ===== LOCATION ===== */
+.location-grid{
+  display:grid; gap:22px;
+  
+}
+.map-embed{
+  border-radius:16px; overflow:hidden;
+  border:1px solid var(--borde);
+  box-shadow:var(--sombra);
+  aspect-ratio:16/10;
+}
+.map-embed iframe{width:100%; height:100%; border:0; display:block;}
+.info-card{
+  background:var(--crema-oscura);
+  border:5px solid var(--rojo);
+  border-radius:16px;
+  padding:22px;
+}
+.badge {
+  display: inline-block; /* Permite aplicar márgenes verticales */
+  margin-bottom: 12px;   /* Separa la etiqueta del título */
+  background-color: var(--rojo);
+  color: var(--crema);
+  font-size: 0.85rem;    /* Tamaño sugerido para mejor proporción */
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(147, 27, 11, 0.15);
+}
+.info-card h3{margin-bottom:10px;}
+.address-block{
+  display:flex; gap:12px; align-items:flex-start;
+  margin-bottom:16px;
+}
+.address-block svg{flex-shrink:0; margin-top:3px;}
+.address-block p{margin-bottom:0;}
+
+/* ===== TABLET / DESKTOP ===== */
+@media (min-width:760px){
+  
+  .map-embed {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  .location-grid{grid-template-columns:1fr 1fr; align-items: center;}
+  
+}
+@media (min-width:1000px){
+    
+  section{padding:64px 0;}
+  
+}
+</style>
+<!-- ===== UBICACION ===== -->
+  <section class="section-crema" id="ubicacion">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Dónde comprar</span>
+        <h2>{tituloUbicacion}</h2>
+      </div>
+      <div class="location-grid">
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps?q=AA.HH.+18+de+Mayo+manzana+Q+lote+18+Piura+Peru&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación de Panadería Dorita en Piura"></iframe>
+        </div>
+        <div>
+          <div class="info-card">
+            <span class="badge">Desde 1985</span>
+            <h3>Ubicación de Panadería Dorita</h3>
+            <div class="address-block">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D1A04" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p>AA. HH. 18 de Mayo, manzana Q, lote 18, Piura, Perú. Es la misma dirección desde que Don Víctor y Doña Dorita abrieron las puertas en 1985.</p>
+            </div>
+            <p style="font-size:0.88rem;">¿No ubicas la casa? Escríbenos por WhatsApp y te guiamos.</p>
+          </div>
+
+          <div class="info-card" style="margin-top:16px;">
+            <span class="badge">Horneado Diario</span>
+            <h3>Horario de horneado y disponibilidad</h3>
+            <span class="icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9D1A04" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </span>
+            <p>{textoProducto}</p>
+            <p style="margin-bottom:0;">{despedidaProducto}</p>
+            <div style="margin-top:20px;">
+                <a href="https://wa.me/51993955358"
+                class="boton boton-primario"
+                target="_blank"
+                rel="noopener"
+                style="width:100%;">
+                {ctaProducto}
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
