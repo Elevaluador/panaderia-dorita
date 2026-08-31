@@ -8,7 +8,7 @@ import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import {robots} from '../consts';
+
 
 
 export interface MigasPan {
@@ -67,6 +67,7 @@ export interface CtaFinal {
 }
 
 interface Props {
+  imagenProducto: ImageMetadata;
   structuredData?: object[];
   tituloSeo: string;
   description: string;
@@ -79,13 +80,14 @@ interface Props {
   ctafinal:CtaFinal;
 }
 
-const {  structuredData,tituloSeo, description, hero,ubicacion,comoPedir,tituloFaq,faq,ctafinal,migasPan} = Astro.props;
+const {  imagenProducto,structuredData,tituloSeo, description, hero,ubicacion,comoPedir,tituloFaq,faq,ctafinal,migasPan} = Astro.props;
 ---
 
 <html lang="es">
-  <head>
-    <BaseHead title={tituloSeo} description={description} structuredData={structuredData} robots={robots}/>
-  </head>
+  
+    <head>
+     <BaseHead title={tituloSeo} description={description} structuredData={structuredData} image={imagenProducto} />
+    </head>
   <body>
     <Header />
     <main>

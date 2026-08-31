@@ -109,10 +109,9 @@ const faqSchema = data.faq
 const structuredData = [breadcrumb, productoSchema, ...(faqSchema ? [faqSchema] : [])];
 ---
 
-<LayoutPanaderia {...producto.data} migasPan={producto.data.hero.migasPan} structuredData={structuredData}>
-{producto.data.slug === "pan-espuma-piura" && (
+<LayoutPanaderia {...producto.data} migasPan={producto.data.hero.migasPan} structuredData={structuredData} imagenProducto={data.hero.imagenProducto}> 
     <QueEsPanEspuma slot="QueEsPanEspuma" />
-  )}
+
   {producto.data.precio && (
   <PrecioPresentacionPanaderia slot="precioPresentacionPanaderia" {...producto.data.precio} />
 )}

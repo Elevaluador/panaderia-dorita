@@ -8,7 +8,7 @@ import Faq  from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro'
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import {robots} from '../consts'
+
 
 
 export interface MigasPan {
@@ -51,7 +51,7 @@ interface Props {
   titulo1:string;
   titulo2:string;
   descripcionProducto:string;
-  imagenProducto: ImageMetadata | string; // Permite imágenes importadas o URLs en texto
+  imagenProducto: ImageMetadata; // Permite imágenes importadas o URLs en texto
   nombreProducto:string;
   altProducto:string;
   iconos?: Iconos[];
@@ -88,7 +88,7 @@ const  { structuredData,tituloSeo,
 <html lang="es">
   <head>
     <BaseHead title={tituloSeo} description={description} structuredData={structuredData} 
-    robots={robots}
+     image={imagenProducto}
     />
     
 

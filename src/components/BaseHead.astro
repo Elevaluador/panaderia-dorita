@@ -11,12 +11,12 @@ interface Props {
 	description: string;
 	image?: ImageMetadata;
 	structuredData?: object[];
-  robots:string;
+  robots?:string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage ,structuredData = [],robots } = Astro.props;
+const { title, description, image = FallbackImage ,structuredData = [],robots ="index, follow"} = Astro.props;
 
 
 ---
@@ -37,6 +37,8 @@ const { title, description, image = FallbackImage ,structuredData = [],robots } 
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href={image.src} fetchpriority="high" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

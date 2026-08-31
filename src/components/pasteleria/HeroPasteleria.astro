@@ -303,9 +303,9 @@ section{
     <div class="hero-visual">
       {
         typeof imagenProducto === 'string' ? (
-          <img src={imagenProducto} alt={altProducto} class="bocaditos-showcase" />
+          <img src={imagenProducto} alt={altProducto} class="bocaditos-showcase" fetchpriority="high"/>
         ) : (
-          <Image src={imagenProducto} alt="{altProducto}" class="bocaditos-showcase" />
+          <Image src={imagenProducto} alt="{altProducto}" class="bocaditos-showcase" fetchpriority="high"/>
         )
       }
     </div>

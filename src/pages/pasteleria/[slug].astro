@@ -71,7 +71,7 @@ const faqSchema = data.faq
 // Array final que se pasa al layout -> BaseHead
 const structuredData = [breadcrumb, ...(faqSchema ? [faqSchema] : [])];
 ---
-<LayoutPasteleria {...producto.data} structuredData={structuredData}>
+<LayoutPasteleria {...producto.data} structuredData={structuredData} imagenProducto={data.imagenProducto}>
   {producto.data.slug === "tortas-piura" && (
     <TarjetasTortas slot="categoriasTortas" />
   )}

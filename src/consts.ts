@@ -36,6 +36,5 @@ export const TortaPersonalizadaImg: ImageMetadata = tortaPersonalizada ;
 export const SEO_TITLE = 'Tu Panadería tradicional en Piura| Panadería Dorita'
 export const SEO_DESCRIPTION = 'Tu panadería artesanal en Piura, que conoce tu nombre. Rosquitas, pan hamburguesa, bocaditos y tortas tradicionales. ¡Escríbenos al WhatsApp!';
 export const SITE_TITLE='Panaderia Dorita: Tu panaderia artesanal desde 1985'
-export const robots='noindex,nofollow'
 export const SITE_DESCRIPTION = 'Tu panadería artesanal en Piura, que conoce tu nombre. Rosquitas, pan hamburguesa, bocaditos y tortas tradicionales. ¡Escríbenos al WhatsApp!';
 
