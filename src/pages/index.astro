@@ -549,7 +549,8 @@ import { Image } from 'astro:assets';
   <!-- ============ HERO CON IMAGEN DE FONDO ============ -->
   <!-- Reemplaza __HERO_FONDO_B64__ por la foto real del mostrador u horno, igual que el logo -->
   <section class="hero">
-    <Image class="hero__foto-fondo" src={Variables.FondoPanaderiaImg} alt="productos artesanales de panaderia dorita en piura" loading="eager"fetchpriority="high"/>
+    <Image class="hero__foto-fondo" src={Variables.FondoPanaderiaImg} alt="productos artesanales de panaderia dorita en piura" loading="eager"  widths={[480, 640, 860]}
+  sizes="100vw" fetchpriority="high"/>
     <div class="hero__velo"></div>
     <div class="contenedor hero__contenido">
       <img class="hero__logo" src="logo-panaderia-dorita.jpg" alt="Logo Panadería Dorita: manos sosteniendo un pan recién horneado">

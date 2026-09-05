@@ -5,19 +5,39 @@ import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/img/home/fondo-productos-panaderia-dorita.jpg';
 import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
-import '../styles/global.css'
+import '../styles/global.css';
+
 interface Props {
-	title: string;
-	description: string;
-	image?: ImageMetadata;
-	structuredData?: object[];
-  robots?:string;
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  structuredData?: object[];
+  robots?: string;
+  preloadImage?: boolean; // Prop para controlar la precarga
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage ,structuredData = [],robots ="index, follow"} = Astro.props;
+const { 
+  title, 
+  description, 
+  image = FallbackImage, 
+  structuredData = [], 
+  robots = "index, follow",
+  preloadImage = true 
+} = Astro.props;
 
+// Capturamos la ruta actual
+const pathname = Astro.url.pathname;
+
+// Definimos únicamente las rutas exactas de las categorías principales
+const exactCategoryPages = ['/panaderia', '/panaderia/', '/pasteleria', '/pasteleria/'];
+
+// Comprobamos si la página actual es EXACTAMENTE una de ellas
+const isMainCategoryPage = exactCategoryPages.includes(pathname);
+
+// Solo precarga si preloadImage es true Y NO es la portada de categoría
+const shouldPreload = preloadImage && !isMainCategoryPage;
 
 ---
 
@@ -31,14 +51,17 @@ const { title, description, image = FallbackImage ,structuredData = [],robots ="
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
-<!-- Preload LCP image -->
-<link rel="preload" as="image" href={image.src} fetchpriority="high" />
+
+<!-- Preload LCP image (Solo si no es página de categoría) -->
+{shouldPreload && (
+  <link rel="preload" as="image" href={image.src} fetchpriority="high" />
+)}
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
