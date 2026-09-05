@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { Image } from 'astro:assets';
 import * as Variables from '../../consts';
 import BaseHead from '../../components/BaseHead.astro';
@@ -6,8 +7,19 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import  HeaderLink from '../../components/HeaderLink.astro';
 import MigasPan from '../../components/MigasPan.astro';
+const site = "https://panaderiadorita.online";
 
+const franceImg = await getImage({ src: Variables.FrancesImg, format: 'webp' });
+const francesImgUrl = `${site}${franceImg.src}`;
 
+const rosquitasImg = await getImage({ src: Variables.RosquitasImg, format: 'webp' });
+const rosquitasImgUrl = `${site}${rosquitasImg.src}`;
+
+const panEspumaImg = await getImage({ src: Variables.PanEspumaImg, format: 'webp' });
+const panEspumaImgUrl = `${site}${panEspumaImg.src}`;
+
+const panHamburguesaImg = await getImage({ src: Variables.PanHamburguesaImg, format: 'webp' });
+const panHamburguesaImgUrl = `${site}${panHamburguesaImg.src}`;
 
 const migasPan = {
   textoFinal:'',
@@ -16,6 +28,99 @@ const migasPan = {
     slugCategoria: "/panaderia"
   }
 };
+
+const itemListJsonLd = `{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Panes artesanales de Panadería Dorita",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Pan Francés",
+        "image": "${francesImgUrl}",
+        "description": "Pan francés artesanal, amasado a mano y horneado a diario en Piura.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0.30",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock",
+          "url": "https://wa.me/51993955358"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Pan de Espuma",
+         "image": "${panEspumaImgUrl}",
+        "description": "Pan de espuma suave, doradito y esponjoso, horneado todos los días en el mismo local donde empezamos hace más de 40 años.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "price": "2.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.online/panaderia/pan-espuma-piura/"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Rosquitas Artesanales",
+        "image": "${rosquitasImgUrl}",
+        "description": "Rosquitas artesanales crocantes, doradas y horneadas  en un horno de barro.Con la misma receta familiar desde 1985.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PEN",
+          "price": "0.40",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.online/panaderia/rosquitas-artesanales/"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Pan Hamburguesa Artesanal",
+        "image": "${panHamburguesaImgUrl}",
+        "description": "Horneado en horno artesanal, sin conservantes. Llévalo por unidad o en paquete, listo para tu parrillada, tu negocio o para una noche de hamburguesas.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price":"0.80",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock",
+          "url": "https://panaderiadorita.online/panaderia/pan-hamburguesa-artesanal/"
+        }
+      }
+    }
+  ]
+}`;
+---
 ---
 <!DOCTYPE html>
 <html lang="es-PE">
@@ -35,77 +140,7 @@ const migasPan = {
 }
 </script>
  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Panes artesanales de Panadería Dorita",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Product",
-        "name": "Pan Francés",
-        "description": "Pan francés artesanal, amasado a mano y horneado a diario en Piura.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "PEN",
-          "availability": "https://schema.org/InStock",
-          "url": "https://wa.me/51993955358"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Product",
-        "name": "Pan de Espuma",
-        "description": "Pan de espuma suave y esponjoso, elaborado a diario.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "PEN",
-          "price": "2.00",
-          "availability": "https://schema.org/InStock",
-          "url": "https://panaderiadorita.pe/panaderia/pan-de-espuma"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Product",
-        "name": "Rosquitas",
-        "description": "Rosquitas artesanales crocantes, hechas con la receta de siempre.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "PEN",
-          "price": "2.00",
-          "availability": "https://schema.org/InStock",
-          "url": "https://panaderiadorita.pe/panaderia/rosquitas"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Product",
-        "name": "Pan Hamburguesa",
-        "description": "Pan hamburguesa artesanal, listo para tu casa o tu negocio.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "PEN",
-          "availability": "https://schema.org/InStock",
-          "url": "https://panaderiadorita.pe/panaderia/pan-hamburguesa"
-        }
-      }
-    }
-  ]
-}
-</script>
+<script type="application/ld+json" set:html={itemListJsonLd} />
  
 <script type="application/ld+json">
 {

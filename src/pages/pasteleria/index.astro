@@ -4,10 +4,91 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import '../../styles/global.css'
 import MigasPan from '../../components/MigasPan.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import * as Variables from '../../consts';
 import HeaderLink  from '../../components/HeaderLink.astro';
 
+const site = "https://panaderiadorita.online";
+
+const tortaImg = await getImage({ src: Variables.TortasImg, format: 'webp' });
+const tortaImgUrl = `${site}${tortaImg.src}`;
+
+const bocaditosDulcesImg = await getImage({ src: Variables.BocaditosDulcesImg, format: 'webp' });
+const bocaditosDulcesImgUrl = `${site}${bocaditosDulcesImg.src}`;
+
+const bocaditosSaladosImg = await getImage({ src: Variables.BocaditosSaladosImg, format: 'webp' });
+const bocaditosSaladosImgUrl = `${site}${bocaditosSaladosImg.src}`;
+
+const itemListJsonLd = `{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Pastelería artesanal Panadería Dorita",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Tortas personalizadas",
+        "image": "${tortaImgUrl}",
+        "description": "Nada de molde de fábrica ni catálogo cerrado: cuéntanos la ocasión, el sabor y cómo la imaginas, y la armamos contigo con la misma receta de siempre desde 1985. Pide con 1 día de anticipación y asegura tu fecha.",
+        "url": "https://panaderiadorita.online/pasteleria/tortas-piura/",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "150.00",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Bocaditos dulces",
+        "image": "${bocaditosDulcesImgUrl}",
+        "description": "Bocaditos dulces artesanales, S/60 el ciento.Para cumpleaños, reuniones familiares, juntas de trabajo y cualquier ocasión que merezca una mesa bien servida.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "url": "https://panaderiadorita.online/pasteleria/bocaditos-piura/#dulces",
+        "offers": {
+          "@type": "Offer",
+          "price": "60.00",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Bocaditos salados",
+        "image": "${bocaditosSaladosImgUrl}",
+        "description": "Bocaditos salados artesanales, S/60 el ciento.Para cumpleaños, reuniones familiares, juntas de trabajo y cualquier ocasión que merezca una mesa bien servida.",
+        "url": "https://panaderiadorita.online/pasteleria/bocaditos-piura/#salados",
+        "brand": {
+          "@type": "Brand",
+          "name": "Panadería Dorita"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "60.00",
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+  ]
+}`;
 
 const migasPan = {
   textoFinal:'',
@@ -35,58 +116,7 @@ const migasPan = {
 }
 </script>
 
-<!-- Schema: ItemList de productos de la categoría -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Pastelería artesanal Panadería Dorita",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Product",
-        "name": "Tortas personalizadas",
-        "description": "Tortas artesanales personalizadas por tamaño, relleno y diseño. Cotización por WhatsApp.",
-        "url": "https://panaderiadorita.com/pasteleria/tortas/"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Product",
-        "name": "Bocaditos dulces",
-        "description": "Bocaditos dulces artesanales, S/60 el ciento.",
-        "url": "https://panaderiadorita.com/pasteleria/bocaditos-dulces/",
-        "offers": {
-          "@type": "Offer",
-          "price": "60.00",
-          "priceCurrency": "PEN",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Product",
-        "name": "Bocaditos salados",
-        "description": "Bocaditos salados artesanales, S/60 el ciento.",
-        "url": "https://panaderiadorita.com/pasteleria/bocaditos-salados/",
-        "offers": {
-          "@type": "Offer",
-          "price": "60.00",
-          "priceCurrency": "PEN",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    }
-  ]
-}
-</script>
+<script type="application/ld+json" set:html={itemListJsonLd} />
 
 <!-- Schema: FAQPage -->
 <script type="application/ld+json">
