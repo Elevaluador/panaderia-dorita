@@ -101,7 +101,7 @@ tituloPasos: "Pide tus bocaditos tradicionales en 3 pasos"
 descripcionPasos: "Cuéntanos qué necesitas, para qué fecha y qué reunión especial celebras. Y, nosotros nos encargamos del resto."
 pasos:
   - titulo: "Contáctanos por WhatsApp"
-    texto: 'Escríbenos con al menos 2 días de anticipación al <a class="numero" href="https://wa.me/+51934 076577" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
+    texto: 'Escríbenos con al menos 2 días de anticipación al <a class="numero" href="https://wa.me/51934 076577" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
   - titulo: "Elige tus bocaditos"
     texto: "Puedes combinar opciones dulces y saladas según lo que necesites para tu evento o reunión familiar."
   - titulo: "Confirma tu pedido por Yape o Plin"
@@ -122,7 +122,7 @@ faq:
   - pregunta: "¿Cómo separo mi pedido?"
     respuesta: "La separación se coordina directamente por WhatsApp y puedes realizar el pago acordado mediante Yape o Plin."
   - pregunta: "¿Dónde están ubicados?"
-    respuesta: "Estamos en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Para coordinar tu pedido puedes escribir directamente al +51 993 955 358."
+    respuesta: "Estamos en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Para coordinar tu pedido puedes escribir directamente al +51 934 076 577."
   - pregunta: "¿Cómo puedo hacer mi pedido?"
     respuesta: "Escríbenos por WhatsApp indicando qué bocaditos quieres, cuántos necesitas y para qué fecha. Te ayudaremos a definir el pedido y confirmar el precio."
 ctafinal:

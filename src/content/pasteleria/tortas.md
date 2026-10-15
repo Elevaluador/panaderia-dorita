@@ -9,7 +9,6 @@ tituloSeo: 'Tortas en Piura | Tortas Tradicionales | Panadería Dorita'
 description: 'Celebra en familia con nuestras tortas tradicionales en Piura, hechas con ese sabor artesanal de siempre que te recuerda a mamá.¡Pídela por WhatsApp!'
 slug: "tortas-piura"
 
-
 subtituloProducto: 'Pastelería artesanal en Piura'
 titulo1: 'Tortas para celebrar en familia'
 titulo2: 'como las de mamá'
@@ -36,7 +35,7 @@ tituloPasos: "¿Cómo pedir tu torta en Panadería Dorita?"
 descripcionPasos: "Tres pasos, directo por WhatsApp, sin vueltas ni letras chicas."
 pasos:
   - titulo: "Contáctanos por WhatsApp"
-    texto: 'Escríbenos con al menos 1 días de anticipación al <a class="numero" href="https://wa.me/+51934 076577" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
+    texto: 'Escríbenos con al menos 1 días de anticipación al <a class="numero" href="https://wa.me/51934 076577" target="_blank" rel="noopener">+51 934 076 577</a> indicando la fecha y tu pedido.'
   - titulo: "Elige tu torta"
     texto: "Puedes escoger de nuestro catalogo de tortas, o enviar un modelo,segun lo que necesites para tu evento o reunión familiar."
   - titulo: "Confirma tu pedido por Yape o Plin"
@@ -49,7 +48,7 @@ faq:
   - pregunta: "¿Hacen tortas personalizadas o solo tienen modelos fijos?"
     respuesta: "Hacemos tortas personalizadas, no trabajamos con un catálogo cerrado. Tú nos cuentas la ocasión, el sabor que prefieres y cómo la imaginas, y la armamos a tu medida, como se ha hecho siempre en la panadería desde 1985."
   - pregunta: "¿Cuánto cuesta una torta en Panadería Dorita?"
-    respuesta: "El precio depende del tamaño, el relleno y el nivel de decoración que pidas, así que no manejamos una tarifa única. Lo más rápido es escribirnos por WhatsApp al +51 993 955 358 contándonos para cuántas personas es y qué tienes en mente; ahí te confirmamos el precio al toque, sin vueltas."
+    respuesta: "El precio depende del tamaño, el relleno y el nivel de decoración que pidas, así que no manejamos una tarifa única. Lo más rápido es escribirnos por WhatsApp al +51 934 076 577 contándonos para cuántas personas es y qué tienes en mente; ahí te confirmamos el precio al toque, sin vueltas."
   - pregunta: "¿Cómo puedo pagar mi pedido de torta?"
     respuesta: "Puedes pagar por Yape o Plin. Para reservar el pedido pedimos un adelanto del 20% de tu compra, y el resto lo cancelas cuando recoges tu torta en tienda."
   - pregunta: "¿Tienen delivery de tortas en Piura o solo recojo en tienda?"

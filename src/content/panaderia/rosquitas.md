@@ -21,7 +21,7 @@ hero:
       value: "S/2.00"
     - label: "Pago"
       value: "Yape / Plin"
-  whatsapp: "+51 934 076 577"
+  whatsapp: "51934076577"
   whatsappText: "Pedir por WhatsApp: +51 934 076 577"
   secondaryHref: "#ubicacion"
   secondaryText: "Ver ubicación"
@@ -84,7 +84,7 @@ faq:
   - pregunta: "¿Las rosquitas se hornean todos los días o hay que pedirlas con anticipación?"
     respuesta: "Se hornean todos los días, igual que el pan de espuma. Las puedes comprar directo en tienda sin avisar antes. Solo si necesitas una cantidad grande para revender o un evento, es mejor coordinar antes por WhatsApp."
   - pregunta: "¿Puedo comprar rosquitas al por mayor para mi bodega o negocio?"
-    respuesta: "Sí. Trabajamos con revendedores y bodegas con precio especial por cantidad. Escribe al +51 993 955 358 indicando cuántas unidades necesitas y para qué fecha, y te confirmamos precio y disponibilidad."
+    respuesta: "Sí. Trabajamos con revendedores y bodegas con precio especial por cantidad. Escribe al +51 934 076 577 indicando cuántas unidades necesitas y para qué fecha, y te confirmamos precio y disponibilidad."
   - pregunta: "¿Cómo puedo pagar?"
     respuesta: "Aceptamos Yape y Plin directo en tienda. Si es un pedido grande o por encargo, pedimos un adelanto del 20% de tu compra, para reservarte la tanda."
   - pregunta: "¿Las rosquitas de Panadería Dorita son artesanales?"
@@ -92,11 +92,10 @@ faq:
   - pregunta: "¿Desde cuándo hacen rosquitas en Panadería Dorita?"
     respuesta: "Desde 1985, el mismo año en que abrimos el negocio con esa receta familiar. Don Óscar aprendió el oficio de hor neado y hasta hoy sigue siendo parte del equipo como maestro panadero."
   - pregunta: "¿Cómo hago mi pedido de rosquitas?"
-    respuesta: "Lo más simple es escribir al WhatsApp +51 993 955 358 con la cantidad que necesitas. Si es para consumo diario, también puedes venir directo a la tienda y comprarlas al paso, sin necesidad de avisar antes."
+    respuesta: "Lo más simple es escribir al WhatsApp +51 934 076 577 con la cantidad que necesitas. Si es para consumo diario, también puedes venir directo a la tienda y comprarlas al paso, sin necesidad de avisar antes."
 
 ctafinal:
   tituloFinal: "¿Ya tienes listo el té o café? Nosotros ponemos las rosquitas"
   textoFinal: "Preparamos nuestras rosquitas con ese sabor tradicional que nos acompaña desde 1985.Escríbenos por WhatsApp y te las dejamos listas para recoger."
 ---
 
- 

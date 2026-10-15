@@ -1,5 +1,7 @@
 ---
+import {WHATSAPPURL} from "../../../consts";
 ---
+
 <style>
 .container{
   width:100%;
@@ -177,7 +179,7 @@ section{
 
     <a
       class="boton boton-light"
-      href="https://wa.me/51993955358?text=Hola%2C%20quisiera%20consultar%20el%20precio%20de%20mis%20bocaditos"
+      href={`https://wa.me/${WHATSAPPURL}?text=Hola%2C%20quisiera%20consultar%20el%20precio%20de%20mis%20bocaditos`}
       target="_blank"
       rel="noopener"
     >

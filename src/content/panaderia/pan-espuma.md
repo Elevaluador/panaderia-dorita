@@ -64,15 +64,15 @@ faq:
   - pregunta: "¿El pan de espuma se hornea todos los días o hay que pedirlo con anticipación?"
     respuesta: "Se hornea todos los días, a diferencia de las tortas o los bocaditos que sí son por encargo. Lo puedes comprar directo en tienda sin avisar antes. Solo si necesitas una cantidad grande para revender o para un evento, es mejor coordinar antes por WhatsApp para asegurar que salga la tanda que necesitas."
   - pregunta: "¿Puedo comprar pan de espuma al por mayor para mi bodega o negocio?"
-    respuesta: "Sí. Trabajamos con revendedores y bodegas con precio especial por cantidad. Solo escribe al +51 993 955 358 indicando cuántas unidades necesitas y para qué fecha, y te confirmamos precio y disponibilidad."
+    respuesta: "Sí. Trabajamos con revendedores y bodegas con precio especial por cantidad. Solo escribe al ++51 934 076 577 indicando cuántas unidades necesitas y para qué fecha, y te confirmamos precio y disponibilidad."
   - pregunta: "¿Cómo puedo pagar?"
     respuesta: "Aceptamos Yape y Plin directo en tienda. Si es un pedido grande o por encargo, pedimos un adelanto del 20% de tu compra para reservarte la tanda."
   - pregunta: "¿El pan de espuma de Piura es diferente al de otras regiones del Perú?"
     respuesta: "La base es la misma tradición del pan peruano, pero cada panadería le pone su sello: el punto de dulzor, el horneado y la textura de la miga varían según la receta de la casa. El nuestro se hace igual desde  el 2000, cuando  mauricio(hijo menor) decidio empezar a producirlo, com su aporte al negocio."
   - pregunta: "¿Cómo hago mi pedido de pan de espuma?"
-    respuesta: "Lo más simple es escribir al WhatsApp +51 993 955 358 con la cantidad que necesitas. Si es para consumo diario, también puedes venir directo a la tienda y comprarlo al paso, sin necesidad de avisar antes."
+    respuesta: "Lo más simple es escribir al WhatsApp +51 934 076 577 con la cantidad que necesitas. Si es para consumo diario, también puedes venir directo a la tienda y comprarlo al paso, sin necesidad de avisar antes."
   - pregunta: "¿Panadería Dorita hace delivery de pan de espuma?"
-    respuesta: "Para pedidos y coordinación de entrega, el mejor canal es el WhatsApp +51 993 955 358, ahí te confirmamos si tu zona aplica y cómo se coordina el recojo o envío según la cantidad que pidas."
+    respuesta: "Para pedidos y coordinación de entrega, el mejor canal es el WhatsApp +51 934 076 577, ahí te confirmamos si tu zona aplica y cómo se coordina el recojo o envío según la cantidad que pidas."
 
 ctafinal:
   tituloFinal: "¿Ya se te antojó? Ven por el tuyo para compartir en familia"
