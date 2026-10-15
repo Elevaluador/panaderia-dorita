@@ -1,4 +1,5 @@
 ---
+import { WHATSAPPURL } from '../../../consts';
 ---
 <style>
 .contenedor, .container{
@@ -105,7 +106,7 @@
         <div class="comparativa__tarjeta comparativa__tarjeta--acento">
           <h3>Ideal para negocios: parrilladas, food trucks y reventa</h3>
           <p style="margin:0 0 14px;">Si tienes un negocio y necesitas pan de hamburguesa seguido, trabajamos contigo igual que con el resto de nuestros revendedores: peso justo y entrega puntual.</p>
-          <a style="margin:3px 98px 14px;" class="boton boton-primario" href="https://wa.me/51993955358?text=Hola%2C%20tengo%20un%20negocio%20y%20quisiera%20cotizar%20pan%20de%20hamburguesa%20en%20cantidad" target="_blank" rel="noopener">Cotizar para mi negocio</a>
+          <a style="margin:3px 98px 14px;" class="boton boton-primario" href={`https://wa.me/${WHATSAPPURL}?text=Hola%2C%20tengo%20un%20negocio%20y%20quisiera%20cotizar%20pan%20de%20hamburguesa%20en%20cantidad`} target="_blank" rel="noopener">Cotizar para mi negocio</a>
         </div>
       </div>
     </div>

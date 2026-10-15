@@ -1,4 +1,5 @@
 ---
+import { WHATSAPPURL, WHATSAPP } from '../../consts';
 interface Tarjeta {
   num: string;
   titulo: string;
@@ -112,7 +113,7 @@ section{padding:44px 0;}
     </div>
       <div class="order-final">
         <p>¿Listo para pedir?</p>
-        <a href="https://wa.me/51993955358" class="boton boton-primario" target="_blank" rel="noopener">WhatsApp: +51 993 955 358</a>
+        <a href={`https://wa.me/${WHATSAPPURL}`} class="boton boton-primario" target="_blank" rel="noopener">WhatsApp: {WHATSAPP}</a>
       </div>
     </div>
   </section>

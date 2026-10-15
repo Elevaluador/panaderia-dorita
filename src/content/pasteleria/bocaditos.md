@@ -101,7 +101,7 @@ tituloPasos: "Pide tus bocaditos tradicionales en 3 pasos"
 descripcionPasos: "Cuéntanos qué necesitas, para qué fecha y qué reunión especial celebras. Y, nosotros nos encargamos del resto."
 pasos:
   - titulo: "Contáctanos por WhatsApp"
-    texto: 'Escríbenos con al menos 2 días de anticipación al <a class="numero" href="https://wa.me/51993955358" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
+    texto: 'Escríbenos con al menos 2 días de anticipación al <a class="numero" href="https://wa.me/+51934 076577" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
   - titulo: "Elige tus bocaditos"
     texto: "Puedes combinar opciones dulces y saladas según lo que necesites para tu evento o reunión familiar."
   - titulo: "Confirma tu pedido por Yape o Plin"

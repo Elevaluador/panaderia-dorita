@@ -36,7 +36,7 @@ tituloPasos: "¿Cómo pedir tu torta en Panadería Dorita?"
 descripcionPasos: "Tres pasos, directo por WhatsApp, sin vueltas ni letras chicas."
 pasos:
   - titulo: "Contáctanos por WhatsApp"
-    texto: 'Escríbenos con al menos 1 días de anticipación al <a class="numero" href="https://wa.me/51993955358" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
+    texto: 'Escríbenos con al menos 1 días de anticipación al <a class="numero" href="https://wa.me/+51934 076577" target="_blank" rel="noopener">+51 993 955 358</a> indicando la fecha y tu pedido.'
   - titulo: "Elige tu torta"
     texto: "Puedes escoger de nuestro catalogo de tortas, o enviar un modelo,segun lo que necesites para tu evento o reunión familiar."
   - titulo: "Confirma tu pedido por Yape o Plin"

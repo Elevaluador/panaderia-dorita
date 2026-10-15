@@ -1,4 +1,5 @@
 ---
+import { WHATSAPPURL, WHATSAPP } from '../consts';
 interface Props {
  
  tituloFinal: string;
@@ -116,7 +117,7 @@ tituloFinal
 
     <a
       class="boton boton-light"
-      href="https://wa.me/51993955358?text=Hola%2C%20quiero%20pedir%20bocaditos"
+      href={`https://wa.me/${WHATSAPPURL}?text=Hola%2C%20quiero%20pedir`}
       target="_blank"
       rel="noopener"
     >
@@ -131,7 +132,7 @@ tituloFinal
 
 
     <p class="phone-line">
-      +51 993 955 358 · AA.HH. 18 de Mayo, Mz. Q, Lote 18, Piura
+      {WHATSAPP} · AA.HH. 18 de Mayo, Mz. Q, Lote 18, Piura
     </p>
 
   </div>

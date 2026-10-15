@@ -1,5 +1,5 @@
 ---
-
+import { WHATSAPPURL} from '../../consts';
 interface Props {
     tituloUbicacion:string;
     textoProducto:string;
@@ -123,7 +123,7 @@ section{padding:44px 0;}
             <p>{textoProducto}</p>
             <p style="margin-bottom:0;">{despedidaProducto}</p>
             <div style="margin-top:20px;">
-                <a href="https://wa.me/51993955358"
+                <a href={`https://wa.me/${WHATSAPPURL}`}
                 class="boton boton-primario"
                 target="_blank"
                 rel="noopener"

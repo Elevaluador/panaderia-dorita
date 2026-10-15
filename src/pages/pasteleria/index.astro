@@ -633,7 +633,7 @@ const migasPan = {
       <p class="lead">Bienvenido a la pastelería de tu barrio de AA.HH 18 de mayo. Amasamos, rellenamos y decoramos a mano cada torta y cada bocadito, tal como lo hacía Doña Dorita desde 1985. Nada sale de fábrica: sale de nuestro horno artesanal, con la receta de siempre.</p>
 
       <div class="hero-cta-row">
-        <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20una%20torta`} target="_blank" rel="noopener">Pedir por WhatsApp</a>
         <a class="boton boton-ghost" href="#pastelería-artesanal">Ver tortas y bocaditos</a>
       </div>
 
@@ -667,7 +667,7 @@ const migasPan = {
             <HeaderLink class="producto-card__link" href="/pasteleria/tortas-piura/">
               Ver tortas →
             </HeaderLink>
-            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Cotizar</a>
+            <a class="boton boton-ghost boton-sm" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20cotizar%20una%20torta`} target="_blank" rel="noopener">Cotizar</a>
           
           </div>
 
@@ -682,7 +682,7 @@ const migasPan = {
             <HeaderLink class="producto-card__link" href="/pasteleria/bocaditos-piura/#dulces">
               Ver bocaditos dulces →
             </HeaderLink>
-            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir</a>
+            <a class="boton boton-ghost boton-sm" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20bocaditos%20dulces`} target="_blank" rel="noopener">Pedir</a>
           </div>
         </article>
 
@@ -696,7 +696,7 @@ const migasPan = {
               Ver bocaditos salados →
             </HeaderLink>
             
-            <a class="boton boton-ghost boton-sm" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir</a>
+            <a class="boton boton-ghost boton-sm" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20bocaditos%20salados`} target="_blank" rel="noopener">Pedir</a>
           </div>
         </article>
 
@@ -787,7 +787,7 @@ const migasPan = {
           <h3>Dirección</h3>
           <p>AA.HH. 18 de Mayo, manzana Q, lote 18, Piura, Perú</p>
           <p>Puede recoger su pedido de tortas, bocaditos o pan del día directamente en tienda. Si tiene dudas para llegar, escríbanos por WhatsApp y le indicamos cómo llegar.</p>
-          <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20preguntar%20sobre%20los%20panes`} target="_blank" rel="noopener">Escribir por WhatsApp</a>
         </div>
         <div class="mapa-embed">
           <iframe
@@ -840,8 +840,8 @@ const migasPan = {
 
         <details class="faq-item">
           <summary>¿Cómo puedo hacer mi pedido y cómo pago?<span class="icon">+</span></summary>
-          <div class="faq-answer"><p>Todo el pedido se coordina por WhatsApp al +51 993 955 358: usted nos cuenta qué necesita, le confirmamos el precio y la fecha, y para asegurar su pedido puede pagar con Yape o Plin un adelanto del 20% de tu compra. El resto se cancela al recoger.</p></div>
         </details>
+        <div class="faq-answer"><p>Todo el pedido se coordina por WhatsApp al {Variables.WHATSAPP}: usted nos cuenta qué necesita, le confirmamos el precio y la fecha, y para asegurar su pedido puede pagar con Yape o Plin un adelanto del 20% de tu compra. El resto se cancela al recoger.</p></div>
 
         <details class="faq-item">
           <summary>¿Hacen tortas personalizadas para cumpleaños u otras celebraciones?<span class="icon">+</span></summary>
@@ -874,7 +874,7 @@ const migasPan = {
         <p>Porque las mejores reuniones son las que terminan alrededor de una mesa, compartiendo 
           algo rico. Preparamos tus tortas y bocaditos con el sabor de siempre y el cariño 
           de nuestra familia para la tuya. Escríbenos por WhatsApp y comparte la tradición con los tuyos</p>
-        <a class="boton boton-light" href="https://wa.me/51993955358" target="_blank" rel="noopener">Escribir al +51 993 955 358</a>
+        <a class="boton boton-light" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20tortas%20y%20bocaditos`} target="_blank" rel="noopener">Escribir al {Variables.WHATSAPPURL}</a>
       </div>
     </div>
   </section>

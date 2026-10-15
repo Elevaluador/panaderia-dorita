@@ -560,7 +560,7 @@ import { Image } from 'astro:assets';
       <p class="hero__texto">Desde 1985 horneamos como en casa, en el AA.HH. 18 de Mayo, manzana "Q" lote 18. Pan fresco todos los días, tortas, bocaditos y rosquitas hechas a mano — sin atajos y sin cadenas industriales de por medio.</p>
       <div class="hero__acciones">
          <a class="boton boton-primario"
-           href="https://wa.me/51993955358?text=Hola%2C%20quiero%20pedir%20bocaditos%20para%20mi%20evento"
+           href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir`}
            target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/>
@@ -621,8 +621,8 @@ import { Image } from 'astro:assets';
           </div>
           <h3 class="subH3wa">Pide directo por WhatsApp</h3>
           <p>No hace falta venir a preguntar si hay pan. Escríbenos y te respondemos al toque.</p>
-          <a class="boton boton-primario boton--bloque" href="https://wa.me/51993955358" target="_blank" rel="noopener">+51 993 955 358</a>
         </div>
+        <a class="boton boton-primario boton--bloque" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir`} target="_blank" rel="noopener">{Variables.WHATSAPP}</a>
       </div>
     </div>
   </section>
@@ -686,7 +686,7 @@ import { Image } from 'astro:assets';
           <div class="tarjeta-producto__cuerpo">
             <h3>Pan francés crocante</h3>
             <p>El clásico de cada mañana. Crocante por fuera, suave por dentro, ideal para el desayuno de la familia o para revender en tu bodega.</p>
-            <a class="tarjeta-producto__enlace" href="https://wa.me/51993955358?text=Hola%2C%20quiero%20cotizar%20pan%20frances">Cotizar pan francés por whatsapp
+            <a class="tarjeta-producto__enlace" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20cotizar%20pan%20frances`}>Cotizar pan francés por whatsapp
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -830,7 +830,7 @@ import { Image } from 'astro:assets';
         <div class="revendedores__tarjeta">
           <p class="subH3">Coordina como revendedor por WhatsApp</p>
           <p>Cuéntanos cuánto pan francés o rosquitas necesitas y coordinamos la entrega directamente contigo, sin intermediarios.</p>
-          <a class="boton boton-primario boton--bloque" href="https://wa.me/51993955358?text=Hola%2C%20tengo%20una%20bodega%2Fpuesto%20y%20quisiera%20coordinar%20pedidos%20como%20revendedor" target="_blank" rel="noopener">
+          <a class="boton boton-primario boton--bloque" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20tengo%20una%20bodega%2Fpuesto%20y%20quisiera%20coordinar%20pedidos%20como%20revendedor`} target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-3.8-6.8L20 4l-1.2 3.8A8 8 0 0 1 20 12Z"/><path d="M8.5 9.5c.3 2.6 2.4 4.7 5 5"/></svg>
             Coordinar como revendedor
           </a>
@@ -964,13 +964,13 @@ import { Image } from 'astro:assets';
       <h2>Panadería Dorita, tu panadería tradicional desde 1985</h2>
       <p>Ya sabes dónde estamos y qué tenemos para ti. Ahora solo falta un mensaje tuyo — cuéntanos qué se te antoja hoy y nosotros nos encargamos del resto.</p>
       <div class="cta-final__acciones">
-        <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">
+        <a class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir`} target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-3.8-6.8L20 4l-1.2 3.8A8 8 0 0 1 20 12Z"/><path d="M8.5 9.5c.3 2.6 2.4 4.7 5 5"/></svg>
           Escríbenos al WhatsApp
         </a>
         <a class="boton boton--secundario" href="#ubicacion">Ver ubicación</a>
       </div>
-      <p class="cta-final__telefono">+51 993 955 358</p>
+      <p class="cta-final__telefono">{Variables.WHATSAPP}</p>
     </div>
   </section>
 

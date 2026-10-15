@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import MigasPan  from '../MigasPan.astro';
 
+import { WHATSAPPURL } from '../../consts';
+
 export interface MigasPan {
     textoFinal: string;
     categoria?: {
@@ -259,7 +261,7 @@ section{
 
       <div class="hero-ctas">
         <a class="boton boton-primario"
-           href="https://wa.me/51993955358?text=Hola%2C%20quiero%20pedir%20bocaditos%20para%20mi%20evento"
+           href={`https://wa.me/${WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20${nombreProducto}`}
            target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.08-1.33A9.96 9.96 0 0 0 12.02 22C17.55 22 22 17.52 22 12S17.55 2 12.02 2zm5.87 14.2c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.7-.63-2.98-1.29-4.93-4.28-5.08-4.48-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/>

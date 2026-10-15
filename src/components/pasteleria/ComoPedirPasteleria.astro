@@ -1,5 +1,8 @@
 ---
+import { WHATSAPPURL } from '../../consts';
+
 interface Paso {
+
   titulo: string;
   texto: string;
   acento?: boolean;
@@ -110,7 +113,7 @@ const {
           <h3 class={paso.acento ? "final" : ""}>{paso.titulo}</h3>
           <p set:html={paso.texto} />
           {paso.acento && (
-            <a class="boton boton--sobre-foto" href="https://wa.me/51993955358">
+            <a class="boton boton--sobre-foto" href={`https://wa.me/${WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20una%20torta`} target="_blank" rel="noopener noreferrer">
               Pedir por WhatsApp
             </a>
           )}

@@ -38,3 +38,5 @@ export const SEO_DESCRIPTION = 'Tu panadería artesanal en Piura, que conoce tu 
 export const SITE_TITLE='Panaderia Dorita: Tu panaderia artesanal desde 1985'
 export const SITE_DESCRIPTION = 'Tu panadería artesanal en Piura, que conoce tu nombre. Rosquitas, pan hamburguesa, bocaditos y tortas tradicionales. ¡Escríbenos al WhatsApp!';
 
+export const WHATSAPPURL = '51934076577'; // Número visible en la interfaz
+export const WHATSAPP= '+51934076577';        // Código de país + número (solo dígitos para la URL)

@@ -51,7 +51,7 @@ const itemListJsonLd = `{
           "price": "0.30",
           "priceCurrency": "PEN",
           "availability": "https://schema.org/InStock",
-          "url": "https://wa.me/51993955358"
+          "url": "https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20cotizar%20pan%20frances"
         }
       }
     },
@@ -766,7 +766,7 @@ const itemListJsonLd = `{
         </div>
  
         <div class="hero__ctas">
-          <a style="text-align: center;" class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a style="text-align: center;" class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20cotizar%20pan%20hamburguesa`} target="_blank" rel="noopener">Pedir por WhatsApp</a>
           <a style="margin:1px 1px 12px; text-align:center;"class="boton boton--secundario" href="#preguntas-frecuentes">Ver preguntas frecuentes</a>
         </div>
       </div>
@@ -857,7 +857,7 @@ const itemListJsonLd = `{
           <span class="producto-cta__precio">Cotiza por WhatsApp</span>
         </div>
         <p class="producto-cta__texto">El pan de todos los días, el que acompaña el desayuno de cada casa. Su precio depende del peso o la cantidad que necesites. Si eres bodeguero o revendedor, coordinamos peso justo y entrega puntual cada semana.</p>
-        <a style="margin:3px 0px 22px 87px;" class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir pan francés</a>
+        <a style="margin:3px 0px 22px 87px;" class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20cotizar%20pan%20francés`} target="_blank" rel="noopener">Pedir pan francés</a>
       </div>
       <div class="producto-cta__img">
         <Image src={Variables.FrancesImg} alt="Pan francés artesanal recién horneado en Panadería Dorita en piura" loading="lazy" width="350" height="350"/>
@@ -921,12 +921,12 @@ const itemListJsonLd = `{
       <div class="local__card">
         <h3>Dirección y Cómo Llegar</h3>
         <p>Nos encuentras en AA.HH. 18 de Mayo, manzana Q, lote 18, Piura. Si estás cerca, pasa directo por tu pan recién horneado.</p>
-        <a class="boton boton-primario" href="https://wa.me/51993955358" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+        <a class="boton boton-primario" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20preguntar%20sobre%20los%20panes`} target="_blank" rel="noopener">Preguntar por WhatsApp</a>
       </div>
       <div class="local__card">
         <h3>Cómo Comprar: Yape, Plin o Recojo en Tienda</h3>
         <ol class="local__pasos">
-          <li>Escríbenos al WhatsApp +51 993 955 358 contándonos qué necesitas y cuánto.</li>
+          <li>Escríbenos al WhatsApp {Variables.WHATSAPP} contándonos qué necesitas y cuánto.</li>
           <li>Confirma tu pedido con Yape o Plin — adelanta S/20 o el 20% del total, lo que sea mayor.</li>
           <li>Recoge en tienda o coordina la entrega con nosotros.</li>
         </ol>
@@ -971,12 +971,12 @@ const itemListJsonLd = `{
  
       <details class="faq__item">
         <summary>¿Puedo comprar pan artesanal al por mayor para revender?<span class="faq__icono">+</span></summary>
-        <div class="faq__respuesta">Sí, trabajamos con revendedores de bodegas y puestos del barrio. Escríbenos al +51 993 955 358 contándonos cuánto necesitas y con qué frecuencia, y armamos contigo un pedido fijo con peso justo y entrega puntual.</div>
+        <div class="faq__respuesta">Sí, trabajamos con revendedores de bodegas y puestos del barrio. Escríbenos al {Variables.WHATSAPP} contándonos cuánto necesitas y con qué frecuencia, y armamos contigo un pedido fijo con peso justo y entrega puntual.</div>
       </details>
  
       <details class="faq__item">
         <summary>¿Con cuánta anticipación debo pedir pan artesanal para un evento?<span class="faq__icono">+</span></summary>
-        <div class="faq__respuesta">Depende de qué necesites: si es para bocaditos, con 2 días de anticipación nos avisas; si es para una torta dentro del mismo pedido, con 1 día basta. Coordina todo por WhatsApp al +51 993 955 358 para que no te quedes sin nada el día del evento.</div>
+        <div class="faq__respuesta">Depende de qué necesites: si es para bocaditos, con 2 días de anticipación nos avisas; si es para una torta dentro del mismo pedido, con 1 día basta. Coordina todo por WhatsApp al {Variables.WHATSAPP} para que no te quedes sin nada el día del evento.</div>
       </details>
  
       <details class="faq__item">
@@ -986,7 +986,7 @@ const itemListJsonLd = `{
  
       <details class="faq__item">
         <summary>¿A qué hora sale el pan fresco del día en Panadería Dorita?<span class="faq__icono">+</span></summary>
-        <div class="faq__respuesta">Empezamos temprano, desde las 5:00 de la mañana, así que si vienes a primera hora te llevas el pan recién salido del horno. Si tienes dudas de horario para tu pedido, confírmalo por WhatsApp al +51 993 955 358.</div>
+        <div class="faq__respuesta">Empezamos temprano, desde las 5:00 de la mañana, así que si vienes a primera hora te llevas el pan recién salido del horno. Si tienes dudas de horario para tu pedido, confírmalo por WhatsApp al {Variables.WHATSAPP}.</div>
       </details>
  
       <details class="faq__item">
@@ -1003,8 +1003,8 @@ const itemListJsonLd = `{
     <div class="cta-final__caja">
       <h2>¿Listo para pedir tu pan artesanal?</h2>
       <p>Escríbenos por WhatsApp y te confirmamos precio, cantidad y hora de entrega en minutos.</p>
-      <a class="boton boton-light" href="https://wa.me/51993955358" target="_blank" rel="noopener">Pedir por WhatsApp: +51 993 955 358</a>
     </div>
+    <a class="boton boton-light" href={`https://wa.me/${Variables.WHATSAPPURL}?text=Hola%2C%20quiero%20pedir%20pan%20artesanal`} target="_blank" rel="noopener">Pedir por WhatsApp: {Variables.WHATSAPPURL}</a>
   </div>
 </section>
 </main>
